@@ -25,7 +25,7 @@
                             {{langs[language].Earnedpoints}}:
                         </span>
                         <span class="green">
-                            {{points }}
+                            {{earn_points }}
                     {{langs[language].points}}
                         </span>
                     </h2>
@@ -51,10 +51,10 @@
                     </h2>
                     <h2 class="txt_left">
                         <span>
-                            {{langs[language].TimeLeft}} {{ all_time_left }}
+                            {{langs[language].TimeLeft}} {{ time_left_stor }}
                         </span>
                         <span class="green">
-                            {{ (all_time_left/10)/2 }}
+                            {{ (time_left_stor/10)/2 }}
                     
                     {{langs[language].points}}
                         </span>
@@ -85,7 +85,8 @@
                 <div class="">
                     <a class="home" href="#!home">
                         <div class="btn vh2_4">
-                            {{langs[language].Home}}
+                             {{langs[language].Home}}
+
                         </div>
                     </a>
                 </div>

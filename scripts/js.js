@@ -22,6 +22,9 @@ var audio_volume_val;
 var audio_volume;
 var av_a = 0.5;
 var av_s = 0.5;
+var t;
+var p;
+var t_stor;
 var fon_audio = new Audio('wav/fon.mp3');
 // ANGULAR
 var app = angular.module("Routing", ["ngRoute", 'ngAnimate']);
@@ -55,12 +58,8 @@ app.config(($routeProvider) => {
         redirectTo: '/home'
     });
 });
-
-   var firsload = true;
-
-
+var firsload = true;
 app.run(($rootScope) => {
-  
 
     $rootScope.all_volume_audio = 50;
     $rootScope.all_volume_sounds = 50;
@@ -97,15 +96,13 @@ app.run(($rootScope) => {
     $rootScope.time_left = time_left;
     $rootScope.volume_stor_sounds = volume_stor_sounds;
     $rootScope.volume_stor_audio = volume_stor_audio;
-
-
     $rootScope.$on('$routeChangeStart', function(event, current, next, previous, reject) {
+        // ЩОБ НЕ ВКЛЮЧАВСЯ ЗВУК КЛІКУ ПРИ СТАРТІ
 
-// ЩОБ НЕ ВКЛЮЧАВСЯ ЗВУК КЛІКУ ПРИ СТАРТІ
-  if (firsload != true) {
-       playAudio('wav/click2.wav', av_s);
-  }   firsload = false;
-
+        if (firsload != true) {
+            playAudio('wav/click2.wav', av_s);
+        }
+        firsload = false;
         $rootScope.level = arguments[1].params.level;
         current_level = $rootScope.level;
         $rootScope.current_level = Number(current_level);
@@ -118,14 +115,22 @@ app.run(($rootScope) => {
                 console.log('access denied!');
                 window.location.href = "#!denied/" + $rootScope.current_level;
             }
-            console.log($rootScope.progress_of_lvl, '$rootScope.progress_of_lvl' , $rootScope.all_time_left , '$rootScope.all_time_left')
-             $rootScope.progress_of_lvl = 0;
+            // Очищення результат пейдж коли заходиш назад в уровень, або інший уровень
+            console.log($rootScope.progress_of_lvl, '$rootScope.progress_of_lvl', $rootScope.all_time_left, '$rootScope.all_time_left')
+            $rootScope.progress_of_lvl = 0;
             $rootScope.all_time_left = 0;
-            storage.removeItem('current_progress');
-            storage.removeItem('time_left_total');
+            storage.setItem('current_progress', 0);
+            storage.setItem('time_left_total', 0);
+            $rootScope.current_progress = 0;
+            time_left_total = 0;
+            $rootScope.time_stor = 0;
         }
-        console.log(current , "current.$$route.templateUrl")
-        
+        console.log(current, "current.$$route.templateUrl")
+        console.log($rootScope.progress_of_lvl, '$rootScope.progress_of_lvl', $rootScope.all_time_left, '$rootScope.all_time_left')
+        var w2 = Number(storage.getItem('current_progress'));
+        var w1 = Number(storage.getItem('time_left_total'));
+        $rootScope.time_left_stor = w1;
+        console.log(w1, w2)
     })
 })
 app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
@@ -148,81 +153,67 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
         $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
     }
     changeNSR_compain();
-        
-    
-
     var a1 = $rootScope.number[0];
     var a2 = $rootScope.number[1];
     check_result.keyup((el) => {
-
-            
-               
-
-
         clearTimeout(clearIfPress);
         clearIfPress = setTimeout(() => {
-
             if ($scope.calc_result_compain == $rootScope.define_result) {
-
-            $scope.$apply(()=>{$scope.isOk = true});
-            setTimeout(()=>{
-                $scope.$apply(()=>{$scope.isOk = null});
-            },800)
-
-
-
+                $scope.$apply(() => {
+                    $scope.isOk = true
+                });
+                setTimeout(() => {
+                    $scope.$apply(() => {
+                        $scope.isOk = null
+                    });
+                }, 800)
                 var a1 = $rootScope.number[0];
                 var a2 = $rootScope.number[1];
-
                 playAudio('wav/enter_ok.flac', av_s);
+
                 time_left_total += time_left;
+                t = time_left_total;
+                storage.setItem('time_left_total', time_left_total)
+                 t_stor = storage.getItem('time_left_total')
                 $rootScope.time_left_total = time_left_total;
+
                 clearTimeout(set_progress)
                 progress(time_total, time_total, $('.timebar'), $('.timebar_inside'), check_result);
                 $rootScope.$apply(() => {
                     $rootScope.current_progress = $rootScope.current_progress + 1;
-
                     changeNSR_compain();
-
                     var a3 = $rootScope.number[0];
                     var a4 = $rootScope.number[1];
-                console.log(a1,a2,a3,a4)
-                if (a1 == a3 && a2 ==a4){
-                   changeNSR_compain();
-                }
+                    console.log(a1, a2, a3, a4)
+                    if (a1 == a3 && a2 == a4) {
+                        changeNSR_compain();
+                    }
                 })
-                
-                 $scope.calc_result_compain = null;
+                $scope.calc_result_compain = null;
                 check_result.val('');
-                if ($rootScope.current_progress >= 2) {
+                if ($rootScope.current_progress >= 10) {
                     playAudio('wav/win.wav', av_s)
                     $rootScope.$apply(() => {
                         $location.path("/result-compain/" + $rootScope.current_level);
                         $(".compain-wrapper").css('visibility', 'hidden')
                     })
                 }
-            } 
-            else if ($scope.calc_result_compain == ''  || $scope.calc_result_compain == null || $scope.calc_result_compain == undefined ){
-     $scope.$apply(()=>{$scope.isOk = null});
-            }
-
-            
-            else { 
-$scope.$apply(()=>{
-     $scope.isOk = false
-})
-setTimeout(()=>{
-                $scope.$apply(()=>{$scope.isOk = null});
-            },800)
-                
-
+            } else if ($scope.calc_result_compain == '' || $scope.calc_result_compain == null || $scope.calc_result_compain == undefined) {
+                $scope.$apply(() => {
+                    $scope.isOk = null
+                });
+            } else {
+                $scope.$apply(() => {
+                    $scope.isOk = false
+                })
+                setTimeout(() => {
+                    $scope.$apply(() => {
+                        $scope.isOk = null
+                    });
+                }, 800)
                 playAudio('wav/enter_no.flac', av_s);
                 console.log('WRONG!')
             }
-           
-                    
-            
-            
         }, 500)
     })
 
@@ -290,69 +281,59 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
                 $rootScope.number[1] = forAtime;
             }
         }
-       
         $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
     }
     changeNSR_practice();
     var a5 = $rootScope.number[0];
     var a6 = $rootScope.number[1];
-    
-    
-
-
     $("#result2").keyup((el) => {
-         
         clearTimeout(clearIfPress2);
         clearIfPress2 = setTimeout(() => {
-
-    var a5 = $rootScope.number[0];
-    var a6 = $rootScope.number[1];
-       
-            if ($scope.calc_result_practice == $rootScope.define_result) {  
-
-            $scope.$apply(()=>{$scope.isOk = true});
-            setTimeout(()=>{
-                $scope.$apply(()=>{$scope.isOk = null});
-            },800)
-
-              
+            var a5 = $rootScope.number[0];
+            var a6 = $rootScope.number[1];
+            if ($scope.calc_result_practice == $rootScope.define_result) {
+                $scope.$apply(() => {
+                    $scope.isOk = true
+                });
+                setTimeout(() => {
+                    $scope.$apply(() => {
+                        $scope.isOk = null
+                    });
+                }, 800)
                 playAudio('wav/enter_ok.flac', av_s);
                 $rootScope.$apply(() => {
                     $rootScope.current_progress = $rootScope.current_progress + 1;
                     changeNSR_practice();
                 })
-   var a7 = $rootScope.number[0];
-             var a8 = $rootScope.number[1];
-                console.log(a5,a6,a7,a8)
-                if (a5 == a7 && a6 ==a8){
-                   changeNSR_practice();
+                var a7 = $rootScope.number[0];
+                var a8 = $rootScope.number[1];
+                console.log(a5, a6, a7, a8)
+                if (a5 == a7 && a6 == a8) {
+                    changeNSR_practice();
                 }
-
-
                 $("#result2").val('');
                 if ($rootScope.current_progress >= 10) {
-                                $rootScope.$apply(() => {
-                    $location.path("/result-practice/" + $rootScope.current_level);
-                })
+                    $rootScope.$apply(() => {
+                        $location.path("/result-practice/" + $rootScope.current_level);
+                    })
                 }
-            }
-                  else if ($scope.calc_result_practice == ''  || $scope.calc_result_practice == null || $scope.calc_result_practice == undefined ){
-     $scope.$apply(()=>{$scope.isOk = null});
-      console.log($scope.calc_result_practice)
-            }
-
-             else {
+            } else if ($scope.calc_result_practice == '' || $scope.calc_result_practice == null || $scope.calc_result_practice == undefined) {
+                $scope.$apply(() => {
+                    $scope.isOk = null
+                });
+                console.log($scope.calc_result_practice)
+            } else {
                 playAudio('wav/enter_no.flac', av_s);
-
-$scope.$apply(()=>{
-     $scope.isOk = false
-})
-setTimeout(()=>{
-                $scope.$apply(()=>{$scope.isOk = null});
-            },800)
-                
+                $scope.$apply(() => {
+                    $scope.isOk = false
+                })
+                setTimeout(() => {
+                    $scope.$apply(() => {
+                        $scope.isOk = null
+                    });
+                }, 800)
             }
-        },500)
+        }, 500)
     })
 })
 app.controller("practice_lvl_result_ctrl", ($scope, $rootScope) => {
@@ -417,14 +398,12 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
         storage.setItem('language_stor', $rootScope.language);
     });
 });
-
-
 app.controller("result_compain_lvl_ctrl", ($scope, $rootScope) => {
     if ($rootScope.current_progress < 10) {
         console.log('LOSE');
-        // if ($rootScope.time_left_total == undefined) {
-        //     $rootScope.time_left_total = 0;
-        // }
+        if ($rootScope.time_left_total == undefined) {
+            $rootScope.time_left_total = 0;
+        }
         if ($rootScope.points == undefined) {
             $rootScope.points = 0;
             $rootScope.all_points = $rootScope.points + Number(storage.getItem('points'));
@@ -433,7 +412,11 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope) => {
         }
     } else {
         console.log('WIN');
-        $rootScope.points = Math.round(Number((($rootScope.current_level * 2) + $rootScope.time_left_total / 10)) / 2);
+        if (t_stor == undefined) {t_stor = 0;}
+        $rootScope.points = Math.round(Number((($rootScope.current_level * 2) + t_stor / 10)) / 2);
+        p = $rootScope.points;
+        storage.setItem('earn_points', p);
+        $rootScope.earn_points = storage.getItem('earn_points')
         $rootScope.all_points = $rootScope.points + Number(storage.getItem('points'));
         getLevel(points, $rootScope.all_points);
         $rootScope.for_next_lvl = for_next_lvl;
@@ -443,15 +426,16 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope) => {
         }
         storage.setItem('points', $rootScope.all_points);
     }
+    if ($rootScope.earn_points == undefined) {
+        $rootScope.earn_points =0;
+    }
+        console.log($rootScope.earn_points, '$rootScope.earn_points' , $rootScope.points , '$rootScope.points' ,p + 'p' , t_stor , 't')
 
-
-  
     //     $rootScope.current_progress = 0;
     $rootScope.progress_of_lvl = $rootScope.current_progress;
-    $rootScope.all_time_left = $rootScope.time_left_total;
-    storage.setItem('current_progress',$rootScope.current_progress)
-    storage.setItem('time_left_total',$rootScope.time_left_total)
- 
+    $rootScope.all_time_left = $rootScope.time_left_total
+    storage.setItem('current_progress', $rootScope.current_progress)
+    // storage.setItem('time_left_total',$rootScope.time_left_total)
     //     time_left_total = 0;
     //     $rootScope.time_left_total = 0;
     // }, 10)
@@ -463,7 +447,6 @@ app.controller("tips", ($scope, $rootScope) => {
         ['Practice, Practice & More Practice', 'Sleep more', 'Review Errors', ' Master the Key Concepts', 'Understand your Doubts', 'Create a Distraction Free Study Environment', 'Create a Mathematical Dictionary', 'Apply Maths to Real World Problems'],
         ['Практика, практика и больше практики', 'Спи больше', 'Пересмотри ошибки', 'Овладей основными понятиями', 'Пойми свои сомнения', 'Создайте свободную учебную среду', 'Создай математический словарь', 'Применяй математику к проблемам реального мира']
     ];
-
     $rootScope.day = d.getDay();
     console.log(day)
     // $scope.tips[$rootScope.language].sort(() => {

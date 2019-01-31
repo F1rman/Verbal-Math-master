@@ -13,12 +13,10 @@
     <div class="titleless">
         {{lesson[$index+1].title[language]}}
     </div>
-    <div class="spoiler">
+    <div class="spoiler" >
     </div>
     <div class="hidenabout vh2_4" ng-show="goCats">
-        {{lesson[$index+1].content[language]}}
-        <a class="vh2_4 more" href="#!lessons-level/{{$index+1}}">
-            More
-        </a>
+        {{lesson[$index+1].content[language]}}<a href="#!lessons-level/{{$index+1}}" class="vh2_4 more">More</a>
     </div>
+
 </div>
