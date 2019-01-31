@@ -1,0 +1,86 @@
+<div class="res" ng-controller="practice_lvl_result_ctrl">
+    <div class="header">
+        <h1>
+             {{langs[language].ResultofLevel}} {{current_level}}
+        </h1>
+    </div>
+    <div class="layout-positioner quize-positioner">
+        <div class="resultat">
+            <div class="status_result">
+                <h2 class="vh4_8 padding20" ng-if="current_progress<10" style="color: yellow">
+                    {{langs[language].Timeisover}}
+                    <br>
+                        {{langs[language].Youlose}}!
+                    </br>
+                </h2>
+                <h2 class="green" ng-if="current_progress == 10">
+                    {{langs[language].AllIsFine}}!
+                </h2>
+                <h2 class="padding20"> 
+                    {{progress_of_lvl}}/10
+                </h2>
+                <div class="result_detail">
+                    <h2 class="txt_left">
+                        <span>
+                            {{langs[language].Earnedpoints}}:
+                        </span>
+                        <span class="green">
+                            {{points }}
+                    {{langs[language].points}}
+                        </span>
+                    </h2>
+                    <h2 class="txt_left">
+                        <span>
+                            {{langs[language].Allpoints}}:
+                        </span>
+                        <span class="green">
+                            {{all_points }}
+                   
+                    {{langs[language].points}}
+                        </span>
+                    </h2>
+                    <h2 class="txt_left">
+                        <span>
+                            {{langs[language].Requiredfornextlevel}}:
+                        </span>
+                        <span class="green">
+                            {{for_next_lvl }}
+                   
+                    {{langs[language].points}}
+                        </span>
+                    </h2>
+                </div>
+                <!--      <h2>
+
+            All successed ask {{all_calculatings}}
+
+            </h2>    -->
+                <div class="buttons">
+                    <a href="#!compain-lvl/{{current_level}}">
+                        <div class="btn vh2_4 ">
+                            {{langs[language].Compain}}
+                        </div>
+                    </a>
+                    <a href="#!practice-lvl/{{current_level}}">
+                        <div class="btn vh2_4 ">
+                             {{langs[language].Restart}}
+                        </div>
+                    </a>
+                    <a href="#!practice-lvl/{{current_level+1}}">
+                        <div class="btn vh2_4 ">
+                            {{langs[language].Nextlevel}}
+                          
+                        </div>
+                    </a>
+                </div>
+                <div class="">
+                    <a class="home" href="#!home">
+                        <div class="btn vh2_4 ">
+                             {{langs[language].Home}}
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

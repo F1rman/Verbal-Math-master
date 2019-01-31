@@ -1,0 +1,50 @@
+<div class="res" ng-controller="calc_lvl">
+    <div class="practice">
+        <a href="#!compain-lvl/{{current_level}}">
+            <img class="prev" src="img/next.png"/>
+        </a>
+        <h1>
+            Result of Level {{current_level}}
+        </h1>
+    </div>
+    <div class="layout-positioner quize-positioner">
+        <div class="resultat">
+            <div class="status">
+                <h2>
+                    Time is over
+                </h2>
+                <h2>
+                    {{current_progress}}/10
+                </h2>
+                <h2>
+                    Total points: {{total_points}}
+                </h2>
+                <h2>
+                    Needed for next level: {{for_next_lvl}}
+                </h2>
+                <div class="buttons">
+                    <a href="#!practice">
+                        <div class="btn">
+                            Practice
+                        </div>
+                    </a>
+                    <a href="#!practice-practice/{{current_level}}">
+                        <div class="btn">
+                            Restart
+                        </div>
+                    </a>
+                </div>
+                <a href="#!">
+                    <div class="btn home">
+                        <svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z">
+                            </path>
+                            <path d="M0 0h24v24H0z" fill="none">
+                            </path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

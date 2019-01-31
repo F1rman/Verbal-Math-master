@@ -1,0 +1,59 @@
+<div class="header" >
+    <a href="#!home">
+        <img class="prev" src="img/next.png"/>
+    </a>
+    <h1>
+        {{langs[language].Compain}}
+    </h1>
+</div>
+<div class="layout-positioner quize-positioner" >
+    <div class="status">
+        <div class="world-rank">
+            <div class="wrank white bold">
+                <h5>{{langs[language].Worldrank}}</h5>
+            </div>
+            <div class="white bottom-rank">
+                {{langs[language].Practicemore}}
+            </div>
+        </div>
+        <div class="current-level">
+            <div class="wrank white bold">
+                <h5>{{langs[language].Localrank}}</h5>
+            </div>
+            <div class="white bottom-rank" >
+            	{{langs[language].Yourlevelis}}
+                {{lvl}}
+            </div>
+        </div>
+    </div>
+   
+    <div class="array_of_levels" ng-init="passlvl">
+    	 <h2 ng-if='passlvl != 0'>{{langs[language].PassedLevels}}</h2>
+    	<a  class="levels" href="#!compain-lvl/{{$index+1}}"  ng-repeat="x in levels | limitTo:passlvl" >
+            <div class="leftgreen">
+               {{ $index+1}}
+            </div>
+            <div class="lvlcont">
+            	 {{langs[language].Level}}  10/10 
+            </div>
+            
+        </a>
+        <div ng-if="passlvl < levels.length" class="current_level">
+		<h2> {{langs[language].CurrentLevel}}</h2>
+    	<a    class="levels" href="#!compain-lvl/{{$index+1+passlvl}}">
+ 			<div class="leftyellow">
+               {{ $index+1+passlvl}}
+            </div>
+            <div class="lvlcont">
+            	  {{langs[language].Levelprogress}} {{current_progress}}/10
+            </div>
+ 			</a>
+        
+ 		</div>
+        <div ng-if="passlvl == levels.length" class="new_lvl">
+            
+            <h2>{{langs[language].Newlevelsappearslater}}</h2>
+        </div>
+       
+    </div>
+</div>

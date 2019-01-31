@@ -1,0 +1,22 @@
+<div class="header">
+    <a href="#!home">
+        <img class="prev" src="img/next.png"/>
+    </a>
+    <h1>
+        {{langs[language].Lessons}}
+    </h1>
+</div>
+<div class="lessons" ng-click="goCats = !goCats" ng-repeat="x in lesson">
+    <div class="numless">
+        {{$index+1}}
+    </div>
+    <div class="titleless">
+        {{lesson[$index+1].title[language]}}
+    </div>
+    <div class="spoiler" >
+    </div>
+    <div class="hidenabout vh2_4" ng-show="goCats">
+        {{lesson[$index+1].content[language]}}<a href="#!lessons-level/{{$index+1}}" class="vh2_4 more">More</a>
+    </div>
+
+</div>

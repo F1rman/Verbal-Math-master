@@ -1,0 +1,61 @@
+<div class="header" ng-controller="settings_ctrl">
+    <a href="#!home">
+        <img class="prev" src="img/next.png"/>
+    </a>
+    <h1>
+        {{langs[language].Settings}}
+    </h1>
+</div>
+<div class="layout-positioner">
+    <div class="Settings">
+        <div class="audio_settings">
+            <div class="audio ">
+                <span class="vh4_8 ">
+                    {{langs[language].Audio}} :
+                </span>
+                <button id="audio_button" ng-click="audio = !audio" class="audio_on">
+                    <span  class="on"  ng-show="audio">
+                    ON
+                    </span>
+                    <span class="off"  ng-show="!audio">
+                    OFF
+                    </span>
+                </button>
+
+              
+            </div>
+              <input id="a_range" max="100" min="0" ng-value="{{r_av_a}}" ng-model="all_volume_audio" step="1" type="range">
+            </input>
+             <div class="audio ">
+                <span class="vh4_8 ">
+                    {{langs[language].Sounds}} :
+                </span>
+                  <button id="sounds_button" ng-click="sounds = !sounds" class="audio_on">
+                    <span class="on" ng-show="!sounds">
+                    ON
+                    </span>
+                    <span class="off" ng-show="sounds">
+                    OFF
+                    </span>
+                </button>
+
+            </div>
+            <input id="s_range" max="100" min="0" ng-value="{{r_av_s}}" ng-model="all_volume_sounds" step="1" type="range">
+            </input>
+        </div>
+        <h2 class="vh4_8 margin20px">
+            {{langs[language].Language}}:
+        </h2>
+        <div class="lang_settings">
+            <div ng-click="language = ua" class="ua vh4_8 " ng-class="{'active_lang':ua==language}"> 
+                UA
+            </div>
+            <div ng-click="language = ru" class="ru vh4_8 " ng-class="{'active_lang':ru==language}">
+                RU
+            </div>
+            <div ng-click="language = en" class="en vh4_8 " ng-class="{'active_lang':en==language}">
+                EN
+            </div>
+        </div>
+    </div>
+</div>

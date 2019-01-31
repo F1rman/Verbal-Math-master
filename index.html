@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Routing">
+    <head>
+        <script src="scripts/all_scripts.min.js">
+        </script>
+        <script src="scripts/js.js" type="text/javascript">
+        </script>
+        <script src="scripts/levels.js" type="text/javascript">
+        </script>
+        <script src="scripts/lang.js" type="text/javascript">
+        </script>
+        <script src="scripts/lessons.js" type="text/javascript">
+        </script>
+        <link href="img/notebook.png" rel="shortcut icon" type="image/x-icon">
+            <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+            <link href="css/main.css" rel="stylesheet" type="text/css">
+                <meta charset="utf-8">
+                    <title>
+                        {{langs[language].APPNAME}}
+                    </title>
+                </meta>
+            </link>
+        </link>
+    </head>
+    <body  ng-view class="page ">
+        <div id="page">
+            <div class="settings">
+                <a alt="settings" class="settingsimg" href="#!settings" src="img/settings.png">
+                </a>
+            </div>
+            <div class="main-text">
+                <h1>
+                    {{langs[language].APPNAME}}
+                </h1>
+                <h2>
+                    TEACHER
+                </h2>
+            </div>
+            <div class="menu">
+                <div class="menu1">
+                    <div class="ico1">
+                        <a class="dquize" href="#!compain">
+                        </a>
+                        <p class="text-ico">
+                            {{langs[language].Compain}}
+                        </p>
+                    </div>
+                    <div class="vline">
+                    </div>
+                    <div class="ico2">
+                        <a class="dpractice" href="#!practice">
+                        </a>
+                        <p class="text-ico">
+                            {{langs[language].Practice}}
+                        </p>
+                    </div>
+                </div>
+                <div class="menu2">
+                    <div class="gline">
+                    </div>
+                    <div class="gline">
+                    </div>
+                </div>
+                <div class="menu3">
+                    <div class="ico3">
+                        <a class="dlessons" href="#!lessons">
+                        </a>
+                        <p class="text-ico">
+                            {{langs[language].Lessons}}
+                        </p>
+                    </div>
+                    <div class="vline">
+                    </div>
+                    <div class="ico4" href="#!info">
+                        <a class="dinfo" href="#!info">
+                        </a>
+                        <p class="text-ico">
+                            {{langs[language].Info}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="footer">
+                <div class="tips" ng-controller="tips">
+                    <p class="f1">
+                        {{langs[language].Tipsofaday}}
+                    </p>
+                    <div class="f2">
+                        <p>
+                            {{tips[language][day-1]}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
