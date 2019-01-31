@@ -1,7 +1,7 @@
 <div class="res" ng-controller="practice_lvl_result_ctrl">
     <div class="header">
         <h1>
-             {{langs[language].ResultofLevel}} {{current_level}}
+            {{langs[language].ResultofLevel}} {{current_level}}
         </h1>
     </div>
     <div class="layout-positioner quize-positioner">
@@ -16,7 +16,7 @@
                 <h2 class="green" ng-if="current_progress == 10">
                     {{langs[language].AllIsFine}}!
                 </h2>
-                <h2 class="padding20"> 
+                <h2 class="padding20">
                     {{progress_of_lvl}}/10
                 </h2>
                 <div class="result_detail">
@@ -63,20 +63,19 @@
                     </a>
                     <a href="#!practice-lvl/{{current_level}}">
                         <div class="btn vh2_4 ">
-                             {{langs[language].Restart}}
+                            {{langs[language].Restart}}
                         </div>
                     </a>
                     <a href="#!practice-lvl/{{current_level+1}}">
                         <div class="btn vh2_4 ">
                             {{langs[language].Nextlevel}}
-                          
                         </div>
                     </a>
                 </div>
                 <div class="">
                     <a class="home" href="#!home">
                         <div class="btn vh2_4 ">
-                             {{langs[language].Home}}
+                            {{langs[language].Home}}
                         </div>
                     </a>
                 </div>

@@ -1,13 +1,18 @@
- <div class="header">
-		<a  href="#!home"><img class="prev" src="img/next.png"></a>
-		<h1>{{langs[language].Practice}}</h1>
-	</div>
-
+<div class="header">
+    <a href="#!home">
+        <img class="prev" src="img/next.png"/>
+    </a>
+    <h1>
+        {{langs[language].Practice}}
+    </h1>
+</div>
 <div class="layout-positioner quize-positioner">
-<div class="status">
+    <div class="status">
         <div class="world-rank">
             <div class="wrank white bold">
-                <h5>{{langs[language].Worldrank}}</h5>
+                <h5>
+                    {{langs[language].Worldrank}}
+                </h5>
             </div>
             <div class="white bottom-rank">
                 {{langs[language].Practicemore}}
@@ -15,20 +20,27 @@
         </div>
         <div class="current-level">
             <div class="wrank white bold">
-                <h5>{{langs[language].Localrank}} </h5>
+                <h5>
+                    {{langs[language].Localrank}}
+                </h5>
             </div>
             <div class="white bottom-rank ng-binding">
-            	{{langs[language].Yourlevelis}}
+                {{langs[language].Yourlevelis}}
                 {{lvl}}
             </div>
         </div>
     </div>
-
-<h2>{{langs[language].ALLlevels}}</h2>
-<div >
-<a class="levels" href="#!practice-lvl/{{$index+1}}" ng-repeat="x in levels">
-	<div class="leftblue">{{$index+1}}</div>
-	<div class="lvlcont">{{x.name[language]}}</div>
-</a>
-	</div>
+    <h2>
+        {{langs[language].ALLlevels}}
+    </h2>
+    <div>
+        <a class="levels" href="#!practice-lvl/{{$index+1}}" ng-repeat="x in levels">
+            <div class="leftblue">
+                {{$index+1}}
+            </div>
+            <div class="lvlcont">
+                {{x.name[language]}}
+            </div>
+        </a>
+    </div>
 </div>
