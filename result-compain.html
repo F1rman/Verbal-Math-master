@@ -29,16 +29,17 @@
                     {{langs[language].points}}
                         </span>
                     </h2>
-                    <h2 class="txt_left">
+                     <h2 class="txt_left">
                         <span>
-                            {{langs[language].Allpoints}}:
+                            {{langs[language].TimeLeft}} {{ time_left_stor }}
                         </span>
                         <span class="green">
-                            {{all_points }}
-                   
+                            {{ (time_left_stor/10)/2 }}
+                    
                     {{langs[language].points}}
                         </span>
                     </h2>
+                   
                     <h2 class="txt_left">
                         <span>
                             {{langs[language].Requiredfornextlevel}}:
@@ -49,16 +50,17 @@
                     {{langs[language].points}}
                         </span>
                     </h2>
-                    <h2 class="txt_left">
+                     <h2 class="txt_left">
                         <span>
-                            {{langs[language].TimeLeft}} {{ time_left_stor }}
+                            {{langs[language].Allpoints}}:
                         </span>
                         <span class="green">
-                            {{ (time_left_stor/10)/2 }}
-                    
+                            {{all_points }}
+                   
                     {{langs[language].points}}
                         </span>
                     </h2>
+                   
                 </div>
                 <!--    <h2>
 

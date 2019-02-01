@@ -1052,4 +1052,18 @@ input[type=number]::-webkit-outer-spin-button {
     
 }
 
+.verblike_tree{
+    background-image: url(../img/tree.svg);
+    width: 260px;
+    height: 260px;
+}
 
+.flex-center{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    color: #fff;
+    margin: 0 auto;
+    max-width: 500px;
+}
