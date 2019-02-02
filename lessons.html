@@ -6,17 +6,18 @@
         {{langs[language].Lessons}}
     </h1>
 </div>
-<div class="lessons" ng-click="goCats = !goCats" ng-repeat="x in lesson">
-    <div class="numless">
+<div class="levels" ng-repeat="x in lesson">
+    <div class="leftblue ">
         {{$index+1}}
     </div>
-    <div class="titleless">
-        {{lesson[$index+1].title[language]}}
-    </div>
+    <div class="lvlcont">
+        <p style="    white-space: pre-wrap;">{{lesson[$index+1].title[language]}}</p>
+         <a href="#!lessons-level/{{$index+1}}"> 
     <div class="spoiler" >
     </div>
-    <div class="hidenabout vh2_4" ng-show="goCats">
-        {{lesson[$index+1].content[language]}}<a href="#!lessons-level/{{$index+1}}" class="vh2_4 more">More</a>
+</a>
     </div>
+
+   
 
 </div>

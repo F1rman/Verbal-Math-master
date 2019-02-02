@@ -356,14 +356,17 @@
      background: #27ff00;
  }
  .lvlcont {
-     text-overflow: ellipsis;
-     overflow: hidden;
-     white-space: nowrap;
-     display: block;
-     height: 100%;
-     box-sizing: border-box;
-     padding: 15px 10px;
-     text-align: left;
+         text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 0px 10px;
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
  }
  /*Lessons*/
 
@@ -375,7 +378,7 @@
      color: white;
      margin: 15px auto;
      display: flex;
-     flex-flow: column;
+     flex-flow: row;
      position: relative;
  }
  .numless {
@@ -406,14 +409,13 @@
      margin-left: 60px;
  }
  .spoiler {
-     background: url(../img/down-arrow.png) 50% no-repeat;
-     background-position: 25px 20px;
-     background-size: 40%;
-     cursor: pointer;
-     width: 75px;
-     height: 63px;
-     position: absolute;
-     right: 0;
+         background: url(../img/down-arrow.png) 50% no-repeat;
+    background-position: 12px;
+    background-size: 50%;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    transform: rotateZ(-90deg);
  }
  .hidenabout {
      color: #dcdcdc;
@@ -657,16 +659,19 @@
      flex-flow: row wrap;
      align-items: center;
      width: 80%;
-     justify-content: space-between;
+     justify-content: center;
      margin: 0 auto;
      max-width: 400px;
      background: #252e35;
      padding: 20px;
     box-sizing: border-box;
+    color: #fff;
  }
  .active_lang{
          border: 5px solid #3071a9 !important;
          box-sizing: border-box;
+    text-shadow: 0px 0px 15px white;
+
  }
  .margin20px {
      margin: 20px 0;
@@ -678,8 +683,6 @@
     width: 100px;
     height: 60px;
     align-items: center;
-    color: #000000;
-    text-shadow: 0px 0px 15px white;
     font-weight: bold;
     text-transform: uppercase;
     justify-content: center;
@@ -688,7 +691,7 @@
     margin-right: 10px;
     /*border: 5px solid #fff;*/
  }
- .ua {
+/* .ua {
      background-image: url(../img/ua.jpeg);
  }
  .ru {
@@ -696,7 +699,7 @@
  }
  .en {
      background-image: url(../img/en.jpg);
- }
+ }*/
  .audio_settings {
      display: flex;
      flex-flow: column;
@@ -1009,10 +1012,11 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 .svg_help{
-       width: 4vh;
+           width: 4vh;
     height: 4vh;
-    position: absolute;
-    right: 15px;
+    right: 0px;
+    position: relative;
+    top: -15px;
 
 }
 

@@ -6,7 +6,10 @@
         <h2 class="vh4_8">
             {{langs[language].Level}} {{current_level}} ({{langs[language].Practice}})
         </h2>
-        <a class="svg_help" href="#!lessons-level/{{current_level}}">
+       
+    </div>
+    <h2>
+        {{levels[current_level-1].name[language]}} <a class="svg_help" href="#!lessons-level/{{current_level}}">
             <svg id="Capa_1" version="1.1" viewbox="0 0 52 52" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
                 <g>
                     <path d="M26,0C11.663,0,0,11.663,0,26s11.663,26,26,26s26-11.663,26-26S40.337,0,26,0z M26,50C12.767,50,2,39.233,2,26   S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z" fill="#80d8c0">
@@ -18,9 +21,6 @@
                 </g>
             </svg>
         </a>
-    </div>
-    <h2>
-        {{levels[current_level-1].name[language]}}
     </h2>
     <div id="num_equalPractice">
         <div class="num" id="number_calc">
