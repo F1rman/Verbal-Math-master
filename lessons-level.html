@@ -10,7 +10,10 @@
     <div class="vh4_8 title_lessons">
         {{lesson[current_level].title[language]}}
     </div>
-    <p class="vh2_4 text_lessons">
+    <p ng-if="lesson.length > current_level" class="vh2_4 text_lessons">
         {{lesson[current_level].content[language]}}
+    </p>
+    <p ng-if="lesson.length <= current_level" class="vh2_4 text_lessons">
+     There is no lesson to this level yet!
     </p>
 </div>

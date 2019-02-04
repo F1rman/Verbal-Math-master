@@ -15,7 +15,7 @@ app.run(function($rootScope) {
     range_14 = 160;
     range_15 = 180;
     range_16 = 200;
-    time = 10;
+    time = 5;
     $rootScope.levels = [{
         "name": ['Найпростіше додавання', 'Simplest adding', 'Простейшее добавление'],
         "options": [range_1, range_2, "+", time, "10", '0/10']

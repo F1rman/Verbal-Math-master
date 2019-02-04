@@ -6,18 +6,21 @@
         {{langs[language].Lessons}}
     </h1>
 </div>
+<div class="lessons_wrapper">
+
 <div class="levels" ng-repeat="x in lesson">
     <div class="leftblue ">
         {{$index+1}}
     </div>
-    <div class="lvlcont">
+    <a href="#!lessons-level/{{$index+1}}">   <div class="lvlcont">
         <p style="    white-space: pre-wrap;">{{lesson[$index+1].title[language]}}</p>
-         <a href="#!lessons-level/{{$index+1}}"> 
+       
     <div class="spoiler" >
     </div>
-</a>
-    </div>
+
+    </div></a>
 
    
 
+</div>
 </div>

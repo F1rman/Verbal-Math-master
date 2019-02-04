@@ -37,7 +37,7 @@
      display: flex;
      justify-content: center;
      align-items: center;
-         line-height: 120%;
+     line-height: 120%;
  }
  img {
      cursor: pointer;
@@ -65,10 +65,11 @@
      justify-content: space-between;
  }
  /*main menu*/
-.padding20{
+
+ .padding20 {
      padding: 20px;
      box-sizing: border-box;
-}
+ }
  .dpractice, .dinfo, .dquize, .dlessons {
      display: flex;
      width: 15vh;
@@ -259,20 +260,19 @@
      text-align: center;
  }
  .quize-positioner {
-         width: 100%;
-    max-width: 500px;
-    padding: 20px;
-    box-sizing: border-box;
+     width: 100%;
+     max-width: 500px;
+     padding: 20px;
+     box-sizing: border-box;
  }
-
- .txt_left{
-           text-align: left;
-    align-items: center;
-    justify-content: space-between;
-    margin: 5px 0;
+ .txt_left {
+     text-align: left;
+     align-items: center;
+     justify-content: space-between;
+     margin: 5px 0;
  }
- .txt_left span:first-child{
-         max-width: 200px;
+ .txt_left span:first-child {
+     max-width: 200px;
  }
  p.white {
      padding: 5px;
@@ -339,6 +339,9 @@
      color: white;
      background: rgba(0, 0, 0, 0.5);
  }
+ .lessons_wrapper .levels:last-child {
+     display: none !important;
+ }
  .leftblue, .leftyellow, .leftgreen {
      background: #0070ff;
      height: 100%;
@@ -356,17 +359,18 @@
      background: #27ff00;
  }
  .lvlcont {
-         text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    display: block;
-    height: 100%;
-    box-sizing: border-box;
-    align-items: center;
-    padding: 0px 10px;
-    display: flex;
-    text-align: left;
-    justify-content: space-between;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
+     display: block;
+     height: 100%;
+     box-sizing: border-box;
+     align-items: center;
+     padding: 0px 10px;
+         color: #fff;
+     display: flex;
+     text-align: left;
+     justify-content: space-between;
  }
  /*Lessons*/
 
@@ -409,13 +413,13 @@
      margin-left: 60px;
  }
  .spoiler {
-         background: url(../img/down-arrow.png) 50% no-repeat;
-    background-position: 12px;
-    background-size: 50%;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    transform: rotateZ(-90deg);
+     background: url(../img/down-arrow.png) 50% no-repeat;
+     background-position: 12px;
+     background-size: 50%;
+     cursor: pointer;
+     width: 50px;
+     height: 50px;
+     transform: rotateZ(-90deg);
  }
  .hidenabout {
      color: #dcdcdc;
@@ -433,7 +437,7 @@
      margin-bottom: -10px;
      text-align: center;
  }
- .practiceNow>div {
+ .practiceNow div {
      border: 2px solid #33638c;
      padding: 5px;
      font-size: 14px;
@@ -471,14 +475,9 @@
      outline: none;
      font-weight: lighter;
      color: white;
-
      padding: 10px 25px;
  }
-
-.resultat{
- }
-
-
+ .resultat {}
  .num {
      height: 50px;
      text-align: center;
@@ -521,7 +520,6 @@
  .buttons {
      display: flex;
      justify-content: center;
-     margin: 20px;
      flex-flow: row wrap;
  }
  .btn {
@@ -534,7 +532,6 @@
      cursor: pointer;
      font-size: 24px;
      margin: 10px;
-
  }
  .btn:hover {
      border-color: #42b33b;
@@ -554,15 +551,12 @@
  }
  .btn svg {
      width: 100%;
-    fill:#3b83b3;
-
+     fill: #3b83b3;
      height: 100%;
  }
-  
-  .btn svg:hover {
-    fill:#42b33b;
+ .btn svg:hover {
+     fill: #42b33b;
  }
-
  .vh4_8 {
      font-size: 4vh;
  }
@@ -664,34 +658,33 @@
      max-width: 400px;
      background: #252e35;
      padding: 20px;
-    box-sizing: border-box;
-    color: #fff;
+     box-sizing: border-box;
+     color: #fff;
  }
- .active_lang{
-         border: 5px solid #3071a9 !important;
-         box-sizing: border-box;
-    text-shadow: 0px 0px 15px white;
-
+ .active_lang {
+     border: 5px solid #3071a9 !important;
+     box-sizing: border-box;
+     text-shadow: 0px 0px 15px white;
  }
  .margin20px {
      margin: 20px 0;
  }
  .ru, .en, .ua {
-         background-size: 100%;
-    background-repeat: no-repeat;
-    display: flex;
-    width: 100px;
-    height: 60px;
-    align-items: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    justify-content: center;
-    margin: 10px 0;
-    cursor: pointer;
-    margin-right: 10px;
-    /*border: 5px solid #fff;*/
+     background-size: 100%;
+     background-repeat: no-repeat;
+     display: flex;
+     width: 100px;
+     height: 60px;
+     align-items: center;
+     font-weight: bold;
+     text-transform: uppercase;
+     justify-content: center;
+     margin: 10px 0;
+     cursor: pointer;
+     margin-right: 10px;
+     /*border: 5px solid #fff;*/
  }
-/* .ua {
+ /* .ua {
      background-image: url(../img/ua.jpeg);
  }
  .ru {
@@ -700,6 +693,7 @@
  .en {
      background-image: url(../img/en.jpg);
  }*/
+
  .audio_settings {
      display: flex;
      flex-flow: column;
@@ -960,7 +954,6 @@
          -webkit-opacity: 0;
      }
  }
-
  @-webkit-keyframes zoom {
      0% {
          -webkit-transform: scale(0.2);
@@ -1005,67 +998,66 @@
      background: linear-gradient(to bottom, #0a0e11, #313b44) no-repeat;
      background-attachment: fixed;
  }
-
- input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-.svg_help{
-           width: 4vh;
-    height: 4vh;
-    right: 0px;
-    position: relative;
-    top: -15px;
-
-}
-
-.lessons_for_practice{
-    color: #ababab;
-    width: 80%;
-    margin: 0 auto;
-}
-
-.title_lessons{
-    text-align: center;
-    margin: 30px 0;
-}
-
-.text_lessons{
-        background: rgba(0,0,0,0.5);
+ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+ }
+ .svg_help {
+     width: 4vh;
+     height: 4vh;
+     right: 0px;
+     position: relative;
+     top: -15px;
+ }
+ .lessons_for_practice {
+     color: #ababab;
+     width: 80%;
+     margin: 0 auto;
+ }
+ .title_lessons {
+     text-align: center;
+     margin: 30px 0;
+     color: #fff;
+ }
+ .text_lessons {
+        background: rgba(0, 0, 0, 0.5);
     padding: 30px;
-}
-
-
-.more{
-        /* display: inherit; */
-    padding: 0 10px;
-    text-decoration: underline;
-    font-weight: bold;
-
-}
-
-.time_left{
-         display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: calc(50% - 5px);
-    
-}
-
-.verblike_tree{
-    background-image: url(../img/tree.svg);
-    width: 260px;
-    height: 260px;
-}
-
-.flex-center{
-        display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    color: #fff;
-    margin: 0 auto;
-    max-width: 500px;
-}
+    width: 100%;
+    color: white;
+    box-sizing: border-box;
+    font-size: 20px;
+ }
+ .more {
+     /* display: inherit; */
+     padding: 0 10px;
+     text-decoration: underline;
+     font-weight: bold;
+ }
+ .time_left {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: absolute;
+     left: calc(50% - 5px);
+ }
+ .verblike_tree {
+     background-image: url(../img/tree.svg);
+     width: 260px;
+     height: 260px;
+ }
+ .flex-center {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-flow: column;
+     color: #fff;
+     margin: 0 auto;
+     max-width: 500px;
+ }
+ .info_block {
+         text-align: center;
+    margin-top: 30px;
+    color: white;
+    padding: 20px;
+    border-top: 4px solid #3071a9;
+ }
