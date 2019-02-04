@@ -1,39 +1,16 @@
 <div class="header">
-
     <a href="#!practice-lvl/{{current_level}}">
-
         <img class="prev" src="img/next.png"/>
-
     </a>
-
     <h1>
-
         {{langs[language].Lessons}} {{ current_level}}
-
     </h1>
-
 </div>
-
 <div class="lessons_for_practice">
-
-  
-
-    
-
-
-
     <div class="vh4_8 title_lessons">
-
         {{lesson[current_level].title[language]}}
-
     </div>
-
-    
-
-   
-
-      <p class="vh2_4 text_lessons"> {{lesson[current_level].content[language]}}</p> 
-
- 
-
+    <p class="vh2_4 text_lessons">
+        {{lesson[current_level].content[language]}}
+    </p>
 </div>

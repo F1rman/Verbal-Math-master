@@ -8,13 +8,11 @@ var day;
 var current_progress = Number(storage.getItem('current_progress'));
 var points = Number(storage.getItem('points'));
 var lvl = Number(storage.getItem('lvl'));
-
 var passlvl = Number(storage.getItem('passlvl'));
 var volume_stor_sounds = Number(storage.getItem('volume_sounds'));
 var volume_stor_audio = Number(storage.getItem('volume_audio'));
 var language_stor = Number(storage.getItem('language_stor'));
 var set_progress;
-
 var clearIfPress;
 var clearIfPress2;
 var value;
@@ -61,32 +59,32 @@ app.config(($routeProvider) => {
     });
 });
 var firsload = true;
-
 app.run(($rootScope) => {
+    console.log(volume_stor_audio , volume_stor_sounds)
+ if (volume_stor_audio == undefined || volume_stor_audio == 0 || volume_stor_sounds == undefined || volume_stor_sounds == 0) {
+      
     $rootScope.all_volume_audio = 50;
     $rootScope.all_volume_sounds = 50;
-   
-    $rootScope.all_volume_audio = volume_stor_audio;
-    $rootScope.all_volume_sounds = volume_stor_sounds;
-    
-        
 
+
+    }
+    else {
+        $rootScope.all_volume_audio = volume_stor_audio;
+    $rootScope.all_volume_sounds = volume_stor_sounds;
+    }
     // при зміні аудіо повзунком
     $rootScope.$watch('all_volume_audio', () => {
-        if ($rootScope.all_volume_audio == 0) {
-            $rootScope.all_volume_audio = 50
-        }
+      
+      console.log("1")
         av_a = $rootScope.all_volume_audio / 100;
         $rootScope.r_av_a = av_a * 100;
-
         fon_audio.volume = $rootScope.r_av_a / 100;
         storage.setItem('volume_audio', $rootScope.r_av_a);
     })
     // при зміні звуку повзунком
     $rootScope.$watch('all_volume_sounds', () => {
-        if ($rootScope.all_volume_sounds == 0) {
-            $rootScope.all_volume_sounds = 50
-        }
+            
+         console.log('2')
         av_s = $rootScope.all_volume_sounds / 100;
         $rootScope.r_av_s = av_s * 100;
         storage.setItem('volume_sounds', $rootScope.r_av_s);
@@ -95,10 +93,7 @@ app.run(($rootScope) => {
         console.log('you need access to musik')
     });
     fon_audio.loop = 'true';
-    if (volume_stor_audio == 0 || volume_stor_sounds == 0) {
-        $rootScope.r_av_a == 50;
-        $rootScope.r_av_s == 50;
-    }
+   
     fon_audio.volume = volume_stor_audio / 100;
     // Local Storage in to Scope
     $rootScope.total_points = points;
@@ -127,7 +122,6 @@ app.run(($rootScope) => {
                 console.log('access denied!');
                 window.location.href = "#!denied/" + $rootScope.current_level;
             }
-
             // Очищення результат пейдж коли заходиш назад в уровень, або інший уровень
             console.log($rootScope.progress_of_lvl, '$rootScope.progress_of_lvl', $rootScope.all_time_left, '$rootScope.all_time_left')
             $rootScope.progress_of_lvl = 0;
@@ -139,7 +133,7 @@ app.run(($rootScope) => {
             $rootScope.time_stor = 0;
         }
         if (current.$$route.templateUrl == 'practice-lvl.html') {
-              console.log($rootScope.progress_of_lvl, '$rootScope.progress_of_lvl', $rootScope.all_time_left, '$rootScope.all_time_left')
+            console.log($rootScope.progress_of_lvl, '$rootScope.progress_of_lvl', $rootScope.all_time_left, '$rootScope.all_time_left')
             $rootScope.progress_of_lvl = 0;
             $rootScope.all_time_left = 0;
             storage.setItem('current_progress', 0);
@@ -151,8 +145,7 @@ app.run(($rootScope) => {
         var w2 = Number(storage.getItem('current_progress'));
         var w1 = Number(storage.getItem('time_left_total'));
         $rootScope.time_left_stor = w1;
-
-        $rootScope.world_wrank = ((Number(storage.getItem('points'))*0.57)/100);
+        $rootScope.world_wrank = ((Number(storage.getItem('points')) * 0.57) / 100);
         $rootScope.world_wrank = $rootScope.world_wrank.toFixed(2)
         storage.setItem('world_wrank', $rootScope.world_wrank)
     })
@@ -194,13 +187,10 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
                 var a1 = $rootScope.number[0];
                 var a2 = $rootScope.number[1];
                 playAudio('wav/enter_ok.flac', av_s);
-
                 time_left_total += time_left;
                 t = time_left_total;
                 storage.setItem('time_left_total', time_left_total)
-              
                 $rootScope.time_left_total = time_left_total;
-
                 clearTimeout(set_progress)
                 progress(time_total, time_total, $('.timebar'), $('.timebar_inside'), check_result);
                 $rootScope.$apply(() => {
@@ -213,9 +203,8 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
                         changeNSR_compain();
                     }
                     $scope.calc_result_compain = null;
-                check_result.val('');
+                    check_result.val('');
                 })
-                
                 if ($rootScope.current_progress >= 10) {
                     playAudio('wav/win.wav', av_s)
                     $rootScope.$apply(() => {
@@ -227,7 +216,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
                 $scope.$apply(() => {
                     $scope.isOk = null;
                     $scope.calc_result_compain = null;
-                check_result.val('');
+                    check_result.val('');
                 });
             } else {
                 $scope.$apply(() => {
@@ -243,7 +232,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
                 $scope.calc_result_compain = null;
                 check_result.val('');
             }
-
         }, 500)
     })
 
@@ -343,7 +331,6 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
                 }
                 $scope.calc_result_practice = null;
                 $("#result2").val('');
-
                 if ($rootScope.current_progress >= 10) {
                     $rootScope.$apply(() => {
                         $location.path("/result-practice/" + $rootScope.current_level);
@@ -433,10 +420,9 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
 app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
     if ($rootScope.current_progress < 10) {
         console.log('LOSE');
-          if ($rootScope.earn_points == undefined || $rootScope.earn_points != 0) {
-        $rootScope.earn_points =0;
-    }
-
+        if ($rootScope.earn_points == undefined || $rootScope.earn_points != 0) {
+            $rootScope.earn_points = 0;
+        }
         if ($rootScope.time_left_total == undefined) {
             $rootScope.time_left_total = 0;
         }
@@ -448,43 +434,30 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
         }
     } else {
         console.log('WIN');
-        if ($rootScope.time_left_stor == undefined) {$rootScope.time_left_stor = 0;}
-        
-
+        if ($rootScope.time_left_stor == undefined) {
+            $rootScope.time_left_stor = 0;
+        }
         $rootScope.points = Math.round(Number((($rootScope.current_level * 2) + $rootScope.time_left_stor / 10)) / 2);
         p = $rootScope.points;
         storage.setItem('earn_points', p);
         $rootScope.earn_points = storage.getItem('earn_points')
-        
         $rootScope.all_points = $rootScope.points + Number(storage.getItem('points'));
-
         getLevel(points, $rootScope.all_points);
         $rootScope.for_next_lvl = for_next_lvl;
-         var all_p = Number(storage.getItem('points'))
-        console.log($rootScope.earn_points, 'points ', points) 
+        var all_p = Number(storage.getItem('points'))
+        console.log($rootScope.earn_points, 'points ', points)
         // Фікс при перезагрузці сторінки рузультат по Очках
-            
-
-              
-$scope.$on('$routeChangeStart', () => {
-              storage.setItem('points', $rootScope.all_points)
-
-     }
-    )
+        $scope.$on('$routeChangeStart', () => {
+            storage.setItem('points', $rootScope.all_points)
+        })
         if ($rootScope.passlvl + 1 == $scope.current_level) {
-         
-
-
             $rootScope.passlvl = $rootScope.passlvl + 1;
             storage.setItem('passlvl', $rootScope.passlvl);
         }
-
-}
-
-    if ($rootScope.earn_points == undefined) {
-        $rootScope.earn_points =0;
     }
-
+    if ($rootScope.earn_points == undefined) {
+        $rootScope.earn_points = 0;
+    }
     //     $rootScope.current_progress = 0;
     $rootScope.progress_of_lvl = $rootScope.current_progress;
     $rootScope.all_time_left = $rootScope.time_left_total
@@ -495,16 +468,14 @@ $scope.$on('$routeChangeStart', () => {
     // }, 10)
     // console.log($rootScope.time_left_total, '$rootScope.time_left_total')
 })
-app.controller("tips", ($scope, $rootScope) => {
+app.controller("tips", ($scope) => {
     $scope.tips = [
         ['Практика, практика та ще більше практики', 'Спи довше', 'Перевіряй помилки', 'Зрозумій основні поняття', 'Розумій свої сумніви', 'Створи навколишнє середовище для навчання', 'Створи математичний словник', 'Застосовуй математику до проблем реального світу'],
         ['Practice, Practice & More Practice', 'Sleep more', 'Review Errors', ' Master the Key Concepts', 'Understand your Doubts', 'Create a Distraction Free Study Environment', 'Create a Mathematical Dictionary', 'Apply Maths to Real World Problems'],
         ['Практика, практика и больше практики', 'Спи больше', 'Пересмотри ошибки', 'Овладей основными понятиями', 'Пойми свои сомнения', 'Создайте свободную учебную среду', 'Создай математический словарь', 'Применяй математику к проблемам реального мира']
     ];
-    $rootScope.day = d.getDay();
-    // $scope.tips[$rootScope.language].sort(() => {
-    //     return 0.5 - Math.random()
-    // });
+    $scope.day = d.getDay();
+   
 })
 // Match functions
 //addition
@@ -559,7 +530,6 @@ var getLevel = (points, all_points) => {
     for (i = 0; i < maxLevel; i++) {
         if (levels[i] > points) return i;
         for_next_lvl = levels[i + 1] - all_points;
-       
     }
     return maxLevel;
 }

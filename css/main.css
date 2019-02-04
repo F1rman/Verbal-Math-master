@@ -1021,8 +1021,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .lessons_for_practice{
-       display: flex;
-    flex-flow: column;
     color: #ababab;
     width: 80%;
     margin: 0 auto;
