@@ -26,6 +26,12 @@ var t;
 var p;
 var t_stor;
 var fon_audio = new Audio('wav/fon.mp3');
+var loh_rand = randominrange(130, 190);
+if (storage.getItem('loh_rand') == undefined) {
+    storage.setItem('loh_rand', loh_rand)
+} else {
+    loh_rand = storage.getItem('loh_rand');
+}
 // ANGULAR
 var app = angular.module("Routing", ["ngRoute", 'ngAnimate']);
 //Routing
@@ -60,22 +66,15 @@ app.config(($routeProvider) => {
 });
 var firsload = true;
 app.run(($rootScope) => {
-    console.log(volume_stor_audio , volume_stor_sounds)
- if (volume_stor_audio == undefined || volume_stor_audio == 0 || volume_stor_sounds == undefined || volume_stor_sounds == 0) {
-      
-    $rootScope.all_volume_audio = 50;
-    $rootScope.all_volume_sounds = 50;
-
-
-    }
-    else {
+    if (volume_stor_audio == undefined || volume_stor_audio == 0 || volume_stor_sounds == undefined || volume_stor_sounds == 0) {
+        $rootScope.all_volume_audio = 50;
+        $rootScope.all_volume_sounds = 50;
+    } else {
         $rootScope.all_volume_audio = volume_stor_audio;
-    $rootScope.all_volume_sounds = volume_stor_sounds;
+        $rootScope.all_volume_sounds = volume_stor_sounds;
     }
     // при зміні аудіо повзунком
     $rootScope.$watch('all_volume_audio', () => {
-      
-      console.log("1")
         av_a = $rootScope.all_volume_audio / 100;
         $rootScope.r_av_a = av_a * 100;
         fon_audio.volume = $rootScope.r_av_a / 100;
@@ -83,8 +82,6 @@ app.run(($rootScope) => {
     })
     // при зміні звуку повзунком
     $rootScope.$watch('all_volume_sounds', () => {
-            
-         console.log('2')
         av_s = $rootScope.all_volume_sounds / 100;
         $rootScope.r_av_s = av_s * 100;
         storage.setItem('volume_sounds', $rootScope.r_av_s);
@@ -93,7 +90,6 @@ app.run(($rootScope) => {
         console.log('you need access to musik')
     });
     fon_audio.loop = 'true';
-   
     fon_audio.volume = volume_stor_audio / 100;
     // Local Storage in to Scope
     $rootScope.total_points = points;
@@ -106,6 +102,8 @@ app.run(($rootScope) => {
     $rootScope.volume_stor_audio = volume_stor_audio;
     $rootScope.$on('$routeChangeStart', function(event, current, next, previous, reject) {
         // ЩОБ НЕ ВКЛЮЧАВСЯ ЗВУК КЛІКУ ПРИ СТАРТІ
+    
+       
         if (firsload != true) {
             playAudio('wav/click2.wav', av_s);
         }
@@ -118,12 +116,14 @@ app.run(($rootScope) => {
             window.location.href = "#!denied/" + $rootScope.current_level;
         }
         if (current.$$route.templateUrl == 'compain-lvl.html') {
+             if ($rootScope.current_level !== Number($rootScope.current_level)) {
+            window.location.href = "#!denied/1";
+        }
             if ($rootScope.passlvl + 1 < $rootScope.current_level) {
                 console.log('access denied!');
                 window.location.href = "#!denied/" + $rootScope.current_level;
             }
             // Очищення результат пейдж коли заходиш назад в уровень, або інший уровень
-            console.log($rootScope.progress_of_lvl, '$rootScope.progress_of_lvl', $rootScope.all_time_left, '$rootScope.all_time_left')
             $rootScope.progress_of_lvl = 0;
             $rootScope.all_time_left = 0;
             storage.setItem('current_progress', 0);
@@ -145,8 +145,8 @@ app.run(($rootScope) => {
         var w2 = Number(storage.getItem('current_progress'));
         var w1 = Number(storage.getItem('time_left_total'));
         $rootScope.time_left_stor = w1;
-        $rootScope.world_wrank = ((Number(storage.getItem('points')) * 0.57) / 100);
-        $rootScope.world_wrank = $rootScope.world_wrank.toFixed(2)
+        $rootScope.world_wrank = (((Number(storage.getItem('passlvl')) * loh_rand) / 0.57) - 9999) * -1;
+        $rootScope.world_wrank = $rootScope.world_wrank.toFixed(0)
         storage.setItem('world_wrank', $rootScope.world_wrank)
     })
 })
@@ -198,7 +198,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
                     changeNSR_compain();
                     var a3 = $rootScope.number[0];
                     var a4 = $rootScope.number[1];
-                    console.log(a1, a2, a3, a4)
                     if (a1 == a3 && a2 == a4) {
                         changeNSR_compain();
                     }
@@ -475,7 +474,6 @@ app.controller("tips", ($scope) => {
         ['Практика, практика и больше практики', 'Спи больше', 'Пересмотри ошибки', 'Овладей основными понятиями', 'Пойми свои сомнения', 'Создайте свободную учебную среду', 'Создай математический словарь', 'Применяй математику к проблемам реального мира']
     ];
     $scope.day = d.getDay();
-   
 })
 // Match functions
 //addition
@@ -494,7 +492,7 @@ var f_division = (a, b) => {
     return Math.round(a / b);
 }
 // For practice --------------------------------
-var randominrange = (min, max) => {
+function randominrange(min, max)  {
     return Math.round(Math.random() * (max - min) + min);
 }
 var changeNum = (ax, bx, a, b) => {
@@ -530,6 +528,16 @@ var getLevel = (points, all_points) => {
     for (i = 0; i < maxLevel; i++) {
         if (levels[i] > points) return i;
         for_next_lvl = levels[i + 1] - all_points;
+        if (for_next_lvl < levels[i]) {
+            console.log('for_next_lvl < levels[i]')
+            console.log(levels[i])
+        } else {
+            if (for_next_lvl > levels[i]) {
+                levels[i] = levels[i + 1]
+                console.log(levels[i])
+                console.log('for_next_lvl > levels[i]')
+            }
+        }
     }
     return maxLevel;
 }

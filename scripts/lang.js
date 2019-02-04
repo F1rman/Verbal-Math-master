@@ -2,14 +2,14 @@ app.run(function($rootScope) {
     $rootScope.ua = 0;
     $rootScope.en = 1;
     $rootScope.ru = 2;
-    $rootScope.vers = 1.01;
+    $rootScope.vers = 1.1;
     console.log('%c VERBAL MATCH VERSION - ' + $rootScope.vers, 'background: #000; color: #80d8c0; font-size:20px;');
     console.log(storage);
     $rootScope.langs = [{
         "APPNAME": "VERBAL MATCH",
         "UA": "UKRAINE",
         "Practice": "Практика",
-        "Compain": "Компанія",
+        "Campaign": "Компанія",
         "Lessons": "Уроки",
         "Info": "Інформація",
         "Settings": "Налаштування",
@@ -39,7 +39,7 @@ app.run(function($rootScope) {
         "Currentversion": "Поточна версія",
         "Sounds": "Звуки",
         "Home": "Головна",
-        "": "",
+        "ISNOTALLOWED": "НЕ ДОСТУПНИЙ",
         "": "",
         "": "",
         "": "",
@@ -52,7 +52,7 @@ app.run(function($rootScope) {
         "APPNAME": "VERBAL MATCH",
         "EN": "ENGLISH",
         "Practice": "Practice",
-        "Compain": "Compain",
+        "Campaign": "Campaign",
         "Lessons": "Lessons",
         "Info": "Info",
         "Settings": "Settings",
@@ -82,7 +82,7 @@ app.run(function($rootScope) {
         "Currentversion": "Current version",
         "Sounds": "Sounds",
         "Home": "Home",
-        "": "",
+        "ISNOTALLOWED": "IS NOT ALLOWED",
         "": "",
         "": "",
         "": "",
@@ -93,7 +93,7 @@ app.run(function($rootScope) {
         "APPNAME": "VERBAL MATCH",
         "RU": "RUSSIAN",
         "Practice": "Практика",
-        "Compain": "Компания",
+        "Campaign": "Компания",
         "Lessons": "Уроки",
         "Info": "Информация",
         "Settings": "Настройки",
@@ -123,7 +123,7 @@ app.run(function($rootScope) {
         "Currentversion": "Текущая версия",
         "Sounds": "Звуки",
         "Home": "Главная",
-        "": "",
+        "ISNOTALLOWED": "НЕ ДОПУСКАЕТСЯ",
         "": "",
         "": "",
         "": "",

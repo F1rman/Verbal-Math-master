@@ -4,6 +4,14 @@
      src: url(../fonts/Lato-Light.ttf);
      /* Путь к файлу со шрифтом */
  }
+  @font-face {
+     font-family: 'Sanchez';
+     /* Имя шрифта */
+     src: url(../fonts/Sanchez-Regular.ttf);
+     /* Путь к файлу со шрифтом */
+ }
+
+
  ::selection {
      background: none;
  }
@@ -70,32 +78,33 @@
      padding: 20px;
      box-sizing: border-box;
  }
+.main_text1{
+         color: #00d2dc;
+    font-weight: bold;
+}
+ .main_text2{
+         color: #00ade9;
+    font-weight: bold;
+ }
+
+
  .dpractice, .dinfo, .dquize, .dlessons {
      display: flex;
      width: 15vh;
      height: 15vh;
-     background: url(../img/practice.png) no-repeat;
-     background-size: 100%;
-     background-position: 0 0;
  }
- .dlessons {
-     background-image: url(../img/notebook.png);
- }
- .dquize {
-     background-image: url(../img/award.png);
- }
- .dinfo {
-     background-image: url(../img/info.png);
- }
+
  .text-ico {
-     color: #7fd7bf;
-     font-size: 2.5vh;
+         color: #00d2dc;
+    font-size: 2.5vh;
+    font-weight: bold;
  }
  .main-text {
      display: block;
      margin: 10px 0;
      float: left;
      width: 100%;
+
  }
  .main-text h1, .main-text h2 {
      text-align: center;
@@ -156,15 +165,18 @@
      font-size: 3vh;
      display: block;
      text-align: center;
-     color: #80d8c0;
+     color: #00d2dc;
+     font-weight: bold;
  }
  .footer .f2 {
      background: #22292f;
      padding: 5px;
      text-align: center;
-     color: #ececec;
+     color: #00ade9;
      font-size: 2vh;
+     font-weight: bold;
  }
+
  /* page 2  (practice)*/
 
  .header {
@@ -180,6 +192,10 @@
      width: 4vh;
      position: absolute;
      margin: 0 20px;
+ }
+ .header h1{
+         color: #00ade9;
+    font-weight: bold;
  }
  .practice {
      padding: 10px 15px;
@@ -207,7 +223,6 @@
      ;
  }
  .prev {
-     transform: rotateY(180deg);
      height: 4vh;
  }
  .range1 {
@@ -282,12 +297,10 @@
  }
  /*settings*/
 
- .settingsimg {
+ .settingsimg img{
      display: flex;
-     background: url(../img/settings.png) 100% no-repeat;
-     background-position: 0 0;
-     width: 32px;
-     height: 32px;
+        width: 40px;
+    height: 40px;
  }
  .settings {
      display: flex;
@@ -307,7 +320,7 @@
      max-width: 195px
  }
  .wrank {
-     background: #3071a9;
+     background: #0090c1;
  }
  .wrank h5 {
      margin: 0;
@@ -343,7 +356,7 @@
      display: none !important;
  }
  .leftblue, .leftyellow, .leftgreen {
-     background: #0070ff;
+     background: #00ade9;
      height: 100%;
      width: 20px;
      float: left;
@@ -397,7 +410,7 @@
      box-sizing: border-box;
      align-items: center;
      color: #000;
-     background: #3071a9;
+     background: #00d2dc;
  }
  .titleless {
      text-overflow: ellipsis;
@@ -413,13 +426,13 @@
      margin-left: 60px;
  }
  .spoiler {
-     background: url(../img/down-arrow.png) 50% no-repeat;
-     background-position: 12px;
-     background-size: 50%;
-     cursor: pointer;
-     width: 50px;
-     height: 50px;
-     transform: rotateZ(-90deg);
+     background: url(../img/next.png) 50% no-repeat;
+    background-position: 12px;
+    background-size: 50%;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    transform: rotateY(180deg);
  }
  .hidenabout {
      color: #dcdcdc;
@@ -515,7 +528,7 @@
  .timebar_inside {
      display: flex;
      width: 100%;
-     background: #3071a9;
+     background: #00ade9 ;
  }
  .buttons {
      display: flex;
@@ -525,7 +538,7 @@
  .btn {
      display: flex;
      background: rgba(21, 27, 31, 0);
-     border: 3px solid #3b83b3;
+     border: 3px solid #00ade9;
      outline: none;
      color: white;
      padding: 20px;
@@ -566,52 +579,7 @@
  .vh1_2 {
      font-size: 1vh;
  }
- @media screen and (orientation:landscape) and (max-height: 700px) {
-     .vh4_8 {
-         font-size: 8vh;
-     }
-     .vh2_4 {
-         font-size: 4vh;
-     }
-     .vh1_2 {
-         font-size: 2vh;
-     }
-     #page, html, body {
-         height: 200vh;
-     }
-     .prev {
-         height: 8vh;
-     }
-     .header {
-         height: 12vh;
-     }
-     .header a {
-         height: 8vh;
-         width: 8vh;
-     }
-     .dpractice, .dinfo, .dquize, .dlessons {
-         width: 30vh;
-         height: 30vh;
-     }
-     h1 {
-         font-size: 8vh;
-     }
-     h2 {
-         font-size: 6vh;
-     }
-     .footer .f1, .footer .f2 {
-         font-size: 4vh;
-     }
-     .vline {
-         height: 37vh;
-     }
-     .gline {
-         width: 30vh;
-     }
-     .text-ico {
-         font-size: 5vh;
-     }
- }
+
  .cbalink {
      display: none !important;
  }
@@ -662,7 +630,7 @@
      color: #fff;
  }
  .active_lang {
-     border: 5px solid #3071a9 !important;
+     border: 5px solid #00ade9 !important;
      box-sizing: border-box;
      text-shadow: 0px 0px 15px white;
  }
@@ -728,7 +696,7 @@
      cursor: pointer;
      animate: 0.2s;
      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-     background: #3071a9;
+     background: #00ade9;
      border-radius: 1.3px;
      border: 0.2px solid #010101;
  }
@@ -752,7 +720,7 @@
      cursor: pointer;
      animate: 0.2s;
      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-     background: #3071a9;
+     background: #00ade9;
      border-radius: 1.3px;
      border: 0.2px solid #010101;
  }
@@ -782,7 +750,7 @@
      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
  }
  input[type=range]::-ms-fill-upper {
-     background: #3071a9;
+     background: #00ade9;
      border: 0.2px solid #010101;
      border-radius: 2.6px;
      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -797,7 +765,7 @@
      cursor: pointer;
  }
  input[type=range]:focus::-ms-fill-lower {
-     background: #3071a9;
+     background: #00ade9;
  }
  input[type=range]:focus::-ms-fill-upper {
      background: #367ebd;
@@ -807,7 +775,7 @@
      height: 8.4px;
      cursor: pointer;
      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-     background: #3071a9;
+     background: #00ade9;
      border-radius: 1.3px;
      border: 0.2px solid #010101;
  }
@@ -819,7 +787,7 @@
      height: 8.4px;
      cursor: pointer;
      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-     background: #3071a9;
+     background: #00ade9;
      border-radius: 1.3px;
      border: 0.2px solid #010101;
  }
@@ -839,10 +807,10 @@
      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
  }
  input[type=range]:focus::-ms-fill-lower {
-     background: #3071a9;
+     background: #00ade9;
  }
  input[type=range]::-ms-fill-upper {
-     background: #3071a9;
+     background: #00ade9;
      border: 0.2px solid #010101;
      border-radius: 2.6px;
      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -877,6 +845,8 @@
      font-weight: bold;
  }
  @media only screen and (max-width: 500px) {
+
+
      .status {
          flex-flow: column;
          align-items: center;
@@ -1003,11 +973,10 @@
      margin: 0;
  }
  .svg_help {
-     width: 4vh;
-     height: 4vh;
+     width: 20vh;
+     height: 20vh;
      right: 0px;
      position: relative;
-     top: -15px;
  }
  .lessons_for_practice {
      color: #ababab;
@@ -1059,5 +1028,104 @@
     margin-top: 30px;
     color: white;
     padding: 20px;
-    border-top: 4px solid #3071a9;
+    border-top:4px solid #00ade9;
  }
+
+ .fixed{
+     text-align: left;
+         padding: 20px;
+    box-sizing: border-box;
+ }
+
+.flex img{
+
+}
+ .flex{
+         display: flex;
+    width: 100%;
+    justify-content: center;
+ }
+
+#hint{
+         display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+.index_svg{
+     width: 14vh;
+         height: 14vh;
+}
+
+ @media screen and (orientation:landscape) and (max-height: 700px) {
+    .index_svg{
+     width: 28vh;
+         height: 28vh;
+}
+.svg_help{
+              width: 40vh;
+    height: 40vh;
+     }
+     .vh4_8 {
+         font-size: 8vh;
+     }
+     .vh2_4 {
+         font-size: 4vh;
+     }
+     .vh1_2 {
+         font-size: 2vh;
+     }
+     #page, html, body {
+         height: 200vh;
+     }
+     .prev {
+         height: 8vh;
+     }
+     .header {
+         height: 12vh;
+     }
+     .header a {
+         height: 8vh;
+         width: 8vh;
+     }
+     .dpractice, .dinfo, .dquize, .dlessons {
+         width: 30vh;
+         height: 30vh;
+     }
+     h1 {
+         font-size: 8vh;
+     }
+     h2 {
+         font-size: 6vh;
+     }
+     .footer .f1, .footer .f2 {
+         font-size: 4vh;
+     }
+     .vline {
+         height: 37vh;
+     }
+     .gline {
+         width: 30vh;
+     }
+     .text-ico {
+         font-size: 5vh;
+     }
+ }
+
+.info_verblike{
+         font-family: 'Sanchez', sans-serif;
+    font-size: 50px;
+        margin: 20px 0;
+}
+.info_we{
+         font-family: 'Sanchez', sans-serif;
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.link_to_git{
+     color: white; font-size: 20px; text-decoration: underline;
+}
