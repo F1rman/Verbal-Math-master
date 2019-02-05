@@ -3,7 +3,7 @@ app.run(function($rootScope) {
     $rootScope.en = 1;
     $rootScope.ru = 2;
     $rootScope.vers = 1.1;
-    console.log('%c VERBAL MATCH VERSION - ' + $rootScope.vers, 'background: #000; color: #80d8c0; font-size:20px;');
+    console.log('%c VERBAL MATCH VERSION - ' + $rootScope.vers, 'background: #000; color: #00d2dc; font-size:20px;');
     console.log(storage);
     $rootScope.langs = [{
         "APPNAME": "VERBAL MATCH",

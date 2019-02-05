@@ -16,6 +16,7 @@ var set_progress;
 var clearIfPress;
 var clearIfPress2;
 var value;
+var rand_simvol;
 var time_left;
 var time_left_total = 0;
 var audio_volume_val;
@@ -23,7 +24,10 @@ var audio_volume;
 var av_a = 0.5;
 var av_s = 0.5;
 var t;
+var lvl_kratne;
+var lvl_kratne_arr;
 var p;
+var false_practice = 0;
 var t_stor;
 var fon_audio = new Audio('wav/fon.mp3');
 var loh_rand = randominrange(130, 190);
@@ -102,8 +106,6 @@ app.run(($rootScope) => {
     $rootScope.volume_stor_audio = volume_stor_audio;
     $rootScope.$on('$routeChangeStart', function(event, current, next, previous, reject) {
         // ЩОБ НЕ ВКЛЮЧАВСЯ ЗВУК КЛІКУ ПРИ СТАРТІ
-    
-       
         if (firsload != true) {
             playAudio('wav/click2.wav', av_s);
         }
@@ -116,9 +118,9 @@ app.run(($rootScope) => {
             window.location.href = "#!denied/" + $rootScope.current_level;
         }
         if (current.$$route.templateUrl == 'compain-lvl.html') {
-             if ($rootScope.current_level !== Number($rootScope.current_level)) {
-            window.location.href = "#!denied/1";
-        }
+            if ($rootScope.current_level !== Number($rootScope.current_level)) {
+                window.location.href = "#!denied/1";
+            }
             if ($rootScope.passlvl + 1 < $rootScope.current_level) {
                 console.log('access denied!');
                 window.location.href = "#!denied/" + $rootScope.current_level;
@@ -133,7 +135,6 @@ app.run(($rootScope) => {
             $rootScope.time_stor = 0;
         }
         if (current.$$route.templateUrl == 'practice-lvl.html') {
-            console.log($rootScope.progress_of_lvl, '$rootScope.progress_of_lvl', $rootScope.all_time_left, '$rootScope.all_time_left')
             $rootScope.progress_of_lvl = 0;
             $rootScope.all_time_left = 0;
             storage.setItem('current_progress', 0);
@@ -151,28 +152,76 @@ app.run(($rootScope) => {
     })
 })
 app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
-    // змінні   
-    $rootScope.simvol = $rootScope.levels[current_level - 1].options[2];
-    var time_total = $rootScope.levels[current_level - 1].options[3];
+    // змінні  
+    lvl_kratne = $rootScope.levels[current_level - 1].options[6];
+    console.log(lvl_kratne[0],lvl_kratne[1])
+    lvl_kratne_arr = randominrange(lvl_kratne[0],lvl_kratne[1])
+    var time_total = $rootScope.levels[current_level - 1].options[5];
     var check_result = $("#result3");
-    var changeNSR_compain = () => {
-        $rootScope.number = changeNum($rootScope.levels[current_level - 1].options[0], $rootScope.levels[current_level - 1].options[1]);
-        if ($rootScope.simvol == '/') {
-            $rootScope.number[0] = Kratne($rootScope.number[0], $rootScope.number[1])
+console.log(lvl_kratne_arr,'lvl_kratne_arr')
+    function n1_n2_kratne() {
+        if (lvl_kratne_arr != undefined) {
+
+            $rootScope.number[1] = lvl_kratne_arr;
+             $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne_arr)
+            
+           
         }
-        if ($rootScope.simvol == '-' || $rootScope.simvol == '/') {
-            if ($rootScope.number[0] < $rootScope.number[1]) {
-                forAtime = $rootScope.number[0];
-                $rootScope.number[0] = $rootScope.number[1];
-                $rootScope.number[1] = forAtime;
+        else{
+        $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne)
+        $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne)
+        }
+    }
+    // Функція рандомить символ з левела
+    // Функція рандомить числа 
+    // Функція розраховує результат
+    var changeNSR_compain = () => {
+        lvl_kratne_arr = randominrange(lvl_kratne[0],lvl_kratne[1])
+        $rootScope.simvol = $rootScope.levels[current_level - 1].options[4];
+        rand_simvol = randominrange(0, $rootScope.simvol.length - 1);
+        $rootScope.number = changeNum($rootScope.levels[current_level - 1].options[0], $rootScope.levels[current_level - 1].options[1], $rootScope.levels[current_level - 1].options[2], $rootScope.levels[current_level - 1].options[3]);
+        if ($rootScope.simvol[rand_simvol] == '+') {
+            $rootScope.simvol = '+';
+            if (lvl_kratne != undefined) {
+                n1_n2_kratne()
             }
         }
+        if ($rootScope.simvol[rand_simvol] == '-') {
+            if (lvl_kratne != undefined) {
+                n1_n2_kratne()
+            }
+            $rootScope.simvol = '-';
+        }
+        if ($rootScope.simvol[rand_simvol] == '*') {
+            $rootScope.simvol = '*';
+            if (lvl_kratne != undefined) {
+            $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne)
+        }
+        }
+        if ($rootScope.simvol[rand_simvol] == '/') {
+            $rootScope.simvol = '/';
+           n1_n2_kratne()
+
+
+           
+        }
         $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
+        console.log($rootScope.define_result)
     }
     changeNSR_compain();
     var a1 = $rootScope.number[0];
     var a2 = $rootScope.number[1];
     check_result.keyup((el) => {
+        if ($scope.calc_result_compain == $rootScope.define_result) {
+            $scope.$apply(() => {
+                $scope.isOk = true
+            });
+            setTimeout(() => {
+                $scope.$apply(() => {
+                    $scope.isOk = null
+                });
+            }, 800)
+        }
         clearTimeout(clearIfPress);
         clearIfPress = setTimeout(() => {
             if ($scope.calc_result_compain == $rootScope.define_result) {
@@ -208,7 +257,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
                     playAudio('wav/win.wav', av_s)
                     $rootScope.$apply(() => {
                         $location.path("/result-compain/" + $rootScope.current_level);
-                        $(".compain-wrapper").css('visibility', 'hidden')
                     })
                 }
             } else if ($scope.calc_result_compain == '' || $scope.calc_result_compain == null || $scope.calc_result_compain == undefined) {
@@ -234,34 +282,27 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
         }, 500)
     })
 
-    function progress(timeleft, timetotal, $element, $element2, $input) {
+    function progress(timeleft, timetotal, $element, $element2) {
         var progressBarWidth = timeleft * $element.width() / timetotal;
         $element.find($element2).animate({
             width: progressBarWidth
-        }, 100).html('<p class="time_left">' + timeleft % 60 + '</p>');
+        }, 600).html('<p class="time_left">' + timeleft % 60 + '</p>');
         time_left = timeleft;
         if (timeleft > 0) {
             set_progress = setTimeout(() => {
-                progress(timeleft - 1, timetotal, $element, $element2, $input);
+                progress(timeleft - 1, timetotal, $element, $element2);
             }, 1000);
         } else {
             $rootScope.$apply(() => {
-                $(".compain-wrapper").css('visibility', 'hidden')
-                $location.path("/result-compain/" + $rootScope.current_level);
+                // $location.path("/result-compain/" + $rootScope.current_level);
             })
-            console.log('TIME OWER!!!');
             playAudio('wav/win.wav', av_s)
         }
-        $input.change(() => {
-            if ($scope.calc_result_compain == $rootScope.define_result) {} else {
-                timeleft = timeleft - 1;
-            }
-        });
     };
     $(document).ready(() => {
         function endCountdown() {
             $('.vidlik_wrapper').css('display', 'none');
-            progress(time_total, time_total, $('.timebar'), $('.timebar_inside'), check_result);
+            progress(time_total, time_total, $('.timebar'), $('.timebar_inside'));
             check_result.focus();
         }
 
@@ -282,16 +323,46 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     })
 });
 app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
-    $rootScope.simvol = $rootScope.levels[current_level - 1].options[2];
+    $rootScope.simvol = $rootScope.levels[current_level - 1].options[4];
     setTimeout(() => {
         $("#result2").focus();
     }, 1000)
     var changeNSR_practice = () => {
-        $rootScope.number = changeNum($rootScope.levels[current_level - 1].options[0], $rootScope.levels[current_level - 1].options[1]);
-        if ($rootScope.simvol == '/') {
-            $rootScope.number[0] = Kratne($rootScope.number[0], $rootScope.number[1])
+        $rootScope.simvol = $rootScope.levels[current_level - 1].options[4];
+        rand_simvol = randominrange(0, $rootScope.simvol.length - 1);
+        $rootScope.number = changeNum($rootScope.levels[current_level - 1].options[0], $rootScope.levels[current_level - 1].options[1], $rootScope.levels[current_level - 1].options[2], $rootScope.levels[current_level - 1].options[3]);
+        if ($rootScope.simvol[rand_simvol] == '+') {
+            $rootScope.simvol = '+';
         }
-        if ($rootScope.simvol == '-' || $rootScope.simvol == '/') {
+        if ($rootScope.simvol[rand_simvol] == '-') {
+            if (lvl_kratne == undefined) {
+                console.log('Нема встановленого кратного')
+            } else {
+                console.log(lvl_kratne, ' Встановлене кратне число');
+                $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne)
+                $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne)
+                if ($rootScope.number[0] < $rootScope.number[1]) {
+                    forAtime = $rootScope.number[0];
+                    $rootScope.number[0] = $rootScope.number[1];
+                    $rootScope.number[1] = forAtime;
+                    $rootScope.number[0] = Kratne($rootScope.number[0], $rootScope.number[1])
+                }
+            }
+            $rootScope.simvol = '-';
+            if ($rootScope.number[0] < $rootScope.number[1]) {
+                forAtime = $rootScope.number[0];
+                $rootScope.number[0] = $rootScope.number[1];
+                $rootScope.number[1] = forAtime;
+            }
+        }
+        if ($rootScope.simvol[rand_simvol] == '*') {
+            $rootScope.simvol = '*';
+            console.log('*')
+        }
+        if ($rootScope.simvol[rand_simvol] == '/') {
+            $rootScope.simvol = '/';
+            console.log('/')
+            $rootScope.number[0] = Kratne($rootScope.number[0], $rootScope.number[1])
             if ($rootScope.number[0] < $rootScope.number[1]) {
                 forAtime = $rootScope.number[0];
                 $rootScope.number[0] = $rootScope.number[1];
@@ -303,6 +374,7 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
     changeNSR_practice();
     var a5 = $rootScope.number[0];
     var a6 = $rootScope.number[1];
+    $scope.false_practice = false_practice;
     $("#result2").keyup((el) => {
         clearTimeout(clearIfPress2);
         clearIfPress2 = setTimeout(() => {
@@ -341,6 +413,8 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
                 });
                 console.log($scope.calc_result_practice)
             } else {
+                $scope.false_practice = $scope.false_practice + 1;
+                console.log($scope.false_practice)
                 playAudio('wav/enter_no.flac', av_s);
                 $scope.$apply(() => {
                     $scope.isOk = false
@@ -365,7 +439,6 @@ app.controller("practice_lvl_result_ctrl", ($scope, $rootScope) => {
     getLevel(points, $rootScope.all_points);
     $rootScope.for_next_lvl = for_next_lvl;
     if ($rootScope.current_progress < 10) {
-        console.log('lose');
         $rootScope.points = 0;
     } else {
         storage.setItem('points', $rootScope.all_points);
@@ -374,7 +447,6 @@ app.controller("practice_lvl_result_ctrl", ($scope, $rootScope) => {
         $rootScope.current_progress = 0;
         time_left_total = 0;
     }, 1000)
-    console.log($rootScope.points, "$rootScope.points", $rootScope.for_next_lvl, '$rootScope.for_next_lvl', $rootScope.current_progress, "$rootScope.current_progress")
 })
 app.controller("settings_ctrl", ($scope, $rootScope) => {
     // Налаштування звуку
@@ -469,9 +541,9 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
 })
 app.controller("tips", ($scope) => {
     $scope.tips = [
-        ['Практика, практика та ще більше практики', 'Спи довше', 'Перевіряй помилки', 'Зрозумій основні поняття', 'Розумій свої сумніви', 'Створи навколишнє середовище для навчання', 'Створи математичний словник', 'Застосовуй математику до проблем реального світу'],
-        ['Practice, Practice & More Practice', 'Sleep more', 'Review Errors', ' Master the Key Concepts', 'Understand your Doubts', 'Create a Distraction Free Study Environment', 'Create a Mathematical Dictionary', 'Apply Maths to Real World Problems'],
-        ['Практика, практика и больше практики', 'Спи больше', 'Пересмотри ошибки', 'Овладей основными понятиями', 'Пойми свои сомнения', 'Создайте свободную учебную среду', 'Создай математический словарь', 'Применяй математику к проблемам реального мира']
+        ['Грайте логічні ігри!', 'Будьте уважні, підкреслюйте важливі записи, і слухайте уважно', 'Перевіряй помилки', 'Плануй завчасно план вирішення проблеми', 'Розумій свої сумніви', 'Створи навколишнє середовище для навчання', 'Створи математичний словник', 'Застосовуй математику до проблем реального світу', 'Не забувайте про методи'],
+        ['Play math games!', 'Take careful, dedicated notes and listen carefully', 'Review Errors', 'Have a plan to tackle each problem', 'Understand your Doubts', 'Create a Distraction Free Study Environment', 'Create a Mathematical Dictionary', 'Apply Maths to Real World Problems', 'Dont forget about the methods'],
+        ['Нужно играть в математические игры', 'Внимательно делайте заметки и слушайте внимательно', 'Пересмотри ошибки', 'Нужно иметь план для решения каждой проблемы', 'Пойми свои сомнения', 'Создайте свободную учебную среду', 'Создай математический словарь', 'Применяй математику к проблемам реального мира', 'Не забывайте о методах']
     ];
     $scope.day = d.getDay();
 })
@@ -492,15 +564,16 @@ var f_division = (a, b) => {
     return Math.round(a / b);
 }
 // For practice --------------------------------
-function randominrange(min, max)  {
+function randominrange(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
-var changeNum = (ax, bx, a, b) => {
+var changeNum = (ax, bx, ay, by, a, b) => {
     a = randominrange(Number(ax), Number(bx));
-    b = randominrange(Number(ax), Number(bx));
+    b = randominrange(Number(ay), Number(by));
     return [a, b]
 }
-var define_result = (a, b, simvol) => {
+
+function define_result(a, b, simvol) {
     var m_func;
     switch (simvol) {
         case '+':

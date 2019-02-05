@@ -7,43 +7,47 @@
             {{langs[language].Level}} {{current_level}} ({{langs[language].Practice}})
         </h1>
     </div>
-    <h2>
-        {{levels[current_level-1].name[language]}}
-    </h2>
-    <div id="num_equalPractice">
-        <div class="num" id="number_calc">
-            {{number[0]}} {{simvol}} {{number[1]}}
+    <div class="practice_flex">
+        <div class="name_lvl_progress">
+            <h2 class="practice_h2 vh4_8">
+                {{levels[current_level-1].name[language]}}
+            </h2>
+            <h1 class="vh2_4" id="current_progress" ng-init="current_progress">
+                {{current_progress}}/10
+            </h1>
         </div>
-        <div id="equalPractice">
+        <div id="num_equalPractice">
+            <div class="num" id="number_calc">
+                {{number[0]}} {{simvol}} {{number[1]}}
+            </div>
+            <div id="equalPractice">
+            </div>
         </div>
-    </div>
-    <div class="layout-positioner">
         <div class="layout-positioner">
-            <div class="flex">
-                <input class="result" id="result2" ng-init="calc_result_practice" ng-model="calc_result_practice" type="number">
-                    <!-- <div ng-click="calc_result_practice = null"><img class="prev" src="img/next.png"/></div> -->
-                </input>
+            <div class="layout-positioner">
+                <div class="flex">
+                    <input class="result" id="result2" ng-init="calc_result_practice" ng-model="calc_result_practice" type="number">
+                        <!-- <div ng-click="calc_result_practice = null"><img class="prev" src="img/next.png"/></div> -->
+                </div>
             </div>
+            <a class="need_help" href="#!lessons-level/{{current_level}}" id="hint" ng-hide="false_practice < 2">
+                <img alt="help" class="svg_help" src="img/idea.svg">
+            </a>
+            <!-- Timer bar -->
+            <!-- IF OK -->
+            <div class="check_anim">
+                <div class="iftrue" ng-hide="calc_result_practice != define_result">
+                    OK
+                </div>
+                <div class="iffalse" ng-show="isOk == false">
+                    NO
+                </div>
+                <div class="" ng-show="isOk == null">
+                </div>
+            </div>
+            <!-- Button to next lvl -->
         </div>
-        <h1 id="current_progress" ng-init="current_progress">
-            {{current_progress}}/10
-        </h1>
-        <a href="#!lessons-level/{{current_level}}" id="hint">
-            <img alt="" class="svg_help" src="img/idea.svg">
-            </img>
-        </a>
-        <!-- Timer bar -->
-        <!-- IF OK -->
-        <div class="check_anim">
-            <div class="iftrue" ng-hide="calc_result_practice != define_result">
-                OK
-            </div>
-            <div class="iffalse" ng-show="isOk == false">
-                NO
-            </div>
-            <div class="" ng-show="isOk == null">
-            </div>
-        </div>
-        <!-- Button to next lvl -->
+        <div class="flex-center"></div>
+        <div class="flex-center"></div>
     </div>
 </div>

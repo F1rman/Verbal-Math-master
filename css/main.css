@@ -64,7 +64,7 @@
      color: #dedede;
  }
  .green {
-     color: #4fde14;
+     color: #14dea8;
  }
  #page {
      display: flex;
@@ -73,7 +73,13 @@
      justify-content: space-between;
  }
  /*main menu*/
-
+.padding5{
+     padding: 5px;
+     box-sizing: border-box;
+}
+.flex_res{
+     display: flex;
+}
  .padding20 {
      padding: 20px;
      box-sizing: border-box;
@@ -86,7 +92,9 @@
          color: #00ade9;
     font-weight: bold;
  }
-
+.flex_res > img{
+     padding: 0 5px;
+}
 
  .dpractice, .dinfo, .dquize, .dlessons {
      display: flex;
@@ -109,16 +117,30 @@
  .main-text h1, .main-text h2 {
      text-align: center;
  }
- .vline {
-     background: white;
-     width: 1px;
-     height: 18.5vh;
-     display: inline-block;
-     margin: 0 15px;
+  .vline1 {
+    width: 5px;
+    background: linear-gradient(to bottom, #00edd1 0%,#00aeea 100%);
+    height: 18.5vh;
+    display: inline-block;
+    margin: 0 15px;
  }
- .gline {
-     background: white;
-     height: 1px;
+  .vline2 {
+    width: 5px;
+    background: linear-gradient(to top, #00edd1 0%,#00aeea 100%);
+    height: 18.5vh;
+    display: inline-block;
+    margin: 0 15px;
+ }
+ .gline:first-child {
+     background: linear-gradient(to right, #00edd1 0%,#00aeea 100%);
+     height: 5px;
+     width: 15vh;
+     margin: 20px;
+     display: inline-block;
+ }
+  .gline:nth-child(2) {
+     background: linear-gradient(to left, #00edd1 0%,#00aeea 100%);
+     height: 5px;
      width: 15vh;
      margin: 20px;
      display: inline-block;
@@ -320,17 +342,25 @@
      max-width: 195px
  }
  .wrank {
-     background: #0090c1;
+     background: #252e35;
  }
  .wrank h5 {
      margin: 0;
      padding: 15px 0px;
      box-sizing: border-box;
+     color: #fff;
+    font-weight: bolder;
+    text-shadow: 0 0 10px #00ade9;
  }
  .bottom-rank {
-     background: #12171c;
-     display: block;
-     padding: 8px;
+         background: #12171c;
+    display: block;
+    padding: 8px;
+    font-weight: bold;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
  .status {
      margin: 5px 0 30px 0;
@@ -366,7 +396,7 @@
      color: #0c0f12;
  }
  .leftyellow {
-     background: #ffeb00;
+     background: #00bbd5;
  }
  .leftgreen {
      background: #27ff00;
@@ -478,17 +508,17 @@
      background: rgba(0, 0, 0, 0.5);
  }
  .result {
-     text-align: center;
-     width: 200px;
-     max-width: 200px;
-     box-sizing: border-box;
-     background: #252e35;
-     border: none;
-     font-size: 18px;
-     outline: none;
-     font-weight: lighter;
-     color: white;
-     padding: 10px 25px;
+         text-align: center;
+    width: 200px;
+    max-width: 200px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    font-size: 18px;
+    outline: none;
+    font-weight: lighter;
+    color: white;
+    padding: 10px 25px;
  }
  .resultat {}
  .num {
@@ -517,37 +547,54 @@
      font-size: 35px;
  }
  .timebar {
-     display: flex;
-     width: 200px;
-     color: #fff;
-     margin: 0 auto;
-     padding: 4px;
-     height: 25px;
-     background: #252e35;
+       display: flex;
+    width: 200px;
+    color: #fff;
+    margin: 0 auto;
+    padding: 0px;
+    height: 3px;
+    border-radius: 5px;
+    background: #252e35;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
  }
  .timebar_inside {
-     display: flex;
-     width: 100%;
-     background: #00ade9 ;
+         display: flex;
+    width: 100%;
+    background: #00ade9;
+    border-radius: 10px;
  }
  .buttons {
-     display: flex;
-     justify-content: center;
-     flex-flow: row wrap;
+         display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-flow: row wrap;
  }
  .btn {
      display: flex;
      background: rgba(21, 27, 31, 0);
-     border: 3px solid #00ade9;
+     border-radius: 50%;
      outline: none;
      color: white;
      padding: 20px;
      cursor: pointer;
      font-size: 24px;
      margin: 10px;
+     
  }
  .btn:hover {
      border-color: #42b33b;
+ }
+ .btn img{
+     width: 70px;
+     height: 70px;
+ }
+
+ .home_ico{
+         position: relative;
+    top: -40px;
  }
  p.home {
      position: absolute;
@@ -583,8 +630,16 @@
  .cbalink {
      display: none !important;
  }
+ .need_help{
+     -webkit-animation: zoom_h 1s;
+     animation: zoom_h 1s;
+     opacity: 1;
+ }
  .iftrue, .iffalse {
      display: flex;
+     position: fixed;
+     top: calc(50% - 100px);
+     left: calc(50% - 100px);
      background: #4fde14;
      width: 200px;
      height: 200px;
@@ -847,10 +902,10 @@
  @media only screen and (max-width: 500px) {
 
 
-     .status {
+    /* .status {
          flex-flow: column;
          align-items: center;
-     }
+     }*/
      .world-rank, .current-level {
          max-width: 100%;
          width: 100%;
@@ -865,14 +920,14 @@
  /* contact ---------------------- */
 
  .page.ng-leave {
-     -webkit-animation: slideInDown 0.2s both ease;
-     -moz-animation: slideInDown 0.2s both ease;
-     animation: slideInDown 0.2s both ease;
+     -webkit-animation: slideInDown .5s both ease;
+     -moz-animation: slideInDown .5s both ease;
+     animation: slideInDown .5s both ease;
  }
  .page.ng-enter {
-     -webkit-animation: slideInUp 0.2s both ease;
-     -moz-animation: slideInUp 0.2s both ease;
-     animation: slideInUp 0.2s both ease;
+     -webkit-animation: slideInUp .5s both ease;
+     -moz-animation: slideInUp .5s both ease;
+     animation: slideInUp .5s both ease;
  }
  /* slide in from the bottom */
 
@@ -952,6 +1007,34 @@
          opacity: 0;
      }
  }
+ @-webkit-keyframes zoom_h {
+     0% {
+         -webkit-transform: scale(0.2);
+         transform: scale(0.2);
+         opacity: 1;
+     }
+     70% {
+         -webkit-transform: scale(1);   
+         transform: scale(1);
+     }
+     100% {
+         opacity: 1;
+     }
+ }
+ @keyframes zoom_h {
+     0% {
+         -webkit-transform: scale(0.2);
+         transform: scale(0.2);
+         opacity: 1;
+     }
+     70% {
+         -webkit-transform: scale(1);
+         transform: scale(1);
+     }
+     100% {
+         opacity: 1;
+     }
+ }
  .vidlik_wrapper {
      display: flex;
      flex-flow: column;
@@ -1003,11 +1086,14 @@
      font-weight: bold;
  }
  .time_left {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     position: absolute;
-     left: calc(50% - 5px);
+         display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 10px;
+    top: -25px;     
+        color: #00aeea;
+        font-weight: bold;
  }
  .verblike_tree {
      background-image: url(../img/tree.svg);
@@ -1015,13 +1101,13 @@
      height: 260px;
  }
  .flex-center {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-flow: column;
-     color: #fff;
-     margin: 0 auto;
-     max-width: 500px;
+         display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    color: #fff;
+    margin: 150px auto;
+    max-width: 500px;
  }
  .info_block {
          text-align: center;
@@ -1057,8 +1143,55 @@
      width: 14vh;
          height: 14vh;
 }
+.practice_flex{
+         display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: calc(92vh - 40px);
+}
 
+.practice_h2{
+     height: 50px;
+}
+
+
+#current_progress{
+     font-family: monospace;
+}
+
+.campaign_wrapper{
+         display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: calc(92vh - 40px);
+}
+
+
+.revers{
+     transform: rotateY(180deg);
+}
+
+.points_svg{
+     width: 30px;
+     height: 30px;
+}
+ .vh3_6 {
+         font-size: 3vh;
+     }
  @media screen and (orientation:landscape) and (max-height: 700px) {
+    .practice_flex{
+      display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: calc(45.5vh - 20px);
+    }
+    .campaign_wrapper{
+      display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+     height: calc(45.5vh - 20px);
+    }
+
     .index_svg{
      width: 28vh;
          height: 28vh;
@@ -1075,6 +1208,9 @@
      }
      .vh1_2 {
          font-size: 2vh;
+     }
+     .vh3_6 {
+         font-size: 6vh;
      }
      #page, html, body {
          height: 200vh;
@@ -1123,9 +1259,15 @@
     font-size: 21px;
     font-weight: 300;
     line-height: 1.4;
+    margin: 0;
     margin-bottom: 20px;
 }
 
 .link_to_git{
      color: white; font-size: 20px; text-decoration: underline;
+}
+
+.buttons .update_arrow{
+     width: 60px;
+     height: 60px;
 }

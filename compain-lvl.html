@@ -7,53 +7,58 @@
             {{langs[language].Level}} {{current_level}}
         </h1>
     </div>
-    <h2>
-        {{levels[current_level-1].name[language]}}
-    </h2>
-    <div id="num_equalPractice">
-        <div class="num" id="number_calc">
-            {{number[0]}} {{simvol}} {{number[1]}}
+    <div class="campaign_wrapper">
+        <div class="name_lvl_progress">
+            <h2 class="vh4_8">
+                {{levels[current_level-1].name[language]}}
+            </h2>
+            <h1 class="vh2_4" id="current_progress" ng-init="current_progress">
+                {{current_progress}}/10
+            </h1>
         </div>
-        <div class="aquals num">=</div>
-        <div id="equalPractice">
+        <div id="num_equalPractice">
+            <div class="num" id="number_calc">
+                {{number[0]}} {{simvol}} {{number[1]}}
+            </div>
+            <div id="equalPractice">
+            </div>
+        </div>
+        <div class="layout-positioner">
+            <div class="layout-positioner">
+                <div class="flex">
+                    <input class="result" id="result3" ng-init="calc_result_compain" ng-model="calc_result_compain" type="number">
+                        <!-- <div ng-click="calc_result_compain = null"><img class="prev" src="img/next.png"/></div> -->
+                    </input>
+                </div>
+                <!-- Timer bar -->
+                <div class="timebar">
+                    <div class="timebar_inside">
+                    </div>
+                </div>
+                <!-- IF OK -->
+                <div class="check_anim">
+                    <div class="iftrue" ng-show="isOk == true">
+                        OK
+                    </div>
+                    <div class="iffalse" ng-show="isOk == false">
+                        NO
+                    </div>
+                    <div class="" ng-show="isOk == null">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-center">
+        </div>
+        <div class="flex-center">
         </div>
     </div>
-    <div class="layout-positioner" >
-        <div class="layout-positioner">
- 
-           
-            <div class="flex"><input class="result" id="result3" ng-init="calc_result_compain" ng-model="calc_result_compain" type="number">
-            <!-- <div ng-click="calc_result_compain = null"><img class="prev" src="img/next.png"/></div> -->
-        </div>
-
-        <h1 id="current_progress" ng-init="current_progress">
-            {{current_progress}}/10 
-        </h1>
-        <!-- Timer bar -->
-        <div class="timebar">
-            <div class="timebar_inside">
-            </div>
-        </div>
-        <!-- IF OK -->
-        <div class="check_anim">
-            <div class="iftrue" ng-show="isOk == true">
-                OK
-            </div>
-            <div class="iffalse" ng-show="isOk == false">
-                NO
-            </div>
-             <div class="" ng-show="isOk == null">
-                
-            </div>
-          
+    <div class="vidlik_wrapper">
+        <h2 class="vh4_8">
+            {{levels[current_level-1].name[language]}}
+        </h2>
+        <div class="vidlik">
+            3
         </div>
     </div>
 </div>
- <div class="vidlik_wrapper">
-
-     <h2 class="vh4_8">
-        {{levels[current_level-1].name[language]}}
-    </h2>
-
-    <div class="vidlik">3</div>
- </div>
