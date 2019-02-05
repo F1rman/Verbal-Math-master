@@ -108,8 +108,8 @@ app.run(function($rootScope) {
         'date': '14:25 04.02.2019',
         'fix': '-Fixed redirect to lessons page, and if lesson is undefined then  "There is no lesson to this level yet!" -Improved in info page footer.'
     }, {
-        'date': '21:15 04.02.2019',
-        'fix': '-New design! Fixed some bugs'
+        'date': '20:10 05.02.2019',
+        'fix': 'NEW gameplay! Impoved design!'
     }]
     $rootScope.fix.reverse()
 })

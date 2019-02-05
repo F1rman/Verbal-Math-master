@@ -153,57 +153,53 @@ app.run(($rootScope) => {
 })
 app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     // змінні  
-    lvl_kratne = $rootScope.levels[current_level - 1].options[6];
-    console.log(lvl_kratne[0],lvl_kratne[1])
-    lvl_kratne_arr = randominrange(lvl_kratne[0],lvl_kratne[1])
     var time_total = $rootScope.levels[current_level - 1].options[5];
     var check_result = $("#result3");
-console.log(lvl_kratne_arr,'lvl_kratne_arr')
-    function n1_n2_kratne() {
-        if (lvl_kratne_arr != undefined) {
+    lvl_kratne = $rootScope.levels[current_level - 1].options[6];
+    console.log(lvl_kratne[0], lvl_kratne[1])
+    lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
+    console.log(lvl_kratne.length)
+    console.log(lvl_kratne_arr, 'lvl_kratne_arr')
 
-            $rootScope.number[1] = lvl_kratne_arr;
-             $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne_arr)
-            
-           
+    function n1_n2_kratne() {
+        if (lvl_kratne.length == 1) {
+            $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne[0])
+            $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne[0])
         }
-        else{
-        $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne)
-        $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne)
+        if (lvl_kratne.length > 1) {
+            $rootScope.number[1] = lvl_kratne_arr;
+            $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne_arr)
         }
     }
     // Функція рандомить символ з левела
     // Функція рандомить числа 
     // Функція розраховує результат
     var changeNSR_compain = () => {
-        lvl_kratne_arr = randominrange(lvl_kratne[0],lvl_kratne[1])
+        lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
         $rootScope.simvol = $rootScope.levels[current_level - 1].options[4];
         rand_simvol = randominrange(0, $rootScope.simvol.length - 1);
         $rootScope.number = changeNum($rootScope.levels[current_level - 1].options[0], $rootScope.levels[current_level - 1].options[1], $rootScope.levels[current_level - 1].options[2], $rootScope.levels[current_level - 1].options[3]);
         if ($rootScope.simvol[rand_simvol] == '+') {
             $rootScope.simvol = '+';
-            if (lvl_kratne != undefined) {
+            if (lvl_kratne[0] != undefined) {
                 n1_n2_kratne()
             }
         }
         if ($rootScope.simvol[rand_simvol] == '-') {
-            if (lvl_kratne != undefined) {
+            if (lvl_kratne[0] != undefined) {
                 n1_n2_kratne()
             }
             $rootScope.simvol = '-';
         }
         if ($rootScope.simvol[rand_simvol] == '*') {
             $rootScope.simvol = '*';
-            if (lvl_kratne != undefined) {
-            $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne)
-        }
+            if (lvl_kratne[0] != undefined) {
+                $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne[0])
+            }
         }
         if ($rootScope.simvol[rand_simvol] == '/') {
             $rootScope.simvol = '/';
-           n1_n2_kratne()
-
-
-           
+            n1_n2_kratne()
         }
         $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
         console.log($rootScope.define_result)
