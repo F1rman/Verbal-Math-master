@@ -12,8 +12,11 @@
             <div class="wrank white bold vh4_8">
                 <h5>{{langs[language].Worldrank}}</h5>
             </div>
-            <div class="white bottom-rank vh3_6">
+            <div ng-if="world_wrank < 9000" class="white bottom-rank vh3_6">
                 {{world_wrank}}
+            </div>
+             <div ng-if="world_wrank > 9000" class="white bottom-rank vh3_6">
+                -
             </div>
         </div>
         <div class="current-level">
@@ -34,7 +37,7 @@
                {{ $index+1}}
             </div>
             <div class="lvlcont">
-            	 {{langs[language].Level}}  10/10 
+            	 {{langs[language].Level}}  {{levels[$index].options[7]}}/{{levels[$index].options[7] }}
             </div>
             
         </a>
@@ -45,7 +48,7 @@
                {{ $index+1+passlvl}}
             </div>
             <div class="lvlcont">
-            	  {{langs[language].Levelprogress}} {{current_progress}}/10
+            	  {{langs[language].Levelprogress}} {{0}}/{{levels[passlvl].options[7]}}
             </div>
  			</a>
         

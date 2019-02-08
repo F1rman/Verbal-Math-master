@@ -69,7 +69,7 @@
                             <img alt="" class="update_arrow" src="img/update-arrow.png">
                         </div>
                     </a>
-                    <a href="#!practice-lvl/{{current_level+1}}">
+                    <a ng-if="current_level < levels.length" href="#!practice-lvl/{{current_level+1}}">
                         <div class="btn vh2_4 ">
                             <img alt="" class="revers" src="img/next.png">
                         </div>

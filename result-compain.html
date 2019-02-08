@@ -63,7 +63,7 @@
 
             </h2> -->
                 <div class="buttons">
-                    <a href="#!practice-lvl/{{current_level}}" ng-if="current_progress<10">
+                    <a href="#!practice-lvl/{{current_level}}" ng-if="current_progress<count_operations">
                         <div class="btn vh2_4">
                             <img alt="" src="img/arrows.svg">
                         </div>
@@ -73,7 +73,7 @@
                             <img alt="" class="update_arrow" src="img/update-arrow.png">
                         </div>
                     </a>
-                    <a href="#!compain-lvl/{{current_level+1}}" ng-if="current_progress == 10 && current_level < levels.length">
+                    <a href="#!compain-lvl/{{current_level+1}}" ng-if="current_progress == count_operations && current_level < levels.length">
                         <div class="btn vh2_4">
                             <img alt="" class="revers" src="img/next.png">
                         </div>

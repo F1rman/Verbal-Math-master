@@ -9,8 +9,11 @@
             <div class="wrank white bold">
                 <h5>{{langs[language].Worldrank}}</h5>
             </div>
-            <div class="white bottom-rank">
-                {{ world_wrank}}
+             <div ng-if="world_wrank < 9000" class="white bottom-rank vh3_6">
+                {{world_wrank}}
+            </div>
+             <div ng-if="world_wrank > 9000" class="white bottom-rank vh3_6">
+                -
             </div>
         </div>
         <div class="current-level">
