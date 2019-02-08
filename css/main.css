@@ -116,14 +116,12 @@
  .vline1 {
      width: 5px;
      background: linear-gradient(to bottom, #00edd1 0%, #00aeea 100%);
-     height: 18.5vh;
      display: inline-block;
      margin: 0 15px;
  }
  .vline2 {
      width: 5px;
      background: linear-gradient(to top, #00edd1 0%, #00aeea 100%);
-     height: 18.5vh;
      display: inline-block;
      margin: 0 15px;
  }
@@ -1198,8 +1196,8 @@
      .vline {
          height: 37vh;
      }
-     .gline {
-         width: 30vh;
+     .menu2 .gline {
+         width: 15vw;
      }
      .text-ico {
          font-size: 5vh;

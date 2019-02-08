@@ -14,9 +14,9 @@ app.run(function($rootScope) {
     }, {
         "title": ["При зіткненні зі складним розрахунком",
 
-         "Когда сталкиваешься со сложным расчетом",
+         "When confronted with a difficult calculation",
 
-         "Вычитание 5",
+         "Когда сталкиваешься со сложным расчетом",
 
          ],
         "content": ["Якщо зіткнулися з важким розрахунком, спробуйте знайти спосіб спрощення проблеми, тимчасово змінюючи значення. При розрахунку 593 + 680, наприклад, додайте 7 до 593, щоб отримати 600 (більш керованим). Розрахуйте 600 + 680, що становить 1280, а потім заберіть ще 7, щоб отримати правильну відповідь, 1273. Можна зробити подібну річ з множенням. Для 89x6 замість цього вирахуйте 90x6, а потім віднімайте додаткові 6, так що 540-6 = 534.",
@@ -44,7 +44,7 @@ app.run(function($rootScope) {
     // }, {
     //     "title": ["Ділення / множення на 4",
 
-    //      "Division/multiplication by 4",
+    //      "Multiplication by eleven",
 
     //      "Деление / умножение на 4",
 
@@ -59,7 +59,7 @@ app.run(function($rootScope) {
     // }, {
     //     "title": ["Ділення / множення на 25",
 
-    //      "Division/multiplication by 25",
+    //      "Squaring of numbers ending in five",
 
     //      "Деление / умножение на 25",
 
@@ -74,7 +74,7 @@ app.run(function($rootScope) {
     // }, {
     //     "title": ["Ділення / множення на 8",
 
-    //      "Division/multiplication by 8",
+    //      "Multiplying two numbers whose last digits add to 10",
 
     //      "Деление / умножение на 8",
 
@@ -89,7 +89,7 @@ app.run(function($rootScope) {
     // }, {
     //     "title": ["Ділення / множення на 125",
 
-    //      "Division/multiplication by 125",
+    //      "Multiplying numbers close to 100",
 
     //      "Деление / умножение на 125",
 
@@ -104,7 +104,7 @@ app.run(function($rootScope) {
     // }, {
     //     "title": ["Зведення в квадрат двозначних чисел",
 
-    //      "Squaring two digit numbers",
+    //      "Addition and subtraction of two and three digit numbers from left to right",
 
     //      "Возведение в квадрат двухзначных чисел",
 
@@ -119,7 +119,7 @@ app.run(function($rootScope) {
     // }, {
     //     "title": ["Любий квадрат",
 
-    //      "Any Square",
+    //      "Mentally dividing a number by a single digit",
 
     //      "Любой квадрат",
 
@@ -134,7 +134,7 @@ app.run(function($rootScope) {
     // }, {
     //     "title": ["Квадрати можна розраховувати послідовно.",
 
-    //      "Squares Can Be Computed Squentially",
+    //      "Multiplying two and three digit numbers using the vertical and crosswise technique",
 
     //      "Квадраты могут быть вычислены последовательно",
 
@@ -149,7 +149,7 @@ app.run(function($rootScope) {
     // }, {
     //     "title": ["Квадрати чисел, що закінчуються 5",
 
-    //      "Squares of numbers that end with 5",
+    //      "Square two and three digit numbers using the square duplex technique",
 
     //      "Квадраты чисел, заканчивающиеся на 5",
 

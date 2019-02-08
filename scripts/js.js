@@ -296,7 +296,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
             }, 1000);
         } else {
             $rootScope.$apply(() => {
-                // $location.path("/result-compain/" + $rootScope.current_level);
+                $location.path("/result-compain/" + $rootScope.current_level);
             })
             playAudio('wav/win.wav', av_s)
         }
