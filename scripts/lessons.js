@@ -180,6 +180,9 @@ app.run(function($rootScope) {
     }, {
         'date': '11:30 08.02.2019',
         'fix': 'Fixed some bugs...'
+    }, {
+        'date': '14:21 08.02.2019',
+        'fix': 'Added functional for Campaign. Now showed word wrank - if you rank so small. And fixed some small bugs'
     }]
     $rootScope.fix.reverse()
 })
