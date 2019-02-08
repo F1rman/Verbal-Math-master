@@ -402,18 +402,14 @@
      background: #27ff00;
  }
  .lvlcont {
-     text-overflow: ellipsis;
-     overflow: hidden;
-     white-space: nowrap;
-     display: block;
-     height: 100%;
-     box-sizing: border-box;
-     align-items: center;
-     padding: 0px 10px;
-         color: #fff;
-     display: flex;
-     text-align: left;
-     justify-content: space-between;
+       display: flex;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    color: #fff;
  }
  /*Lessons*/
 
@@ -464,15 +460,10 @@
     height: 50px;
     transform: rotateY(180deg);
  }
- .hidenabout {
-     color: #dcdcdc;
+
+ .vidlik_h2{
      box-sizing: border-box;
-     width: 100%;
-     line-height: 24px;
-     height: auto;
-     padding: 15px;
-     z-index: 100;
-     background: #000;
+     padding: 20px;
  }
  .practiceNow {
      display: block;
@@ -1144,14 +1135,18 @@
          height: 14vh;
 }
 .practice_flex{
-         display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+         
     height: calc(92vh - 40px);
 }
 
 .practice_h2{
-     height: 50px;
+     
+}
+.column{
+        display: flex;
+    flex-flow: column;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 
@@ -1160,9 +1155,7 @@
 }
 
 .campaign_wrapper{
-         display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+        
     height: calc(92vh - 40px);
 }
 
@@ -1180,15 +1173,11 @@
      }
  @media screen and (orientation:landscape) and (max-height: 700px) {
     .practice_flex{
-      display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+    
     height: calc(45.5vh - 20px);
     }
     .campaign_wrapper{
-      display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+     
      height: calc(45.5vh - 20px);
     }
 
@@ -1271,3 +1260,4 @@
      width: 60px;
      height: 60px;
 }
+

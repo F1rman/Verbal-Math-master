@@ -7,17 +7,17 @@
     <div class="layout-positioner quize-positioner">
         <div class="resultat">
             <div class="status_result">
-                <h2 class="vh4_8 padding20" ng-if="current_progress<10" style="color: #f6412d">
+                <h2 class="vh4_8 padding20" ng-if="current_progress<count_operations" style="color: #f6412d">
                     {{langs[language].Timeisover}}
                     <br>
                         {{langs[language].Youlose}}!
                     </br>
                 </h2>
-                <h2 class="green padding5 vh4_8" ng-if="current_progress == 10">
+                <h2 class="green padding5 vh4_8" ng-if="current_progress == count_operations">
                     {{langs[language].AllIsFine}}!
                 </h2>
                 <h2 class="padding20">
-                    {{progress_of_lvl}}/10
+                    {{progress_of_lvl}}/{{count_operations}}
                 </h2>
                 <div class="result_detail">
                     <h2 class="txt_left">

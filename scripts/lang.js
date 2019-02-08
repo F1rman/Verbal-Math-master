@@ -2,7 +2,7 @@ app.run(function($rootScope) {
     $rootScope.ua = 0;
     $rootScope.en = 1;
     $rootScope.ru = 2;
-    $rootScope.vers = 1.2;
+    $rootScope.vers = 1.3;
     console.log('%c VERBAL MATCH VERSION - ' + $rootScope.vers, 'background: #000; color: #00d2dc; font-size:20px;');
     console.log(storage);
     $rootScope.langs = [{
@@ -11,6 +11,7 @@ app.run(function($rootScope) {
         "Practice": "Практика",
         "Campaign": "Компанія",
         "Lessons": "Уроки",
+        "Lesson": "Урок",
         "Info": "Інформація",
         "Settings": "Налаштування",
         "Audio": "Аудіо",
@@ -54,6 +55,7 @@ app.run(function($rootScope) {
         "Practice": "Practice",
         "Campaign": "Campaign",
         "Lessons": "Lessons",
+        "Lesson": "Lesson",
         "Info": "Info",
         "Settings": "Settings",
         "Audio": "Audio",
@@ -95,6 +97,7 @@ app.run(function($rootScope) {
         "Practice": "Практика",
         "Campaign": "Компания",
         "Lessons": "Уроки",
+        "Lesson": "Урок",
         "Info": "Информация",
         "Settings": "Настройки",
         "Audio": "Aудио",

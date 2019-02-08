@@ -9,12 +9,12 @@
     </div>
     <div class="campaign_wrapper">
         <div class="name_lvl_progress">
-            <h2 class="vh4_8">
+            <h2 class="vh4_8 column">
                 {{levels[current_level-1].name[language]}}
+                <br>
+                <div class="vh2_4">{{current_progress}}/{{count_operations}}</div>
             </h2>
-            <h1 class="vh2_4" id="current_progress" ng-init="current_progress">
-                {{current_progress}}/10
-            </h1>
+                
         </div>
         <div id="num_equalPractice">
             <div class="num" id="number_calc">
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="vidlik_wrapper">
-        <h2 class="vh4_8">
+        <h2 class="vh4_8 vidlik_h2">
             {{levels[current_level-1].name[language]}}
         </h2>
         <div class="vidlik">

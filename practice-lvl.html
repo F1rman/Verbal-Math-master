@@ -9,12 +9,12 @@
     </div>
     <div class="practice_flex">
         <div class="name_lvl_progress">
-            <h2 class="practice_h2 vh4_8">
+            <h2 class="column vh4_8">
                 {{levels[current_level-1].name[language]}}
+                <br>
+               <div class="vh2_4"> {{current_progress}}/{{count_operations}}</div>
             </h2>
-            <h1 class="vh2_4" id="current_progress" ng-init="current_progress">
-                {{current_progress}}/10
-            </h1>
+                
         </div>
         <div id="num_equalPractice">
             <div class="num" id="number_calc">
@@ -30,7 +30,7 @@
                         <!-- <div ng-click="calc_result_practice = null"><img class="prev" src="img/next.png"/></div> -->
                 </div>
             </div>
-            <a class="need_help" href="#!lessons-level/{{current_level}}" id="hint" ng-hide="false_practice < 2">
+            <a class="need_help" href="#!lessons-level/{{lvl_less}}" id="hint" ng-hide="false_practice < 2">
                 <img alt="help" class="svg_help" src="img/idea.svg">
             </a>
             <!-- Timer bar -->

@@ -113,6 +113,9 @@ app.run(($rootScope) => {
         $rootScope.level = arguments[1].params.level;
         current_level = $rootScope.level;
         $rootScope.current_level = Number(current_level);
+        if (current_level != undefined) {
+            $rootScope.count_operations = $rootScope.levels[current_level - 1].options[7];
+        }
         clearTimeout(set_progress);
         if (current_level <= 0) {
             window.location.href = "#!denied/" + $rootScope.current_level;
@@ -156,19 +159,30 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     var time_total = $rootScope.levels[current_level - 1].options[5];
     var check_result = $("#result3");
     lvl_kratne = $rootScope.levels[current_level - 1].options[6];
-    console.log(lvl_kratne[0], lvl_kratne[1])
     lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
-    console.log(lvl_kratne.length)
-    console.log(lvl_kratne_arr, 'lvl_kratne_arr')
+
+    function swap() {
+        if ($rootScope.number[0] < $rootScope.number[1]) {
+            var forAtime;
+            forAtime = $rootScope.number[0];
+            $rootScope.number[0] = $rootScope.number[1];
+            $rootScope.number[1] = forAtime;
+            console.log('$rootScope.number[0] > $rootScope.number[1]')
+        }
+    }
 
     function n1_n2_kratne() {
         if (lvl_kratne.length == 1) {
             $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne[0])
             $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne[0])
+            console.log('lvl_kratne.length== 1')
+            swap()
         }
         if (lvl_kratne.length > 1) {
+            console.log('lvl_kratne.length > 1')
             $rootScope.number[1] = lvl_kratne_arr;
             $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne_arr)
+            swap()
         }
     }
     // Функція рандомить символ з левела
@@ -181,19 +195,20 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
         $rootScope.number = changeNum($rootScope.levels[current_level - 1].options[0], $rootScope.levels[current_level - 1].options[1], $rootScope.levels[current_level - 1].options[2], $rootScope.levels[current_level - 1].options[3]);
         if ($rootScope.simvol[rand_simvol] == '+') {
             $rootScope.simvol = '+';
-            if (lvl_kratne[0] != undefined) {
+            if (lvl_kratne[0] != null) {
                 n1_n2_kratne()
             }
         }
         if ($rootScope.simvol[rand_simvol] == '-') {
-            if (lvl_kratne[0] != undefined) {
+            if (lvl_kratne[0] != null) {
                 n1_n2_kratne()
             }
             $rootScope.simvol = '-';
+            console.log($rootScope.number[0], $rootScope.number[1])
         }
         if ($rootScope.simvol[rand_simvol] == '*') {
             $rootScope.simvol = '*';
-            if (lvl_kratne[0] != undefined) {
+            if (lvl_kratne[0] != null) {
                 $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne[0])
             }
         }
@@ -202,22 +217,13 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
             n1_n2_kratne()
         }
         $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
-        console.log($rootScope.define_result)
+        console.log($rootScope.define_result.toString().length)
+        console.log($rootScope.define_result, " RESULT")
     }
     changeNSR_compain();
     var a1 = $rootScope.number[0];
     var a2 = $rootScope.number[1];
     check_result.keyup((el) => {
-        if ($scope.calc_result_compain == $rootScope.define_result) {
-            $scope.$apply(() => {
-                $scope.isOk = true
-            });
-            setTimeout(() => {
-                $scope.$apply(() => {
-                    $scope.isOk = null
-                });
-            }, 800)
-        }
         clearTimeout(clearIfPress);
         clearIfPress = setTimeout(() => {
             if ($scope.calc_result_compain == $rootScope.define_result) {
@@ -249,7 +255,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
                     $scope.calc_result_compain = null;
                     check_result.val('');
                 })
-                if ($rootScope.current_progress >= 10) {
+                if ($rootScope.current_progress >= $rootScope.count_operations) {
                     playAudio('wav/win.wav', av_s)
                     $rootScope.$apply(() => {
                         $location.path("/result-compain/" + $rootScope.current_level);
@@ -319,53 +325,58 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     })
 });
 app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
+    $rootScope.lvl_less = $rootScope.levels[current_level - 1].options[8];
+    console.log($rootScope.lvl_less, "lvl_less")
     $rootScope.simvol = $rootScope.levels[current_level - 1].options[4];
+
+    function n1_n2_kratne() {
+        if (lvl_kratne.length == 1) {
+            $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne[0])
+            $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne[0])
+            console.log('lvl_kratne.length== 1')
+        }
+        if (lvl_kratne.length > 1) {
+            console.log('lvl_kratne.length > 1')
+            $rootScope.number[1] = lvl_kratne_arr;
+            $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne_arr)
+        }
+        console.log(lvl_kratne[0])
+    }
     setTimeout(() => {
         $("#result2").focus();
     }, 1000)
+    lvl_kratne = $rootScope.levels[current_level - 1].options[6];
+    lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
     var changeNSR_practice = () => {
+        lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
         $rootScope.simvol = $rootScope.levels[current_level - 1].options[4];
         rand_simvol = randominrange(0, $rootScope.simvol.length - 1);
         $rootScope.number = changeNum($rootScope.levels[current_level - 1].options[0], $rootScope.levels[current_level - 1].options[1], $rootScope.levels[current_level - 1].options[2], $rootScope.levels[current_level - 1].options[3]);
         if ($rootScope.simvol[rand_simvol] == '+') {
             $rootScope.simvol = '+';
+            if (lvl_kratne[0] != null) {
+                n1_n2_kratne()
+            }
         }
         if ($rootScope.simvol[rand_simvol] == '-') {
-            if (lvl_kratne == undefined) {
-                console.log('Нема встановленого кратного')
-            } else {
-                console.log(lvl_kratne, ' Встановлене кратне число');
-                $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne)
-                $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne)
-                if ($rootScope.number[0] < $rootScope.number[1]) {
-                    forAtime = $rootScope.number[0];
-                    $rootScope.number[0] = $rootScope.number[1];
-                    $rootScope.number[1] = forAtime;
-                    $rootScope.number[0] = Kratne($rootScope.number[0], $rootScope.number[1])
-                }
+            if (lvl_kratne[0] != null) {
+                n1_n2_kratne()
             }
             $rootScope.simvol = '-';
-            if ($rootScope.number[0] < $rootScope.number[1]) {
-                forAtime = $rootScope.number[0];
-                $rootScope.number[0] = $rootScope.number[1];
-                $rootScope.number[1] = forAtime;
-            }
         }
         if ($rootScope.simvol[rand_simvol] == '*') {
             $rootScope.simvol = '*';
-            console.log('*')
+            if (lvl_kratne[0] != null) {
+                $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne[0])
+            }
         }
         if ($rootScope.simvol[rand_simvol] == '/') {
             $rootScope.simvol = '/';
-            console.log('/')
-            $rootScope.number[0] = Kratne($rootScope.number[0], $rootScope.number[1])
-            if ($rootScope.number[0] < $rootScope.number[1]) {
-                forAtime = $rootScope.number[0];
-                $rootScope.number[0] = $rootScope.number[1];
-                $rootScope.number[1] = forAtime;
-            }
+            n1_n2_kratne()
         }
         $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
+        console.log($rootScope.define_result.toString().length)
+        console.log($rootScope.define_result, " RESULT")
     }
     changeNSR_practice();
     var a5 = $rootScope.number[0];
@@ -392,13 +403,12 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
                 })
                 var a7 = $rootScope.number[0];
                 var a8 = $rootScope.number[1];
-                console.log(a5, a6, a7, a8)
                 if (a5 == a7 && a6 == a8) {
                     changeNSR_practice();
                 }
                 $scope.calc_result_practice = null;
                 $("#result2").val('');
-                if ($rootScope.current_progress >= 10) {
+                if ($rootScope.current_progress >= $rootScope.count_operations) {
                     $rootScope.$apply(() => {
                         $location.path("/result-practice/" + $rootScope.current_level);
                     })
@@ -420,6 +430,7 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
                         $scope.isOk = null
                     });
                 }, 800)
+                $("#result2").val('');
             }
         }, 500)
     })
@@ -434,7 +445,7 @@ app.controller("practice_lvl_result_ctrl", ($scope, $rootScope) => {
     $rootScope.all_points = $rootScope.points + $rootScope.total_points;
     getLevel(points, $rootScope.all_points);
     $rootScope.for_next_lvl = for_next_lvl;
-    if ($rootScope.current_progress < 10) {
+    if ($rootScope.current_progress < $rootScope.count_operations) {
         $rootScope.points = 0;
     } else {
         storage.setItem('points', $rootScope.all_points);
@@ -450,7 +461,7 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
     $('#audio_button').click(() => {
         $('#a_range').val(av_a * 100);
         if (fon_audio.paused) {
-            fon_audio.play().catch(() => {});
+            fon_audio.play().catch(() => {});   
         } else {
             $('#a_range').val(0);
             fon_audio.pause();
@@ -485,7 +496,7 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
     });
 });
 app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
-    if ($rootScope.current_progress < 10) {
+    if ($rootScope.current_progress < $rootScope.count_operations) {
         console.log('LOSE');
         if ($rootScope.earn_points == undefined || $rootScope.earn_points != 0) {
             $rootScope.earn_points = 0;
@@ -504,7 +515,7 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
         if ($rootScope.time_left_stor == undefined) {
             $rootScope.time_left_stor = 0;
         }
-        $rootScope.points = Math.round(Number((($rootScope.current_level * 2) + $rootScope.time_left_stor / 10)) / 2);
+        $rootScope.points = Math.round(Number((($rootScope.current_level * 2) + $rootScope.time_left_stor / $rootScope.count_operations)) / 2);
         p = $rootScope.points;
         storage.setItem('earn_points', p);
         $rootScope.earn_points = storage.getItem('earn_points')
@@ -595,18 +606,18 @@ var getLevel = (points, all_points) => {
     var maxLevel = levels.length;
     var i;
     for (i = 0; i < maxLevel; i++) {
-        if (levels[i] > points) return i;
-        for_next_lvl = levels[i + 1] - all_points;
-        if (for_next_lvl < levels[i]) {
-            console.log('for_next_lvl < levels[i]')
-            console.log(levels[i])
-        } else {
-            if (for_next_lvl > levels[i]) {
-                levels[i] = levels[i + 1]
-                console.log(levels[i])
-                console.log('for_next_lvl > levels[i]')
+
+        if (levels[i] > points) {
+
+
+         for_next_lvl = levels[i] - all_points;
+         if (for_next_lvl < 0) {
+i=i+1;
+ for_next_lvl = levels[i] - all_points;
+         }
+            return i;
+   
             }
-        }
     }
     return maxLevel;
 }
