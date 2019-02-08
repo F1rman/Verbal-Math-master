@@ -461,7 +461,7 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
     $('#audio_button').click(() => {
         $('#a_range').val(av_a * 100);
         if (fon_audio.paused) {
-            fon_audio.play().catch(() => {});   
+            fon_audio.play().catch(() => {});
         } else {
             $('#a_range').val(0);
             fon_audio.pause();
@@ -606,18 +606,14 @@ var getLevel = (points, all_points) => {
     var maxLevel = levels.length;
     var i;
     for (i = 0; i < maxLevel; i++) {
-
         if (levels[i] > points) {
-
-
-         for_next_lvl = levels[i] - all_points;
-         if (for_next_lvl < 0) {
-i=i+1;
- for_next_lvl = levels[i] - all_points;
-         }
-            return i;
-   
+            for_next_lvl = levels[i] - all_points;
+            if (for_next_lvl < 0) {
+                i = i + 1;
+                for_next_lvl = levels[i] - all_points;
             }
+            return i;
+        }
     }
     return maxLevel;
 }
