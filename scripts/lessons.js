@@ -100,6 +100,9 @@ app.run(function($rootScope) {
     }, {
         'date': '14:21 08.02.2019',
         'fix': 'Added functional for Campaign. Now showed word wrank - if you rank so small. And fixed some small bugs'
+    }, {
+        'date': '18:03 09.02.2019',
+        'fix': 'Added in settings button "update". Tips of day now better'
     }]
     $rootScope.fix.reverse()
 })
