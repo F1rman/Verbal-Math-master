@@ -151,7 +151,6 @@ app.run(($rootScope) => {
         $rootScope.time_left_stor = w1;
         $rootScope.world_wrank = (((Number(storage.getItem('passlvl')) * loh_rand) / 0.57) - 9999) * -1;
         $rootScope.world_wrank = Number($rootScope.world_wrank.toFixed(0))
-        console.log(typeof($rootScope.world_wrank))
         storage.setItem('world_wrank', $rootScope.world_wrank)
     })
 })

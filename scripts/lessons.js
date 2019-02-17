@@ -103,6 +103,9 @@ app.run(function($rootScope) {
     }, {
         'date': '18:03 09.02.2019',
         'fix': 'Added in settings button "update". Tips of day now better'
+    }, {
+        'date': '12:16 17.02.2019',
+        'fix': 'New Menu!'
     }]
     $rootScope.fix.reverse()
 })

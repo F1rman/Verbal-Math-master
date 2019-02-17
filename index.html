@@ -18,84 +18,96 @@
                     <title>
                         {{langs[language].APPNAME}}
                     </title>
-                </meta>
-            </link>
-        </link>
     </head>
-    <body  ng-view class="page ">
+    <body class="page" ng-view>
         <div id="page">
-            <div class="settings">
-                <a alt="settings" class="settingsimg" href="#!settings" >
-                    <img src="img/settings.svg" alt="">
-                </a>
+
+
+
+
+            <div class="logo_block">
+                <div class="main-text max_width">
+                    <div class="main_text1  vh4_8">
+                        {{langs[language].APPNAME}}
+                        <h2 class="main_text2 vh2_4">
+                             {{langs[language].APPNAME2}}
+                        </h2>
+                    </div>
+                    <div class="settings">
+                        <a alt="settings" class="settingsimg" href="#!settings">
+                             <span class="img_wrapper">
+                            <img alt="" src="img/settings.svg">
+    </span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="main-text">
-                <h1 class="main_text1">
-                    {{langs[language].APPNAME}}
-                </h1>
-                <h2 class="main_text2">
-                    TEACHER
-                </h2>
-            </div>
+
             <div class="menu">
-                <div class="menu1">
-                    <div class="ico1">
-                        <a class="dquize" href="#!compain">
-                              <img class="index_svg" src="img/brain.svg" alt="">
-                        </a>
-                        <p class="text-ico">
-                            {{langs[language].Campaign}}
-                        </p>
+                <a class="main_link max_width" href="#!compain">
+                    <div class="campaign ">
+                        <div class="index_svg_wrapper">
+                            <span class="img_wrapper">
+                        <img alt="" class="index_svg" src="img/brain.svg">
+                    </span>
                     </div>
-                    <div class="vline1">
+                            <p class="text-ico">
+                                {{langs[language].Campaign}}
+                            </p>
                     </div>
-                    <div class="ico2">
-                        <a class="dpractice" href="#!practice">
-                           <img class="index_svg" src="img/arrows.svg" alt="">
-                        </a>
-                        <p class="text-ico">
-                            {{langs[language].Practice}}
-                        </p>
-                    </div>
+                </a>
+                  <a class="main_link max_width " href="#!practice">
+            <div class="practice_menu ">
+              <div class="index_svg_wrapper">
+                <span class="img_wrapper">
+                    <img alt="" class="index_svg" src="img/arrows.svg">
+                </span>
                 </div>
-                <div class="menu2">
-                    <div class="gline">
-                    </div>
-                    <div class="gline">
-                    </div>
-                </div>
-                <div class="menu3">
-                    <div class="ico3">
-                        <a class="dlessons" href="#!lessons">
-                        <img class="index_svg" src="img/manual.svg" alt="">
-                        </a>
-                        <p class="text-ico">
-                            {{langs[language].Lessons}}
-                        </p>
-                    </div>
-                    <div class="vline2">
-                    </div>
-                    <div class="ico4" href="#!info">
-                        <a class="dinfo" href="#!info">
-                            <img class="index_svg" src="img/ai.svg" alt="">
-                        </a>
-                        <p class="text-ico">
-                            {{langs[language].Info}}
-                        </p>
-                    </div>
-                </div>
+                <p class="text-ico">
+                    {{langs[language].Practice}}
+                </p>
             </div>
-            <div class="footer" id="footer">
-                <div class="gradient_line"></div>
-                <div class="tips" ng-controller="tips">
-                    <p class="f1">
-                        {{langs[language].Tipsofaday}}
+            </a>
+             <a class="main_link max_width" href="#!lessons">
+            <div class="lessons_menu ">
+               <div class="index_svg_wrapper">
+                <span class="img_wrapper">
+                    <img alt="" class="index_svg" src="img/manual.svg">
+                </span>
+                </div>
+                <p class="text-ico">
+                    {{langs[language].Lessons}}
+                </p>
+            </div>
+            </a>
+
+           <a class="main_link max_width" href="#!info">
+            <div class="info ">
+                <div class="index_svg_wrapper">
+                    <span class="img_wrapper">
+                    <img alt="" class="index_svg" src="img/ai.svg">
+                </span>
+                </div>
+                <p class="text-ico">
+                    {{langs[language].Info}}
+                </p>
+            </div>
+            </a>
+        </div>
+
+
+
+
+        <div class="footer" id="footer">
+          
+            <div class="tips" ng-controller="tips">
+                <p class="f1">
+                    {{langs[language].Tipsofaday}}
+                </p>
+                <div class="f2 ">
+                    <p class="vh3_6">
+                        {{tips[language][day]}}
                     </p>
-                    <div class="f2 ">
-                        <p class="vh3_6">
-                            {{tips[language][day]}}
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>

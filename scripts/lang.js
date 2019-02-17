@@ -2,11 +2,12 @@ app.run(function($rootScope) {
     $rootScope.ua = 0;
     $rootScope.en = 1;
     $rootScope.ru = 2;
-    $rootScope.vers = '1.4.1';
+    $rootScope.vers = '1.4.2';
     console.log('%c VERBAL MATCH VERSION - ' + $rootScope.vers, 'background: #000; color: #00d2dc; font-size:20px;');
     console.log(storage);
     $rootScope.langs = [{
-        "APPNAME": "VERBAL MATCH",
+        "APPNAME": "Тренер усного підрахунку",
+        "APPNAME2":"Прокачка мозга",
         "UA": "UKRAINE",
         "Practice": "Практика",
         "Campaign": "Компанія",
@@ -50,7 +51,8 @@ app.run(function($rootScope) {
         "": "",
         "": "",
     }, {
-        "APPNAME": "VERBAL MATCH",
+        "APPNAME": "Mental Math Trainer",
+        "APPNAME2":"Brain Workout",
         "EN": "ENGLISH",
         "Practice": "Practice",
         "Campaign": "Campaign",
@@ -92,7 +94,8 @@ app.run(function($rootScope) {
         "": "",
         "": "",
     }, {
-        "APPNAME": "VERBAL MATCH",
+        "APPNAME": "Тренер устного подсчета",
+        "APPNAME2":"Прокачка мозга",
         "RU": "RUSSIAN",
         "Practice": "Практика",
         "Campaign": "Компания",

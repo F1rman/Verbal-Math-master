@@ -64,11 +64,32 @@
  .green {
      color: #14dea8;
  }
+ .max_width{
+     max-width: 500px;
+ }
  #page {
      display: flex;
      flex-flow: column;
      height: 100vh;
      justify-content: space-between;
+ }
+  #page .menu {
+         display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+        border-bottom: 4px solid #00b8e7;
+            border-radius: 25px;
+ }
+
+ .main_link{
+    display: flex;
+    margin: 0 auto;
+ }
+
+ .main_link:last-child{
+     margin-top: 20px;
+         margin-bottom: 10px;
  }
  /*main menu*/
 
@@ -86,74 +107,118 @@
  .main_text1 {
      color: #00d2dc;
      font-weight: bold;
+         width: 200px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    
+    text-align: center;
  }
  .main_text2 {
      color: #00ade9;
      font-weight: bold;
+         text-align: center;
+    display: flex;
+    width: 160px;
+    border-radius: 20px;
+    border: 4px solid #00d5db;
  }
  .flex_res>img {
      padding: 0 5px;
  }
- .dpractice, .dinfo, .dquize, .dlessons {
-     display: flex;
-     width: 15vh;
-     height: 15vh;
- }
+
  .text-ico {
      color: #00d2dc;
-     font-size: 2.5vh;
+     font-size: 5vh;
      font-weight: bold;
  }
  .main-text {
-     display: block;
-     margin: 10px 0;
-     float: left;
-     width: 100%;
+       display: flex;
+    margin: 10px 0;
+    flex-flow: row;
+    float: left;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    height: 30vh;
  }
- .main-text h1, .main-text h2 {
-     text-align: center;
+
+.logo_block{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-flow: row-reverse;
+         width: 80vw;
+    margin: 0 auto;
+}
+
+.campaign, .practice_menu , .info, .lessons_menu{
+        display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80vw;
+   border-width: 4px;
+    border-style: solid;
+    border-color: rgb(0, 213, 219);
+    border-image: initial;
+    border-radius: 20px;
+    flex-flow: row-reverse;
+    margin: 4% auto;
+}
+.practice_menu, .info{
+     flex-flow: row;
+}
+
+.settingsimg{
+
+    height: 130%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.settingsimg .img_wrapper{
+     width: 10vh;
+    height: 10vh;
+}
+.settingsimg .img_wrapper img{
+     width: 8vh;
+    height: 8vh;
+}
+
+.practice{
+      display: flex;
+     border:4px solid #00d5db;
+     border-radius: 20px;
+     align-items: center;
+     justify-content: center;
+
+}
+.main-text h2 {
+        text-align: center;
+    display: flex;
+    width: 160px;
+    justify-content: center;
+    flex-flow: column;
+        box-sizing: border-box;
+    
  }
- .vline1 {
-     width: 5px;
-     background: linear-gradient(to bottom, #00edd1 0%, #00aeea 100%);
-     display: inline-block;
-     margin: 0 15px;
- }
- .vline2 {
-     width: 5px;
-     background: linear-gradient(to top, #00edd1 0%, #00aeea 100%);
-     display: inline-block;
-     margin: 0 15px;
- }
- .gline:first-child {
-     background: linear-gradient(to right, #00edd1 0%, #00aeea 100%);
-     height: 5px;
-     width: 15vh;
-     margin: 20px;
-     display: inline-block;
- }
- .gline:nth-child(2) {
-     background: linear-gradient(to left, #00edd1 0%, #00aeea 100%);
-     height: 5px;
-     width: 15vh;
-     margin: 20px;
-     display: inline-block;
- }
- .menu1, .menu2, .menu3 {
+
+  .settings {
      display: flex;
      justify-content: center;
- }
- #page .menu {
-     display: flex;
-     flex-flow: column;
-     padding: 50px;
- }
- .ico1, .ico2, .ico3, .ico4 {
-     display: flex;
-     text-align: center;
-     flex-flow: column;
      align-items: center;
+
  }
+ .main-text .settings img, .settings{
+     width: 12vh;
+ }
+ 
+
+
+
  /*inputs*/
 
  input[type="checkbox"] {
@@ -174,9 +239,11 @@
      padding: 10px;
  }
  /*footer*/
-
+#footer{
+         width: 80vw;
+         margin: 0 auto;
+}
  .footer .f1 {
-     background: #22292f;
      padding: 5px;
      font-size: 3vh;
      display: block;
@@ -185,7 +252,6 @@
      font-weight: bold;
  }
  .footer .f2 {
-     background: #22292f;
      padding: 5px;
      text-align: center;
      color: #00ade9;
@@ -312,16 +378,8 @@
  }
  /*settings*/
 
- .settingsimg img {
-     display: flex;
-     width: 40px;
-     height: 40px;
- }
- .settings {
-     display: flex;
-     justify-content: flex-end;
-     margin: 15px;
- }
+
+
  /*Quize*/
 
  .world-rank, .current-level {
@@ -597,6 +655,9 @@
  }
  .btn svg:hover {
      fill: #42b33b;
+ }
+ .vh5_10 {
+     font-size: 5vh;
  }
  .vh4_8 {
      font-size: 4vh;
@@ -1099,7 +1160,7 @@
      padding: 20px;
      box-sizing: border-box;
  }
- .flex img {}
+
  .flex {
      display: flex;
      width: 100%;
@@ -1110,9 +1171,28 @@
      justify-content: center;
      padding: 20px;
  }
- .index_svg {
+ .img_wrapper {
      width: 14vh;
      height: 14vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: #313b44;
+     border-radius: 50%;
+
+ }
+
+ .img_wrapper .index_svg{
+     width: 10vh;
+     height: 10vh;
+ }
+ .index_svg_wrapper{
+    height: 130%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0);
+    padding: 10px;
  }
  .practice_flex {
      height: calc(92vh - 40px);
@@ -1157,6 +1237,26 @@
      font-weight: bold;
  }
  @media screen and (orientation:landscape) and (max-height: 700px) {
+ .img_wrapper {
+     width: 28vh;
+     height: 28vh;
+ }
+    .settingsimg .img_wrapper{
+     width: 20vh;
+    height: 20vh;
+}
+.settingsimg .img_wrapper img{
+     width: 16vh;
+    height: 16vh;
+}
+
+ .img_wrapper .index_svg{
+     width: 20vh;
+     height: 20vh;
+ }
+     .vh5_10 {
+     font-size: 5vh;
+ }
      .practice_flex {
          height: calc(45.5vh - 20px);
      }
@@ -1196,10 +1296,7 @@
          height: 8vh;
          width: 8vh;
      }
-     .dpractice, .dinfo, .dquize, .dlessons {
-         width: 30vh;
-         height: 30vh;
-     }
+    
      h1 {
          font-size: 8vh;
      }
@@ -1209,14 +1306,9 @@
      .footer .f1, .footer .f2 {
          font-size: 4vh;
      }
-     .vline {
-         height: 37vh;
-     }
-     .menu2 .gline {
-         width: 15vw;
-     }
+  
      .text-ico {
-         font-size: 5vh;
+         font-size: 10vh;
      }
  }
  .info_verblike {
