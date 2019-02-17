@@ -130,6 +130,7 @@
  .text-ico {
      color: #00d2dc;
      font-size: 5vh;
+     max-width: 290px;
      font-weight: bold;
  }
  .main-text {
@@ -1304,7 +1305,7 @@
          font-size: 6vh;
      }
      .footer .f1, .footer .f2 {
-         font-size: 4vh;
+         font-size: 6vh;
      }
   
      .text-ico {
@@ -1333,3 +1334,10 @@
      width: 60px;
      height: 60px;
  }
+
+
+@media only screen and (max-width: 500px) {
+  .text-ico{
+    font-size: 6vw;
+  }
+}

@@ -654,3 +654,6 @@ function playAudio(audio, vl, lp) {
 var Kratne = (x, y) => {
     return Math.ceil(x / y) * y;
 }
+function goBack() {
+  window.history.back();
+}
