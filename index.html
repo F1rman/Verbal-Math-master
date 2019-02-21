@@ -27,21 +27,23 @@
 
             <div class="logo_block">
                 <div class="main-text max_width">
-                    <div class="main_text1  vh4_8">
+                    <div class="main_text1  vh5_10">
                         {{langs[language].APPNAME}}
-                        <h2 class="main_text2 vh2_4">
+                        
+                    </div>
+
+                    
+                </div>
+
+            </div>
+            <div class="head_main_text">
+                
+            <h2 class="main_text2 vh2_4">
                              {{langs[language].APPNAME2}}
                         </h2>
-                    </div>
-                    <div class="settings">
-                        <a alt="settings" class="settingsimg" href="#!settings">
-                             <span class="img_wrapper">
-                            <img alt="" src="img/settings.svg">
-    </span>
-                        </a>
-                    </div>
-                </div>
+
             </div>
+         
 
             <div class="menu">
                 <a class="main_link max_width" href="#!compain">
@@ -93,8 +95,24 @@
                 </p>
             </div>
             </a>
+             <a class="main_link max_width" href="#!settings">
+            <div class="lessons_menu settings_menu">
+               <div class="index_svg_wrapper">
+                <span class="img_wrapper">
+                    <img alt="" class="index_svg" src="img/settings.svg">
+                </span>
+                </div>
+                <p class="text-ico">
+                    {{langs[language].Settings}}
+                </p>
+            </div>
+            </a>
         </div>
-
+   <div class="settings">
+                        <a alt="settings" class="settingsimg" href="#!settings">
+                            
+                        </a>
+                    </div>
 
 
 
@@ -105,8 +123,8 @@
                     {{langs[language].Tipsofaday}}
                 </p>
                 <div class="f2 ">
-                    <p class="vh3_6">
-                        {{tips[language][day]}}
+                    <p class="vh2_4">
+                        "{{tips[language][day]}}""
                     </p>
                 </div>
             </div>

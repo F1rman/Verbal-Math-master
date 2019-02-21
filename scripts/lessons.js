@@ -106,6 +106,10 @@ app.run(function($rootScope) {
     }, {
         'date': '12:16 17.02.2019',
         'fix': 'New Menu!'
+    }
+    , {
+        'date': '12:27 21.02.2019',
+        'fix': 'Improved Menu!, and fixed some bugs. Some design changes'
     }]
     $rootScope.fix.reverse()
 })

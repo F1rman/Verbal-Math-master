@@ -2,15 +2,17 @@
     <a onclick="goBack()">
         <img class="prev" src="img/next.png"/>
     </a>
-    <h1>
+    <h1 class="vh5_10">
         {{langs[language].Campaign}}
     </h1>
 </div>
-<div class="layout-positioner quize-positioner" >
+
+<div class="layout-positioner quize-positioner menu" >
     <div class="status">
         <div class="world-rank">
             <div class="wrank white bold vh4_8">
-                <h5>{{langs[language].Worldrank}}</h5>
+               <img class="w_rank" src="img/w_rank.png" alt="">
+               {{langs[language].Worldrank}}
             </div>
             <div ng-if="world_wrank < 9000" class="white bottom-rank vh3_6">
                 {{world_wrank}}
@@ -21,7 +23,8 @@
         </div>
         <div class="current-level">
             <div class="wrank white bold vh4_8">
-                <h5>{{langs[language].Localrank}}</h5>
+                <img class="l_rank" src="img/l_rank.png" alt="">
+                {{langs[language].Localrank}}
             </div>
             <div class="white bottom-rank vh3_6" >
             	{{langs[language].Yourlevelis}}

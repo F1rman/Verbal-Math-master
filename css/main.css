@@ -46,7 +46,6 @@
      line-height: 120%;
  }
  img {
-     cursor: pointer;
      display: block;
      -khtml-user-select: none;
      -o-user-select: none;
@@ -73,24 +72,33 @@
      height: 100vh;
      justify-content: space-between;
  }
-  #page .menu {
-         display: flex;
+  .menu {
+      display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-        border-bottom: 4px solid #00b8e7;
-            border-radius: 25px;
+    border-bottom: 4px solid #00b8e7;
+    border-top: 4px solid #00b8e7;
+    border-radius: 25px;
+    padding: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
  }
 
  .main_link{
     display: flex;
-    margin: 0 auto;
- }
+justify-content: center;
+align-items: center;
+position: relative;
+             margin: 0 auto;
+             left: -5%;
 
- .main_link:last-child{
-     margin-top: 20px;
-         margin-bottom: 10px;
  }
+.main_link:nth-child(even){
+ left: 5%;
+}
  /*main menu*/
 
  .padding5 {
@@ -105,28 +113,42 @@
      box-sizing: border-box;
  }
  .main_text1 {
-     color: #00d2dc;
-     font-weight: bold;
-         width: 200px;
+      color: #00d2dc;
+    font-weight: bold;
+    width: 100%;
     display: flex;
-    flex-flow: column;
-    align-items: center;
-    
-    text-align: center;
+    flex-flow: row;
+    align-items: flex-start;
+    letter-spacing: -1px;
+    white-space: nowrap;
+        justify-content: center;
  }
  .main_text2 {
-     color: #00ade9;
-     font-weight: bold;
-         text-align: center;
+      color: #00ade9;
+    font-weight: bold;
+    text-align: center;
     display: flex;
-    width: 160px;
-    border-radius: 20px;
-    border: 4px solid #00d5db;
+    max-width: 250px;
+    width: 50%;
+    align-items: flex-start;
+    margin-bottom: -1vh;
+    height: 7vh;
+    border-radius: 1000px;
+    border-top: 4px solid #00d5db;
  }
  .flex_res>img {
      padding: 0 5px;
  }
+.w_rank, .l_rank{
+    width: 10vh;
 
+}
+.wrank{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
  .text-ico {
      color: #00d2dc;
      font-size: 5vh;
@@ -142,9 +164,13 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
-    height: 30vh;
+    height: 20vh;
  }
-
+.head_main_text{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
 .logo_block{
      display: flex;
      align-items: center;
@@ -155,17 +181,18 @@
 }
 
 .campaign, .practice_menu , .info, .lessons_menu{
-        display: flex;
+       display: flex;
     align-items: center;
     justify-content: space-around;
     width: 80vw;
-   border-width: 4px;
+    border-width: 1px;
     border-style: solid;
     border-color: rgb(0, 213, 219);
     border-image: initial;
     border-radius: 20px;
     flex-flow: row-reverse;
-    margin: 4% auto;
+    margin: 13% auto;
+    height: 10vh;
 }
 .practice_menu, .info{
      flex-flow: row;
@@ -358,8 +385,7 @@
  }
  .quize-positioner {
      width: 100%;
-     max-width: 500px;
-     padding: 20px;
+     max-width: 700px;
      box-sizing: border-box;
  }
  .txt_left {
@@ -393,26 +419,17 @@
      margin: 5px;
      max-width: 195px
  }
- .wrank {
-     background: #252e35;
- }
- .wrank h5 {
-     margin: 0;
-     padding: 15px 0px;
-     box-sizing: border-box;
-     color: #fff;
-     font-weight: bolder;
-     text-shadow: 0 0 10px #00ade9;
- }
+ 
  .bottom-rank {
-     background: #12171c;
-     display: block;
-     padding: 8px;
-     font-weight: bold;
-     height: 60px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
+    display: block;
+    padding: 8px;
+    border-bottom: 1px solid #00b8e7;
+    font-weight: bold;
+    border-radius: 25px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
  .status {
      margin: 5px 0 30px 0;
@@ -462,6 +479,9 @@
      justify-content: space-between;
      text-align: left;
      color: #fff;
+ }
+ .lvlcont p {
+    width: 80%;
  }
  /*Lessons*/
 
@@ -965,9 +985,7 @@
      animation: slideInDown .5s both ease;
  }
  .page.ng-enter {
-     -webkit-animation: slideInUp .5s both ease;
-     -moz-animation: slideInUp .5s both ease;
-     animation: slideInUp .5s both ease;
+  
  }
  /* slide in from the bottom */
 
@@ -1173,16 +1191,44 @@
      padding: 20px;
  }
  .img_wrapper {
-     width: 14vh;
-     height: 14vh;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     background: #313b44;
-     border-radius: 50%;
+        width: 14vh;
+    height: 13.8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(19,24,28,1) 0%,rgba(23,29,34,1) 100%);
+    border-radius: 50%;
+    border-bottom: 1px solid #00d5db;
+    border-top: 1px solid #00d5db;
+    border-left: 1px solid rgb(19,24,28);
+    border-right: 1px solid rgb(19,24,28);
 
  }
-
+.campaign .img_wrapper{
+        background: linear-gradient(to bottom, rgba(19,24,28,1) 0%,rgba(23,29,34,1) 100%);
+            border-left: 1px solid rgb(19,24,28);
+    border-right: 1px solid rgb(19,24,28);
+}
+.practice_menu .img_wrapper{
+         background: linear-gradient(to bottom, rgba(24,30,35,1) 0%,rgba(29,36,41,1) 100%);
+    border-left: 1px solid rgb(25, 32, 37);
+    border-right: 1px solid rgb(25, 32, 37);
+}
+.lessons_menu .img_wrapper{
+           background: linear-gradient(to bottom, rgba(28,35,41,1) 0%,rgba(34,41,48,1) 100%);
+    border-left: 1px solid rgb(30, 37, 43);
+    border-right: 1px solid rgb(30, 37, 43);
+}
+.info .img_wrapper{
+        background: linear-gradient(to bottom, rgba(34,41,48,1) 0%,rgba(38,47,54,1) 100%);
+    border-left: 1px solid rgb(35, 43, 50);
+    border-right: 1px solid rgb(35, 43, 50);
+}
+.settings_menu .img_wrapper{
+           background: linear-gradient(to bottom, rgb(39, 48, 55) 0%,rgb(44, 54, 62) 100%);
+    border-left: 1px solid rgb(42, 51, 58);
+    border-right: 1px solid rgb(42, 51, 58);
+}
  .img_wrapper .index_svg{
      width: 10vh;
      height: 10vh;
@@ -1198,7 +1244,7 @@
  .practice_flex {
      height: calc(92vh - 40px);
  }
- .practice_h2 {}
+
  .column {
      display: flex;
      flex-flow: column;
@@ -1238,6 +1284,18 @@
      font-weight: bold;
  }
  @media screen and (orientation:landscape) and (max-height: 700px) {
+
+    .w_rank, .l_rank{
+    width: 20vh;
+
+}
+.main_text2{
+        margin-bottom: -2vh;
+    height: 14vh;
+}
+    .campaign, .practice_menu, .info, .lessons_menu{
+        height: 20vh;
+    }
  .img_wrapper {
      width: 28vh;
      height: 28vh;
@@ -1256,7 +1314,7 @@
      height: 20vh;
  }
      .vh5_10 {
-     font-size: 5vh;
+     font-size: 10vh;
  }
      .practice_flex {
          height: calc(45.5vh - 20px);
