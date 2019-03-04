@@ -13,6 +13,9 @@
  ::selection {
      background: none;
  }
+ *{
+    -webkit-tap-highlight-color: transparent;
+}
  html {
      background: linear-gradient(to bottom, #0a0e11, #313b44) no-repeat;
      background-attachment: fixed;
@@ -22,6 +25,7 @@
  body {
      height: 100vh;
      margin: 0;
+     position: relative;
  }
  a {
      text-decoration: none;

@@ -40,7 +40,7 @@ if (storage.getItem('loh_rand') == undefined) {
 var app = angular.module("Routing", ["ngRoute", 'ngAnimate']);
 //Routing
 app.config(($routeProvider) => {
-    $routeProvider.when("/home", {
+    $routeProvider.when("/", {
         templateUrl: "index.html",
     }).when("/compain", {
         templateUrl: "compain.html",
@@ -65,7 +65,7 @@ app.config(($routeProvider) => {
     }).when("/lessons-level/:level", {
         templateUrl: "lessons-level.html"
     }).otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
     });
 });
 var firsload = true;
