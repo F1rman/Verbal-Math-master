@@ -589,8 +589,8 @@ text-align: right;
  }
  .result {
      text-align: center;
-     width: 200px;
-     max-width: 200px;
+     width: 100%;
+     max-width: 500px;
      box-sizing: border-box;
      background: rgba(0, 0, 0, 0.5);
      border: none;
@@ -1113,6 +1113,7 @@ text-align: right;
  .vidlik_wrapper {
      display: flex;
      flex-flow: column;
+     z-index: 2;
      top: 0;
      left: 0;
      justify-content: center;
@@ -1202,11 +1203,36 @@ text-align: right;
      width: 100%;
      justify-content: center;
  }
+ .input_hint{
+   height: 15vh;
+   position: relative;
+ }
+ .compain-wrapper #hint{
+   position: absolute;
+ width: 30%;
+ right: 0;
+ box-sizing: border-box;
+ height: 100%;
+ background: black;
+ }
  #hint {
      display: flex;
      justify-content: center;
      padding: 20px;
  }
+.compain-wrapper #hint .svg_help{
+  height: 50%;
+width: 100%;
+position: absolute;
+right: 0;
+top: 5%;
+}
+.need_help>span{
+  color: white;
+position: absolute;
+bottom: 5%;
+right: 5%;
+}
  .img_wrapper {
         width: 14vh;
     height: 13.8vh;

@@ -70,6 +70,10 @@ app.config(($routeProvider) => {
 });
 var firsload = true;
 app.run(($rootScope) => {
+  console.log(points);
+  if ($rootScope.all_points == undefined) {
+    $rootScope.all_points = points;
+  }
     if (volume_stor_audio == undefined || volume_stor_audio == 0 || volume_stor_sounds == undefined || volume_stor_sounds == 0) {
         $rootScope.all_volume_audio = 50;
         $rootScope.all_volume_sounds = 50;
@@ -96,6 +100,7 @@ app.run(($rootScope) => {
     fon_audio.loop = 'true';
     fon_audio.volume = volume_stor_audio / 100;
     // Local Storage in to Scope
+    $rootScope.null = '';
     $rootScope.total_points = points;
     $rootScope.language = language_stor;
     $rootScope.lvl = getLevel($rootScope.total_points);
@@ -218,12 +223,27 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
         }
         $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
         console.log($rootScope.define_result.toString().length)
-        console.log($rootScope.define_result, " RESULT")
+        console.log($rootScope.define_result, " RESULT");
+        $scope.hint_result ="";
+        $scope.show_hint = function() {
+          $scope.hint_cost =10 + $rootScope.current_level;
+          if ($rootScope.all_points >= $scope.hint_cost) {
+            $rootScope.all_points = $rootScope.all_points - $scope.hint_cost;
+            $scope.hint_result = $rootScope.define_result;
+            storage.setItem('points',$rootScope.all_points)
+            $('#result3').focus();
+          }
+          else {
+              $scope.hint_result = $rootScope.langs[$rootScope.language].NotEnoughPoints;
+              $('#result3').focus();
+          }
+        }
     }
     changeNSR_compain();
     var a1 = $rootScope.number[0];
     var a2 = $rootScope.number[1];
     check_result.keyup((el) => {
+
         clearTimeout(clearIfPress);
         clearIfPress = setTimeout(() => {
             if ($scope.calc_result_compain == $rootScope.define_result) {
@@ -296,7 +316,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
             }, 1000);
         } else {
             $rootScope.$apply(() => {
-                $location.path("/result-compain/" + $rootScope.current_level);
+                // $location.path("/result-compain/" + $rootScope.current_level);
             })
             playAudio('wav/win.wav', av_s)
         }

@@ -80,7 +80,7 @@ app.run(function($rootScope) {
         //      "A number that ends in 5 has the form A = 10a + 5, where a has one digit less than A. To find the square A² of A, append 25 to the product a×(a + 1) of a with its successor. For example, compute 115². 115 = 11×10 + 5, so that a = 11. First compute 11×(11 + 1) = 11×12 = 132 (since 3 = 1 + 2). Next, append 25 to the right of 132 to get 13225!",
         //      "Число, оканчивающееся на 5, имеет вид A = 10a + 5, где a на одну цифру меньше A. Чтобы найти квадрат A² в A, добавьте 25 к произведению a × (a + 1) of a с его преемником. Например, вычислите 115². 115 = 11 × 10 + 5, так что a = 11. Сначала вычислите 11 × (11 + 1) = 11 × 12 = 132 (так как 3 = 1 + 2). Затем добавьте 25 справа от 132, чтобы получить 13225!",
         //      ],
-        // }, 
+        // },
     }]
     $rootScope.fix = [{
         'date': '07:07 03.02.2019',
@@ -110,6 +110,10 @@ app.run(function($rootScope) {
     , {
         'date': '12:27 21.02.2019',
         'fix': 'Improved Menu!, and fixed some bugs. Some design changes'
-    }]
+    },{
+        'date': '12:00 18.03.2019',
+        'fix': 'Added in home page your lvl and points, fixed settings'
+    },
+  ]
     $rootScope.fix.reverse()
 })

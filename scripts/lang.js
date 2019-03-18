@@ -2,7 +2,7 @@ app.run(function($rootScope) {
     $rootScope.ua = 0;
     $rootScope.en = 1;
     $rootScope.ru = 2;
-    $rootScope.vers = '1.4.2';
+    $rootScope.vers = '1.5.0';
     console.log('%c VERBAL MATCH VERSION - ' + $rootScope.vers, 'background: #000; color: #00d2dc; font-size:20px;');
     console.log(storage);
     $rootScope.langs = [{
@@ -42,7 +42,7 @@ app.run(function($rootScope) {
         "Sounds": "Звуки",
         "Home": "Головна",
         "ISNOTALLOWED": "НЕ ДОСТУПНИЙ",
-        "": "",
+        "NotEnoughPoints": "Не достатньо очків",
         "": "",
         "": "",
         "": "",
@@ -87,7 +87,7 @@ app.run(function($rootScope) {
         "Sounds": "Sounds",
         "Home": "Home",
         "ISNOTALLOWED": "IS NOT ALLOWED",
-        "": "",
+        "NotEnoughPoints": "Not enough points",
         "": "",
         "": "",
         "": "",
@@ -130,7 +130,7 @@ app.run(function($rootScope) {
         "Sounds": "Звуки",
         "Home": "Главная",
         "ISNOTALLOWED": "НЕ ДОПУСКАЕТСЯ",
-        "": "",
+        "NotEnoughPoints": "Недостаточно очков",
         "": "",
         "": "",
         "": "",
