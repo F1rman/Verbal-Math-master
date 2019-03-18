@@ -27,12 +27,12 @@
                 {{langs[language].Localrank}}
             </div>
             <div class="white bottom-rank vh3_6" >
-            	{{langs[language].Yourlevelis}}
-                {{lvl}}
+            	{{langs[language].Allpoints}}
+                {{total_points}}
             </div>
         </div>
     </div>
-   
+
     <div class="array_of_levels" ng-init="passlvl">
     	 <h2 ng-if='passlvl != 0'>{{langs[language].PassedLevels}}</h2>
     	<a  class="levels" href="#!compain-lvl/{{$index+1}}"  ng-repeat="x in levels | limitTo:passlvl" >
@@ -42,7 +42,7 @@
             <div class="lvlcont">
             	 {{langs[language].Level}}  {{levels[$index].options[7]}}/{{levels[$index].options[7] }}
             </div>
-            
+
         </a>
         <div ng-if="passlvl < levels.length" class="current_level">
 		<h2> {{langs[language].CurrentLevel}}</h2>
@@ -54,12 +54,12 @@
             	  {{langs[language].Levelprogress}} {{0}}/{{levels[passlvl].options[7]}}
             </div>
  			</a>
-        
+
  		</div>
         <div ng-if="passlvl == levels.length" class="new_lvl">
-            
+
             <h2>{{langs[language].Newlevelsappearslater}}</h2>
         </div>
-       
+
     </div>
 </div>

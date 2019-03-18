@@ -100,8 +100,22 @@ position: relative;
              left: -5%;
 
  }
+ .points_home,.lvl_home{
+   z-index: 2;
+color: white;
+position: absolute;
+right: 0;
+top: 0;
+width: 100px;
+height: 35px;
+text-align: right;
+ }
 .main_link:nth-child(even){
  left: 5%;
+}
+.lvl_home{
+  left: 0;
+  text-align: left;
 }
  /*main menu*/
 
@@ -235,7 +249,7 @@ position: relative;
     justify-content: center;
     flex-flow: column;
         box-sizing: border-box;
-    
+
  }
 
   .settings {
@@ -247,7 +261,7 @@ position: relative;
  .main-text .settings img, .settings{
      width: 12vh;
  }
- 
+
 
 
 
@@ -423,7 +437,7 @@ position: relative;
      margin: 5px;
      max-width: 195px
  }
- 
+
  .bottom-rank {
     display: block;
     padding: 8px;
@@ -741,12 +755,11 @@ position: relative;
      display: flex;
      flex-flow: row wrap;
      align-items: center;
-     width: 80%;
+     width: 100%;
      justify-content: center;
      margin: 0 auto;
      max-width: 400px;
      background: #252e35;
-     padding: 20px;
      box-sizing: border-box;
      color: #fff;
  }
@@ -786,7 +799,7 @@ position: relative;
  .audio_settings {
      display: flex;
      flex-flow: column;
-     width: 80%;
+     width: 100%;
      max-width: 400px;
      margin: 0 auto;
  }
@@ -989,7 +1002,7 @@ position: relative;
      animation: slideInDown .5s both ease;
  }
  .page.ng-enter {
-  
+
  }
  /* slide in from the bottom */
 
@@ -1280,7 +1293,7 @@ position: relative;
      color: #fff;
      display: flex;
      justify-content: center;
-     width: 80%;
+     width: 100%;
      max-width: 400px;
      margin: 20px auto;
      padding: 20px;
@@ -1359,7 +1372,7 @@ position: relative;
          height: 8vh;
          width: 8vh;
      }
-    
+
      h1 {
          font-size: 8vh;
      }
@@ -1369,7 +1382,7 @@ position: relative;
      .footer .f1, .footer .f2 {
          font-size: 6vh;
      }
-  
+
      .text-ico {
          font-size: 10vh;
      }

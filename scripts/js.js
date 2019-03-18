@@ -155,7 +155,7 @@ app.run(($rootScope) => {
     })
 })
 app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
-    // змінні  
+    // змінні
     var time_total = $rootScope.levels[current_level - 1].options[5];
     var check_result = $("#result3");
     lvl_kratne = $rootScope.levels[current_level - 1].options[6];
@@ -186,7 +186,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
         }
     }
     // Функція рандомить символ з левела
-    // Функція рандомить числа 
+    // Функція рандомить числа
     // Функція розраховує результат
     var changeNSR_compain = () => {
         lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
@@ -577,7 +577,7 @@ app.controller("tips", ($scope) => {
          'Все рассуждения геометра заканчиваются словами: «Что и требовалось доказать». Этой формулой полезно заканчивать и все рассуждения как устные, так и письменные']
     ];
     $scope.day = d.getDay();
-    
+
 })
 // Match functions
 //addition
