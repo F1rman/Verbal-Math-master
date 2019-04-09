@@ -5,6 +5,38 @@ app.run(function($rootScope) {
     $rootScope.vers = '1.5.0';
     console.log('%c VERBAL MATCH VERSION - ' + $rootScope.vers, 'background: #000; color: #00d2dc; font-size:20px;');
     console.log(storage);
+
+    $rootScope.Campaign_m = {
+    'name':['Компанія','Campaign','Компания'],
+    'ico':'brain',
+    'href': '#!compain'
+    }
+    $rootScope.Practice_m = {
+      'name':['Практика','Practice','Практика'],
+      'ico':'arrows',
+      'href': '#!practice'
+    }
+    $rootScope.Lessons_m = {
+      'name':['Уроки','Lesson','Уроки'],
+      'ico':'manual',
+      'href': '#!lessons'
+    }
+    $rootScope.Info_m = {
+      'name':['Інформація','Info','Информация'],
+      'ico':'ai',
+      'href': '#!info'
+    }
+    $rootScope.Settings_m = {
+      'name':['Налаштування','Settings','Настройки'],
+      'ico':'settings',
+      'href': '#!settings'
+    }
+    $rootScope.upgradebrain_m = {
+      'name':['Прокачати Мозг','Upgrade Brain ','Прокачать Мозг'],
+      'ico':'server',
+      'href': '#!upgrade'
+    }
+    $rootScope.menu = [$rootScope.Campaign_m, $rootScope.Practice_m,  $rootScope.Lessons_m, $rootScope.Info_m, $rootScope.upgradebrain_m, $rootScope.Settings_m]
     $rootScope.langs = [{
         "APPNAME": "Тренер усного підрахунку",
         "APPNAME2":"Прокачка мозга",
@@ -43,7 +75,7 @@ app.run(function($rootScope) {
         "Home": "Головна",
         "ISNOTALLOWED": "НЕ ДОСТУПНИЙ",
         "NotEnoughPoints": "Не достатньо очків",
-        "": "",
+        "ALLlevels": "Всі рівні",
         "": "",
         "": "",
         "": "",
@@ -88,7 +120,7 @@ app.run(function($rootScope) {
         "Home": "Home",
         "ISNOTALLOWED": "IS NOT ALLOWED",
         "NotEnoughPoints": "Not enough points",
-        "": "",
+        "ALLlevels": "All levels",
         "": "",
         "": "",
         "": "",
@@ -131,7 +163,7 @@ app.run(function($rootScope) {
         "Home": "Главная",
         "ISNOTALLOWED": "НЕ ДОПУСКАЕТСЯ",
         "NotEnoughPoints": "Недостаточно очков",
-        "": "",
+        "ALLlevels": "Все уровни",
         "": "",
         "": "",
         "": "",

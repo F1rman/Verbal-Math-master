@@ -1,21 +1,11 @@
 <div class="practice-wrapper" ng-controller="practice_lvl_ctrl">
-    <div class="header">
-        <a onclick="goBack()">
-            <img class="prev" src="img/next.png"/>
-        </a>
-        <h1 class="vh4_8">
-            {{langs[language].Level}} {{current_level}} ({{langs[language].Practice}})
-        </h1>
-    </div>
-    <div class="practice_flex">
-        <div class="name_lvl_progress">
-            <h2 class="column vh4_8">
+<div class="menu">
+            <h2 class="column header_lesson">
                 {{levels[current_level-1].name[language]}}
                 <br>
                <div class="vh2_4"> {{current_progress}}/{{count_operations}}</div>
             </h2>
-                
-        </div>
+
         <div id="num_equalPractice">
             <div class="num" id="number_calc">
                 {{number[0]}} {{simvol}} {{number[1]}}
@@ -45,9 +35,6 @@
                 <div class="" ng-show="isOk == null">
                 </div>
             </div>
-            <!-- Button to next lvl -->
         </div>
-        <div class="flex-center"></div>
-        <div class="flex-center"></div>
     </div>
 </div>

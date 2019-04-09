@@ -1,26 +1,14 @@
-<div class="header">
-    <a onclick="goBack()">
-        <img class="prev" src="img/next.png"/>
-    </a>
-    <h1 class="vh5_10">
-        {{langs[language].Lesson}}
-    </h1>
-</div>
 <div class="lessons_wrapper menu">
-
-<div class="levels" ng-repeat="x in lesson">
+  <div class="levels btn_hover" ng-repeat="x in lesson">
     <div class="leftblue ">
-        {{$index+1}}
+      {{$index+1}}
     </div>
-    <a href="#!lessons-level/{{$index+1}}">   <div class="lvlcont">
-        <p style="    white-space: pre-wrap;">{{lesson[$index+1].title[language]}}</p>
-       
-    <div class="spoiler" >
-    </div>
+    <a href="#!lessons-level/{{$index+1}}" class="lvlcont">
+      <div class="h2_wrap_scrool">
+      <h2 ng-hide="width > 260">{{lesson[$index+1].title[language]}}</h2>
+      </div>
+        <img src="img/next.svg" class="finish revers"  alt="">
+    </a>
+  </div>
 
-    </div></a>
-
-   
-
-</div>
 </div>

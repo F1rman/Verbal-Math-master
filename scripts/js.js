@@ -41,7 +41,7 @@ var app = angular.module("Routing", ["ngRoute", 'ngAnimate']);
 //Routing
 app.config(($routeProvider) => {
   $routeProvider.when("/", {
-    templateUrl: "index.html",
+    templateUrl: "home.html",
   }).when("/compain", {
     templateUrl: "compain.html",
   }).when("/practice", {
@@ -62,6 +62,8 @@ app.config(($routeProvider) => {
     templateUrl: "result-practice.html"
   }).when("/denied/:level", {
     templateUrl: "denied.html"
+  }).when("/historys", {
+    templateUrl: "historys.html"
   }).when("/lessons-level/:level", {
     templateUrl: "lessons-level.html"
   }).otherwise({
@@ -110,6 +112,19 @@ app.run(($rootScope) => {
   $rootScope.volume_stor_sounds = volume_stor_sounds;
   $rootScope.volume_stor_audio = volume_stor_audio;
   $rootScope.$on('$routeChangeStart', function(event, current, next, previous, reject) {
+    $rootScope.location = current.$$route.originalPath;
+
+    $rootScope.location = $rootScope.location.slice(1).split(':')[0];
+
+    console.log($rootScope.location);
+    if (/(lvl|denied|level|result)/ig.test($rootScope.location)) {
+      $rootScope.header_show = 'hide';
+    } else {
+      $rootScope.header_show = 'show';
+    }
+
+    console.log($rootScope.header_show);
+
     // ЩОБ НЕ ВКЛЮЧАВСЯ ЗВУК КЛІКУ ПРИ СТАРТІ
     if (firsload != true) {
       playAudio('wav/click2.wav', av_s);
@@ -226,7 +241,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     console.log($rootScope.define_result, " RESULT");
     $scope.hint_result = "";
     $scope.show_hint = function() {
-      $scope.hint_cost = 10 + $rootScope.current_level;
+      $scope.hint_cost = 3 + $rootScope.current_level;
       if ($rootScope.all_points >= $scope.hint_cost) {
         $rootScope.all_points = $rootScope.all_points - $scope.hint_cost;
         $scope.hint_result = $rootScope.define_result;
@@ -482,7 +497,7 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
   $('#audio_button').click(() => {
     $scope.audio = !$scope.audio
     if (av_a == 0) {
-        $scope.audio = !$scope.audio;
+      $scope.audio = !$scope.audio;
       if (fon_audio.paused) {
         av_a = 50;
         $('#a_range').val(av_a);
@@ -490,9 +505,8 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
         storage.setItem('volume_audio', av_a)
       }
       console.log(av_a);
-    }
-    else {
-        $scope.audio = $scope.audio
+    } else {
+      $scope.audio = $scope.audio
     }
     $('#a_range').val(av_a * 100);
     if (fon_audio.paused) {
@@ -506,12 +520,11 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
   })
   $('#sounds_button').click(() => {
     $scope.sounds = !$scope.sounds
-    if (av_s == 0 ) {
-        $scope.sounds = !$scope.sounds
+    if (av_s == 0) {
+      $scope.sounds = !$scope.sounds
       av_s == 50;
-    }
-    else {
-        $scope.sounds = $scope.sounds
+    } else {
+      $scope.sounds = $scope.sounds
     }
     if (Number($('#s_range').val()) / 100 == Number(av_s)) {
 
@@ -523,12 +536,14 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
   var change_volume_audio = () => {
     $scope.$watch('all_volume_audio', () => {
       $rootScope.all_volume_audio = $scope.all_volume_audio;
+      $('.input_inside1').css('background','linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_audio + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_audio + '%,rgba(255,255,255,0) ')
     })
   }
   change_volume_audio();
   var change_volume_sounds = () => {
     $scope.$watch('all_volume_sounds', () => {
       $rootScope.all_volume_sounds = $scope.all_volume_sounds;
+      $('.input_inside2').css('background','linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_sounds + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_sounds + '%,rgba(255,255,255,0) ')
     })
   }
   change_volume_sounds();

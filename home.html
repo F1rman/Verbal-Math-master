@@ -1,0 +1,41 @@
+<h1 class="appname">
+  {{langs[language].APPNAME}}
+</h1>
+<div class="head_main_text">
+  <h2 class="sub_appname">
+    {{langs[language].APPNAME2}}
+  </h2>
+</div>
+<div class="home_points_info_wrapper">
+  <div class="home_points_info">
+    <h2 class="info_points">{{langs[language].Yourlevelis}}: <span>{{lvl}}</span> </h2>
+  </div>
+  <div class="home_points_info">
+    <h2 class="info_points">{{langs[language].Allpoints}}: <span>{{all_points}}</span> </h2>
+  </div>
+
+
+</div>
+<div class="menu">
+
+  <div class="menu_items_wrapper">
+    <a ng-repeat="x in menu" class="menu_items" href="{{menu[$index].href}}">
+      <div class="img_wrapper">
+        <img alt="" class="index_svg" src="img/{{menu[$index].ico}}.svg">
+      </div>
+      <h3 class="menu_link">
+        {{menu[$index].name[language]}}
+      </h3>
+    </a>
+  </div>
+</div>
+
+<div class="footer" id="footer">
+  <div class="tips" ng-controller="tips">
+    <p class="f1">
+      {{langs[language].Tipsofaday}}
+    </p>
+    <p class="f2">
+      "{{tips[language][day]}}"
+    </p>
+  </div>

@@ -1,73 +1,60 @@
 <div class="compain-wrapper" ng-controller="compain_lvl_ctrl">
-    <div class="header">
-        <a onclick="goBack()">
-            <img class="prev" src="img/next.png"/>
-        </a>
-        <h1 class="vh4_8">
-            {{langs[language].Level}} {{current_level}}
-
-        </h1>
+  <div class="menu">
+    <div class="compain_info">
+    <div class="compain_stat">
+      {{langs[language].Allpoints}}:{{all_points}}
     </div>
-    <div class="campaign_wrapper">
-      <div class="points_home vh2_4">{{langs[language].Allpoints}}:{{all_points}}</div>
-
-        <div class="name_lvl_progress">
-            <h2 class="vh4_8 column">
-                {{levels[current_level-1].name[language]}}
-
-                <br>
-                    <div class="vh2_4">
-                        {{current_progress}}/{{count_operations}}
-                    </div>
-
-            </h2>
-        </div>
-        <div id="num_equalPractice">
-            <div class="num" id="number_calc">
-                {{number[0]}} {{simvol}} {{number[1]}}
-            </div>
-            <div id="equalPractice">
-            </div>
-        </div>
-        <div class="layout-positioner">
-            <div class="layout-positioner">
-                <div class="flex input_hint">
-                    <input class="result" placeholder="{{hint_result}}" id="result3" ng-init="calc_result_compain" ng-model="calc_result_compain" type="number">
-                        <!-- <div ng-click="calc_result_compain = null"><img class="prev" src="img/next.png"/></div> -->
-                        <a class="need_help" ng-click="show_hint()" id="hint" >
-                              <img alt="help" class="svg_help" src="img/idea.svg">
-                              <span class="vh2_4 cl_w">- {{10 + current_level}} {{langs[language].points}}</span>
-                          </a>
-                </div>
-                <!-- Timer bar -->
-                <div class="timebar">
-                    <div class="timebar_inside">
-                    </div>
-                </div>
-                <!-- IF OK -->
-                <div class="check_anim">
-                    <div class="iftrue" ng-show="isOk == true">
-                        OK
-                    </div>
-                    <div class="iffalse" ng-show="isOk == false">
-                        NO
-                    </div>
-                    <div class="" ng-show="isOk == null">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex-center">
-        </div>
-        <div class="flex-center">
-        </div>
+    <div class="compain_stat">
+      <span class=" cl_w">hint = {{3 + current_level}} {{langs[language].points}}</span>
     </div>
-    <div class="vidlik_wrapper">
-        <h2 class="vh4_8 vidlik_h2">
-            {{levels[current_level-1].name[language]}}
-        </h2>
-        <div class="vidlik">
-            3
-        </div>
     </div>
+
+      <h2 class=" column header_lesson">
+        {{levels[current_level-1].name[language]}}
+
+        <br>
+        <div class="">
+          {{current_progress}}/{{count_operations}}
+        </div>
+
+      </h2>
+    <div id="num_equalPractice">
+      <div class="num" id="number_calc">
+        {{number[0]}} {{simvol}} {{number[1]}}
+      </div>
+      <div id="equalPractice">
+      </div>
+    </div>
+        <div class="flex input_hint">
+          <input class="result" placeholder="{{hint_result}}" id="result3" ng-init="calc_result_compain" ng-model="calc_result_compain" type="number">
+          <a class="" ng-click="show_hint()" id="hint_comp">
+            <img alt="help" class="" src="img/idea.svg">
+          </a>
+        </div>
+        <!-- Timer bar -->
+        <div class="timebar">
+          <div class="timebar_inside">
+          </div>
+        </div>
+        <!-- IF OK -->
+        <div class="check_anim">
+          <div class="iftrue" ng-show="isOk == true">
+            OK
+          </div>
+          <div class="iffalse" ng-show="isOk == false">
+            NO
+          </div>
+          <div class="" ng-show="isOk == null">
+          </div>
+      </div>
+    </div>
+
+  <div class="vidlik_wrapper">
+    <h2 class=" vidlik_h2">
+      {{levels[current_level-1].name[language]}}
+    </h2>
+    <div class="vidlik">
+      3
+    </div>
+  </div>
 </div>

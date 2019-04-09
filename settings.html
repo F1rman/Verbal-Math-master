@@ -1,19 +1,12 @@
-<div class="header" ng-controller="settings_ctrl">
-    <a onclick="goBack()">
-        <img class="prev" src="img/next.png"/>
-    </a>
-    <h1 class="vh5_10">
-        {{langs[language].Settings}}
-    </h1>
-</div>
-<div class="menu">
+
+<div class="menu" ng-controller="settings_ctrl">
 <div class="layout-positioner ">
     <div class="Settings">
         <div class="audio_settings">
             <div class="audio ">
-                <span class="vh4_8 ">
+                <h2 class="settings_h2">
                     {{langs[language].Audio}} :
-                </span>
+                </h2>
                 <button id="audio_button" ng-click="audio = !audio" class="audio_on">
                     <span  class="on"  ng-show="!audio">
                     ON
@@ -25,12 +18,15 @@
 
 
             </div>
+            <div class="input_wrapper">
               <input id="a_range" max="100" min="0" ng-value="{{r_av_a}}" ng-model="all_volume_audio" step="1" type="range">
-            </input>
+            <div class="input_inside1"></div>
+          </div>
+
              <div class="audio ">
-                <span class="vh4_8 ">
+                <h2 class="settings_h2">
                     {{langs[language].Sounds}} :
-                </span>
+                </h2>
                   <button id="sounds_button" ng-click="sounds = !sounds" class="audio_on">
                     <span class="on" ng-show="!sounds">
                     ON
@@ -41,10 +37,12 @@
                 </button>
 
             </div>
+              <div class="input_wrapper">
             <input id="s_range" max="100" min="0" ng-value="{{r_av_s}}" ng-model="all_volume_sounds" step="1" type="range">
-            </input>
+            <div class="input_inside2"></div>
+          </div>
         </div>
-        <h2 class="vh4_8 margin20px">
+        <h2 class="">
             {{langs[language].Language}}:
         </h2>
         <div class="lang_settings">

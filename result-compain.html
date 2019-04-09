@@ -1,10 +1,5 @@
 <div class="res" ng-controller="result_compain_lvl_ctrl">
-    <div class="header">
-        <h1 class="vh5_10">
-            {{langs[language].ResultofLevel}} {{current_level}}
-        </h1>
-    </div>
-    <div class="layout-positioner quize-positioner">
+
         <div class="resultat">
             <div class="status_result">
                 <h2 class="vh4_8 padding20" ng-if="current_progress<count_operations" style="color: #f6412d">
@@ -31,7 +26,7 @@
                     </h2>
                     <h2 class="txt_left">
                         <span class="padding5">
-                            {{langs[language].TimeLeft}} 
+                            {{langs[language].TimeLeft}}
                         </span>
                         <span class="green flex_res padding5">
                             {{ time_left_stor }}
@@ -75,7 +70,7 @@
                     </a>
                     <a href="#!compain-lvl/{{current_level+1}}" ng-if="current_progress == count_operations && current_level < levels.length">
                         <div class="btn vh2_4">
-                            <img alt="" class="revers" src="img/next.png">
+                            <img alt="" class="revers" src="img/next.svg">
                         </div>
                     </a>
                 </div>
@@ -89,4 +84,3 @@
             </div>
         </div>
     </div>
-</div>

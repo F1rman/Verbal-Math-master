@@ -1,24 +1,16 @@
-<div class="header">
-    <a onclick="goBack()">
-        <img class="prev" src="img/next.png"/>
-    </a>
-    <h1 class="vh5_10">
-        {{langs[language].Info}}
-    </h1>
-</div>
-<div class="flex-center">
+<div class="verblike_tree_wrapper">
     <div class="verblike_tree">
     </div>
     <a href="https://www.verblike.com/" target="_blank">
-        <h2 class="vh4_8 info_verblike">
+        <h2 class=" info_verblike">
             VerbLike
         </h2>
     </a>
-    <h3 class="vh2_4 info_we">
+    <h3 class=" info_we">
         We are the ones who act
     </h3>
 </div>
-<div class="info_block vh2_4">
+<div class="info_block ">
     {{langs[language].Currentversion}}
        {{vers}}
     <div class="fixed " ng-repeat="x in fix">

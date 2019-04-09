@@ -1,19 +1,11 @@
-<div class="header">
-    <a onclick="goBack()">
-        <img class="prev" src="img/next.png"/>
-    </a>
-    <h1 class="vh5_10">
-        {{langs[language].Lesson}} {{lvl_less}}
-    </h1>
-</div>
-<div class="lessons_for_practice">
-    <div class="vh4_8 title_lessons">
+<div class="menu">
+    <div class=" title_lessons">
         {{lesson[current_level].title[language]}}
     </div>
-    <p ng-if="lesson.length > current_level" class="vh2_4 text_lessons">
+    <p ng-if="lesson.length > current_level" class=" text_lessons">
         {{lesson[current_level].content[language]}}
     </p>
-    <p ng-if="lesson.length <= current_level" class="vh2_4 text_lessons">
+    <p ng-if="lesson.length <= current_level" class=" text_lessons">
      There is no lesson to this level yet!
     </p>
 </div>
