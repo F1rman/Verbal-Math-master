@@ -66,6 +66,8 @@ app.config(($routeProvider) => {
     templateUrl: "historys.html"
   }).when("/lessons-level/:level", {
     templateUrl: "lessons-level.html"
+  }).when("/upgrade", {
+    templateUrl: "upgrade.html"
   }).otherwise({
     redirectTo: '/'
   });
@@ -205,6 +207,9 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
       swap()
     }
   }
+
+
+
   // Функція рандомить символ з левела
   // Функція рандомить числа
   // Функція розраховує результат
@@ -241,31 +246,47 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     console.log($rootScope.define_result, " RESULT");
     $scope.hint_result = "";
     $scope.show_hint = function() {
+      console.log($scope.delete());
+        $scope.delete();
       $scope.hint_cost = 3 + $rootScope.current_level;
       if ($rootScope.all_points >= $scope.hint_cost) {
         $rootScope.all_points = $rootScope.all_points - $scope.hint_cost;
         $scope.hint_result = $rootScope.define_result;
         storage.setItem('points', $rootScope.all_points)
-        $('#result3').focus();
       } else {
+        $scope.delete()
         $scope.hint_result = $rootScope.langs[$rootScope.language].NotEnoughPoints;
-        $('#result3').focus();
       }
     }
   }
   changeNSR_compain();
   var a1 = $rootScope.number[0];
   var a2 = $rootScope.number[1];
-  check_result.keyup((el) => {
 
+
+  $scope.ResInput = '';
+  $scope.key = (key,del,remove) =>{
+
+    $scope.ResInput += key;
+  }
+  $scope.delete = ()=>{
+      $scope.ResInput = '';
+  };
+  $scope.remove = ()=>{
+      $scope.ResInput = $scope.ResInput.slice(0,-1)
+  };
+
+$scope.$watch('ResInput',()=>{
     clearTimeout(clearIfPress);
     clearIfPress = setTimeout(() => {
-      if ($scope.calc_result_compain == $rootScope.define_result) {
+      if ($scope.ResInput == String($rootScope.define_result)) {
         $scope.$apply(() => {
+          $scope.ResInput = '';
           $scope.isOk = true
         });
         setTimeout(() => {
           $scope.$apply(() => {
+            $scope.ResInput = '';
             $scope.isOk = null
           });
         }, 800)
@@ -339,7 +360,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     function endCountdown() {
       $('.vidlik_wrapper').css('display', 'none');
       progress(time_total, time_total, $('.timebar'), $('.timebar_inside'));
-      check_result.focus();
     }
 
     function handleTimer() {
@@ -377,7 +397,6 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
     console.log(lvl_kratne[0])
   }
   setTimeout(() => {
-    $("#result2").focus();
   }, 1000)
   lvl_kratne = $rootScope.levels[current_level - 1].options[6];
   lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])

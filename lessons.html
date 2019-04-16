@@ -1,14 +1,26 @@
 <div class="lessons_wrapper menu">
-  <div class="levels btn_hover" ng-repeat="x in lesson">
+  <div class="levels btn_hover" >
     <div class="leftblue ">
-      {{$index+1}}
+      {{1}}
     </div>
     <a href="#!lessons-level/{{$index+1}}" class="lvlcont">
       <div class="h2_wrap_scrool">
-      <h2 ng-hide="width > 260">{{lesson[$index+1].title[language]}}</h2>
+      <h2>Bay next less</h2>
       </div>
         <img src="img/next.svg" class="finish revers"  alt="">
     </a>
   </div>
+  <div class="levels btn_hover" ng-repeat="x in lesson">
+    <div class="leftblue ">
+      {{$index+2}}
+    </div>
+    <a href="#!lessons-level/{{$index+1}}" class="lvlcont">
+      <div class="h2_wrap_scrool">
+      <h2>{{lesson[$index+1].title[language]}}</h2>
+      </div>
+        <img src="img/next.svg" class="finish revers"  alt="">
+    </a>
+  </div>
+
 
 </div>

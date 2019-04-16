@@ -1,86 +1,69 @@
 <div class="res" ng-controller="result_compain_lvl_ctrl">
-
+<div class="menu">
         <div class="resultat">
-            <div class="status_result">
-                <h2 class="vh4_8 padding20" ng-if="current_progress<count_operations" style="color: #f6412d">
+                <h2 class="result_header" ng-if="current_progress<count_operations" style="color: #f6412d">
                     {{langs[language].Timeisover}}
-                    <br>
                         {{langs[language].Youlose}}!
-                    </br>
                 </h2>
-                <h2 class="green padding5 vh4_8" ng-if="current_progress == count_operations">
+                <h2 class="green result_header" ng-if="current_progress == count_operations">
                     {{langs[language].AllIsFine}}!
                 </h2>
-                <h2 class="padding20">
+                <h2 class="">
                     {{progress_of_lvl}}/{{count_operations}}
                 </h2>
                 <div class="result_detail">
                     <h2 class="txt_left">
-                        <span class="padding5">
+                        <span class="">
                             {{langs[language].Earnedpoints}}:
                         </span>
-                        <span class="green flex_res padding5">
+                        <span class="green flex_res ">
                             {{earn_points }}
                             <img alt="" class="points_svg revers" src="img/points.svg">
                         </span>
                     </h2>
                     <h2 class="txt_left">
-                        <span class="padding5">
+                        <span class="">
                             {{langs[language].TimeLeft}}
                         </span>
-                        <span class="green flex_res padding5">
+                        <span class="green flex_res ">
                             {{ time_left_stor }}
                             <img alt="" class="points_svg revers" src="img/clock.png">
                         </span>
                     </h2>
                     <h2 class="txt_left">
-                        <span class="padding5">
+                        <span class="">
                             {{langs[language].Requiredfornextlevel}}:
                         </span>
-                        <span class="green flex_res padding5">
+                        <span class="green flex_res ">
                             {{for_next_lvl }}
                             <img alt="" class="points_svg revers" src="img/points.svg">
                         </span>
                     </h2>
                     <h2 class="txt_left">
-                        <span class="padding5">
+                        <span class="">
                             {{langs[language].Allpoints}}:
                         </span>
-                        <span class="green flex_res padding5">
+                        <span class="green flex_res ">
                             {{all_points }}
                             <img alt="" class="points_svg revers" src="img/points.svg">
                         </span>
                     </h2>
                 </div>
-                <!--    <h2>
-
-            All successed ask {{all_calculatings}}
-
-            </h2> -->
-                <div class="buttons">
-                    <a href="#!practice-lvl/{{current_level}}" ng-if="current_progress<count_operations">
-                        <div class="btn vh2_4">
-                            <img alt="" src="img/arrows.svg">
-                        </div>
-                    </a>
-                    <a href="#!compain-lvl/{{current_level}}">
-                        <div class="btn vh2_4" ng-click="current_progress=0">
-                            <img alt="" class="update_arrow" src="img/update-arrow.png">
-                        </div>
-                    </a>
-                    <a href="#!compain-lvl/{{current_level+1}}" ng-if="current_progress == count_operations && current_level < levels.length">
-                        <div class="btn vh2_4">
-                            <img alt="" class="revers" src="img/next.svg">
-                        </div>
-                    </a>
-                </div>
-                <div class="home_ico">
-                    <a class="home" href="#!">
-                        <div class="btn vh2_4">
-                            <img alt="" src="img/home.png">
-                        </div>
-                    </a>
-                </div>
-            </div>
+                          </div>
         </div>
+        <div class="btn_img_group">
+          <a class="btn_img" href="#!practice-lvl/{{current_level}}" ng-if="current_progress<count_operations">
+                  <img alt="" src="img/arrows.svg">
+          </a>
+          <a class="btn_img" href="#!">
+                  <img alt="" src="img/home.png">
+          </a>
+            <a class="btn_img" href="#!compain-lvl/{{current_level}}">
+                    <img alt="" class="update_arrow" src="img/update-arrow.png">
+            </a>
+            <a class="btn_img" href="#!compain-lvl/{{current_level+1}}" ng-if="current_progress == count_operations && current_level < levels.length">
+                    <img alt="" class="revers" src="img/next.svg">
+            </a>
+        </div>
+
     </div>

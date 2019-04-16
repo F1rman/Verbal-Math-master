@@ -9,13 +9,12 @@
     </div>
     </div>
 
-      <h2 class=" column header_lesson">
+      <h2 class="Name_level">
         {{levels[current_level-1].name[language]}}
 
-        <br>
-        <div class="">
+        <span>
           {{current_progress}}/{{count_operations}}
-        </div>
+        <span>
 
       </h2>
     <div id="num_equalPractice">
@@ -25,36 +24,48 @@
       <div id="equalPractice">
       </div>
     </div>
-        <div class="flex input_hint">
-          <input class="result" placeholder="{{hint_result}}" id="result3" ng-init="calc_result_compain" ng-model="calc_result_compain" type="number">
-          <a class="" ng-click="show_hint()" id="hint_comp">
-            <img alt="help" class="" src="img/idea.svg">
-          </a>
+        <div class="input_hint">
+          <div class="result"  id="result3">{{ResInput}}</div>
+
         </div>
         <!-- Timer bar -->
-        <div class="timebar">
-          <div class="timebar_inside">
-          </div>
-        </div>
-        <!-- IF OK -->
-        <div class="check_anim">
-          <div class="iftrue" ng-show="isOk == true">
-            OK
-          </div>
-          <div class="iffalse" ng-show="isOk == false">
-            NO
-          </div>
-          <div class="" ng-show="isOk == null">
-          </div>
+    <div class="keys">
+<div class="flex">
+  <a ng-click="delete()" class="key delete_key"> DEL </a>
+
+      <a ng-click="show_hint()" id="hint_comp" class="key">
+        <img alt="help" class="" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjQ4NnB0IiB2aWV3Qm94PSItNjIgMCA0ODYgNDg2LjI3OSIgd2lkdGg9IjQ4NnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48bGluZWFyR3JhZGllbnQgaWQ9ImEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwZWZkMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwYWNlYSIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJiIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjE4MS41MjYxMzMiIHgyPSIxODEuNTI2MTMzIiB4bGluazpocmVmPSIjYSIgeTE9IjUuMDQ2IiB5Mj0iNDcwLjEwMiIvPjxsaW5lYXJHcmFkaWVudCBpZD0iYyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIxODEuODEzMTMzIiB4Mj0iMTgxLjgxMzEzMyIgeGxpbms6aHJlZj0iI2EiIHkxPSI1LjA0NiIgeTI9IjQ3MC4xMDIiLz48bGluZWFyR3JhZGllbnQgaWQ9ImQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTc4LjgxMzEzMyIgeDI9IjE3OC44MTMxMzMiIHhsaW5rOmhyZWY9IiNhIiB5MT0iNS4wNDYiIHkyPSI0NzAuMTAyIi8+PGxpbmVhckdyYWRpZW50IGlkPSJlIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMzNS4wNDcxMzMiIHgyPSIzMzUuMDQ3MTMzIiB4bGluazpocmVmPSIjYSIgeTE9IjUuMDQ2IiB5Mj0iNDcwLjEwMiIvPjxsaW5lYXJHcmFkaWVudCBpZD0iZiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNy43MzExMzMiIHgyPSIyNy43MzExMzMiIHhsaW5rOmhyZWY9IiNhIiB5MT0iNS4wNDYiIHkyPSI0NzAuMTAyIi8+PHBhdGggZD0ibTE3OS4zNDc2NTYgMTA3LjE3MTg3NWMtMzcuODQ3NjU2LjYyODkwNi03NC4wNjI1IDE1LjUxMTcxOS0xMDEuNDE0MDYyIDQxLjY3NTc4MS0yNy43OTI5NjkgMjYuNDAyMzQ0LTQzLjQzMzU5NCA2MC44MTY0MDYtNDQuMDQyOTY5IDk2Ljg4MjgxMy0uNTk3NjU2IDM3LjAxOTUzMSAxMy44OTg0MzcgNzIuNjg3NSA0MC4xNDQ1MzEgOTguODAwNzgxIDIxLjE4NzUgMjEuMDgyMDMxIDMyLjIzNDM3NSA1MC43NDYwOTQgMzAuMzA4NTk0IDc4Ljc0NjA5NGgtNy41NDY4NzVjLTQuNDE3OTY5IDAtOCAzLjU4MjAzMS04IDggMCA0LjQyMTg3NSAzLjU4MjAzMSA4IDggOGgxNzAuMDU4NTk0YzQuNDE3OTY5IDAgOC0zLjU3ODEyNSA4LTggMC00LjQxNzk2OS0zLjU4MjAzMS04LTgtOGgtOS4yNzczNDRjLTIuMTg3NS0yOSA4LjQwMjM0NC01NS44NTE1NjMgMzAuODY3MTg3LTc4LjE4NzUuMDIzNDM4LS4wMjM0MzguMDQ2ODc2LjAxOTUzMS4wNzQyMTktLjAwNzgxMyAyNi4yMjI2NTctMjYuNzgxMjUgNDAuNjY0MDYzLTYxLjIwNzAzMSA0MC42NjQwNjMtOTcgMC0zNi43NzczNDMtMTQuNzc3MzQ0LTcxLjU4MjAzMS00MS42MTMyODItOTguMDMxMjUtMjguNjY0MDYyLTI4LjI1MzkwNi02Ny4wOTM3NS00My40ODgyODEtMTA4LjIyMjY1Ni00Mi44Nzg5MDZ6bTEwLjM0Mzc1IDEzMi44NjMyODFjLTQuMzUxNTYyIDQuMzU1NDY5LTExLjQxMDE1NiA0LjM1NTQ2OS0xNS43NjE3MTguMDAzOTA2LTQuMzUxNTYzLTQuMzU1NDY4LTQuMzUxNTYzLTExLjQxNDA2MiAwLTE1Ljc2NTYyNCA0LjM1MTU2Mi00LjM1MTU2MyAxMS40MTAxNTYtNC4zNTE1NjMgMTUuNzYxNzE4IDAgMi4xMDkzNzUgMi4wODIwMzEgMy4yOTY4NzUgNC45MjE4NzQgMy4yOTY4NzUgNy44ODI4MTJzLTEuMTg3NSA1LjgwMDc4MS0zLjI5Njg3NSA3Ljg3ODkwNnptODcuNDMzNTk0IDkzLjc0MjE4OGMtMjUuMTk5MjE5IDI1LjA4MjAzMS0zNy42NDQ1MzEgNTYuNS0zNS41NzAzMTIgODkuNWgtMTYuNzQyMTg4di0xMTNoMzAuNjkxNDA2YzQuNDE3OTY5IDAgOC4zMDg1OTQtMy4xNjQwNjMgOC4zMDg1OTQtNy41ODIwMzJ2LTQwLjMwODU5M2MxMC43MTg3NS0zLjQ0OTIxOSAxOC4yMDcwMzEtMTMuMTQwNjI1IDE4Ljg0Mzc1LTI0LjM4MjgxMy42MzY3MTktMTEuMjQyMTg3LTUuNzE0ODQ0LTIxLjcxNDg0NC0xNS45NzI2NTYtMjYuMzUxNTYyLTEwLjI2MTcxOS00LjYzNjcxOS0yMi4zMTY0MDYtMi40ODA0NjktMzAuMzM1OTM4IDUuNDI1NzgxLTEwLjU4MjAzMSAxMC41ODIwMzEtMTAuNTk3NjU2IDI4LjE5OTIxOS0uMDE5NTMxIDM4LjE5OTIxOWguMTQ0NTMxYzMuMjM4MjgyIDQgNy4zMzk4NDQgNS44NTE1NjIgMTEuMzM5ODQ0IDcuMTA5Mzc1djMxLjg5MDYyNWgtMzEuMzA4NTk0Yy00LjQxNzk2OCAwLTcuNjkxNDA2IDQtNy42OTE0MDYgOC40MTc5Njh2MTIwLjU4MjAzMmgtMTl2LTE2NS4xNzE4NzVjMTIuODEyNS0zLjk1NzAzMSAyMC44MDg1OTQtMTYuNjg3NSAxOC44MDg1OTQtMjkuOTQ5MjE5cy0xMy4zOTg0MzgtMjMuMDY2NDA2LTI2LjgwODU5NC0yMy4wNjY0MDYtMjQuODA0Njg4IDkuODA0Njg3LTI2LjgwODU5NCAyMy4wNjY0MDZjLTIgMTMuMjYxNzE5IDUuOTk2MDk0IDI1Ljk5MjE4OCAxOC44MDg1OTQgMjkuOTQ5MjE5djE2NS4xNzE4NzVoLTE5di0xMjAuNTgyMDMyYzAtNC40MTc5NjgtMy4yNzM0MzgtOC40MTc5NjgtNy42OTE0MDYtOC40MTc5NjhoLTMxLjMwODU5NHYtMzEuODkwNjI1YzQtMS4yNTc4MTMgOC4xMTMyODEtMy4xMDkzNzUgMTEuMzUxNTYyLTcuMTA5Mzc1aC4wNzQyMTljMTAuNTgyMDMxLTEwIDEwLjYyMTA5NC0yNy42MTcxODguMDM5MDYzLTM4LjE5OTIxOS0xMC42NDA2MjUtMTAuNTMxMjUtMjcuNzk2ODc1LTEwLjQ2ODc1LTM4LjM1OTM3NS4xNDA2MjUtNi43MzgyODEgNi42OTUzMTItOS40OTIxODggMTYuNDIxODc1LTcuMjY1NjI1IDI1LjY1MjM0NCAyLjIyNjU2MiA5LjIzNDM3NSA5LjExNzE4NyAxNi42MzI4MTIgMTguMTY0MDYyIDE5LjUxOTUzMXY0MC4zMDg1OTRjMCA0LjQxNzk2OSAzLjg5NDUzMiA3LjU4MjAzMSA4LjMxMjUgNy41ODIwMzFoMzAuNjgzNTk0djExMi45OTYwOTRoLTE4LjQzNzVjMS44ODY3MTktMzMtMTAuODU1NDY5LTY2LjAwNzgxMy0zNS4wNjI1LTkwLjA5NzY1Ni0yMy4xNjQwNjItMjMuMDYyNS0zNS45NTMxMjUtNTQuNTU0Njg4LTM1LjQyNTc4MS04Ny4yMzgyODIuNTM5MDYyLTMxLjc1IDE0LjQxMDE1Ni02Mi4wOTc2NTYgMzkuMDcwMzEyLTg1LjUyNzM0NCAyNC40Mzc1LTIzLjM4NjcxOCA1Ni44MDQ2ODgtMzYuNjk1MzEyIDkwLjYyODkwNy0zNy4yNjE3MTggMzYuODA4NTkzLS41MDM5MDYgNzEuMTY0MDYyIDEzLjA3ODEyNSA5Ni43NTM5MDYgMzguMzAwNzgxIDIzLjc1NzgxMiAyMy40MjE4NzUgMzYuODQzNzUgNTQuMTMyODEzIDM2Ljg0Mzc1IDg2LjU5Mzc1IDAgMzEuNTYyNS0xMi44MDQ2ODggNjEuOTY4NzUtMzYuMDU4NTk0IDg1LjczMDQ2OXptLTEzLjczODI4MS04OS40NDE0MDZjLTQuMzU1NDY5IDQuMzQzNzUtMTEuNDA2MjUgNC4zNDM3NS0xNS43NjE3MTkgMC00LjM1MTU2Mi00LjM1NTQ2OS00LjM1NTQ2OS0xMS40MTAxNTcgMC0xNS43NjE3MTkgNC4zNTE1NjItNC4zNTU0NjkgMTEuNDA2MjUtNC4zNTU0NjkgMTUuNzYxNzE5IDAgNC4zNTE1NjIgNC4zNTE1NjIgNC4zNTE1NjIgMTEuNDA2MjUgMCAxNS43NjE3MTl6bS0xNDcuMzgyODEzIDBjLTQuMzU1NDY4IDQuMzUxNTYyLTExLjQxMDE1NiA0LjM1MTU2Mi0xNS43NjE3MTggMC00LjM1NTQ2OS00LjM1NTQ2OS00LjM1NTQ2OS0xMS40MTAxNTcgMC0xNS43NjE3MTkgNC4zNTE1NjItNC4zNTU0NjkgMTEuNDA2MjUtNC4zNTU0NjkgMTUuNzYxNzE4IDAgNC4zNDc2NTYgNC4zNTU0NjkgNC4zNDc2NTYgMTEuNDA2MjUgMCAxNS43NjU2MjV6bTAgMCIgZmlsbD0idXJsKCNiKSIvPjxwYXRoIGQ9Im0yMzEuNTcwMzEyIDQ3MC4yNzczNDRoLTk5LjUxNTYyNGMtNC40MTc5NjkgMC04IDMuNTgyMDMxLTggOCAwIDQuNDIxODc1IDMuNTgyMDMxIDggOCA4aDk5LjUxNTYyNGM0LjQyMTg3NiAwIDgtMy41NzgxMjUgOC04IDAtNC40MTc5NjktMy41NzgxMjQtOC04LTh6bTAgMCIgZmlsbD0idXJsKCNjKSIvPjxwYXRoIGQ9Im0xNzguODEyNSA2OC42NDA2MjVjNC40MTc5NjkgMCA4LTMuNTgyMDMxIDgtOHYtNTIuNjQwNjI1YzAtNC40MTc5NjktMy41ODIwMzEtOC04LThzLTggMy41ODIwMzEtOCA4djUyLjY0MDYyNWMwIDQuNDE3OTY5IDMuNTgyMDMxIDggOCA4em0wIDAiIGZpbGw9InVybCgjZCkiLz48cGF0aCBkPSJtMzUwLjA1ODU5NCA3NC41NjI1LTQwLjcxMDkzOCAzNi41MjczNDRjLTIuMTQ0NTMxIDEuOTA2MjUtMy4xMDE1NjIgNC44MTI1LTIuNTE1NjI1IDcuNjE3MTg3LjU4NTkzOCAyLjgwODU5NCAyLjYyODkwNyA1LjA4NTkzOCA1LjM1NTQ2OSA1Ljk3MjY1NyAyLjczMDQ2OS44ODY3MTggNS43MjI2NTYuMjQ2MDkzIDcuODQ3NjU2LTEuNjc5Njg4bDQwLjcxMDkzOC0zNi41MjczNDRjMi4xNDQ1MzEtMS45MDYyNSAzLjEwNTQ2OC00LjgxMjUgMi41MTU2MjUtNy42MTcxODctLjU4NTkzOC0yLjgwODU5NC0yLjYyODkwNy01LjA4NTkzOC01LjM1NTQ2OS01Ljk3MjY1Ny0yLjcyNjU2Mi0uODg2NzE4LTUuNzIyNjU2LS4yNDYwOTMtNy44NDc2NTYgMS42Nzk2ODh6bTAgMCIgZmlsbD0idXJsKCNlKSIvPjxwYXRoIGQ9Im00Ny4yMzgyODEgMTIwLjIxMDkzOGMzLjI2MTcxOSAwIDYuMTk5MjE5LTEuOTgwNDY5IDcuNDE3OTY5LTUuMDA3ODEzIDEuMjIyNjU2LTMuMDI3MzQ0LjQ4NDM3NS02LjQ4ODI4MS0xLjg2NzE4OC04Ljc1MzkwNmwtMzkuMDE1NjI0LTM3LjYwMTU2M2MtMi4wNDY4NzYtMi4wMzEyNS01LjAzMTI1LTIuODA0Njg3LTcuODA4NTk0LTIuMDE5NTMxcy00LjkxNzk2OSAzLjAwNzgxMy01LjU5NzY1NiA1LjgxMjVjLS42ODM1OTQgMi44MDQ2ODcuMTk5MjE4IDUuNzU3ODEzIDIuMzA4NTkzIDcuNzMwNDY5bDM5LjAxNTYyNSAzNy41OTc2NTZjMS40ODgyODIgMS40NDE0MDYgMy40NzY1NjMgMi4yNDIxODggNS41NDY4NzUgMi4yNDIxODh6bTAgMCIgZmlsbD0idXJsKCNmKSIvPjwvc3ZnPg==">
+      </a>
+
+  <a onclick="" ng-click="remove()" class="key">
+    <img class="prev" src="img/next.svg" />
+   </a>
+      </div>
+    <a  class="key" ng-click="key($index+1)" ng-repeat="x in [1,2,3,4,5,6,7,8,9]">{{$index+1}}</a>
+      <div class="flex"><a ng-click="key(0)" class="key"> 0 </a></div>
+    </div>
+    </div>
+    <div class="timebar">
+      <div class="timebar_inside">
       </div>
     </div>
-
-  <div class="vidlik_wrapper">
+    <!-- IF OK -->
+    <div class="check_anim">
+      <div class="iftrue" ng-show="isOk == true">
+        OK
+      </div>
+      <div class="iffalse" ng-show="isOk == false">
+        NO
+      </div>
+      <div class="" ng-show="isOk == null">
+      </div>
+  </div>
+  <!-- <div class="vidlik_wrapper">
     <h2 class=" vidlik_h2">
       {{levels[current_level-1].name[language]}}
     </h2>
     <div class="vidlik">
       3
     </div>
-  </div>
+  </div> -->
 </div>
