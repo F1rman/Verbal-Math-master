@@ -125,7 +125,6 @@ app.run(($rootScope) => {
       $rootScope.header_show = 'show';
     }
 
-    console.log($rootScope.header_show);
 
     // ЩОБ НЕ ВКЛЮЧАВСЯ ЗВУК КЛІКУ ПРИ СТАРТІ
     if (firsload != true) {
@@ -147,7 +146,6 @@ app.run(($rootScope) => {
         window.location.href = "#!denied/1";
       }
       if ($rootScope.passlvl + 1 < $rootScope.current_level) {
-        console.log('access denied!');
         window.location.href = "#!denied/" + $rootScope.current_level;
       }
       // Очищення результат пейдж коли заходиш назад в уровень, або інший уровень
@@ -179,7 +177,6 @@ app.run(($rootScope) => {
 app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
   // змінні
   var time_total = $rootScope.levels[current_level - 1].options[5];
-  var check_result = $("#result3");
   lvl_kratne = $rootScope.levels[current_level - 1].options[6];
   lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
 
@@ -189,7 +186,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
       forAtime = $rootScope.number[0];
       $rootScope.number[0] = $rootScope.number[1];
       $rootScope.number[1] = forAtime;
-      console.log('$rootScope.number[0] > $rootScope.number[1]')
     }
   }
 
@@ -197,17 +193,14 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     if (lvl_kratne.length == 1) {
       $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne[0])
       $rootScope.number[1] = Kratne($rootScope.number[1], lvl_kratne[0])
-      console.log('lvl_kratne.length== 1')
       swap()
     }
     if (lvl_kratne.length > 1) {
-      console.log('lvl_kratne.length > 1')
       $rootScope.number[1] = lvl_kratne_arr;
       $rootScope.number[0] = Kratne($rootScope.number[0], lvl_kratne_arr)
       swap()
     }
   }
-
 
 
   // Функція рандомить символ з левела
@@ -229,7 +222,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
         n1_n2_kratne()
       }
       $rootScope.simvol = '-';
-      console.log($rootScope.number[0], $rootScope.number[1])
     }
     if ($rootScope.simvol[rand_simvol] == '*') {
       $rootScope.simvol = '*';
@@ -242,12 +234,12 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
       n1_n2_kratne()
     }
     $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
-    console.log($rootScope.define_result.toString().length)
     console.log($rootScope.define_result, " RESULT");
+
+
     $scope.hint_result = "";
     $scope.show_hint = function() {
-      console.log($scope.delete());
-        $scope.delete();
+      $scope.delete();
       $scope.hint_cost = 3 + $rootScope.current_level;
       if ($rootScope.all_points >= $scope.hint_cost) {
         $rootScope.all_points = $rootScope.all_points - $scope.hint_cost;
@@ -255,41 +247,35 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
         storage.setItem('points', $rootScope.all_points)
       } else {
         $scope.delete()
-        $scope.hint_result = $rootScope.langs[$rootScope.language].NotEnoughPoints;
+        $scope.ResInput = $rootScope.langs[$rootScope.language].NotEnoughPoints;
       }
     }
   }
+
   changeNSR_compain();
   var a1 = $rootScope.number[0];
   var a2 = $rootScope.number[1];
 
 
   $scope.ResInput = '';
-  $scope.key = (key,del,remove) =>{
-
+  $scope.key = (key, del, remove) => {
     $scope.ResInput += key;
   }
-  $scope.delete = ()=>{
-      $scope.ResInput = '';
+  $scope.delete = () => {
+    $scope.ResInput = '';
   };
-  $scope.remove = ()=>{
-      $scope.ResInput = $scope.ResInput.slice(0,-1)
+  $scope.remove = () => {
+    $scope.ResInput = $scope.ResInput.slice(0, -1)
   };
 
-$scope.$watch('ResInput',()=>{
-    clearTimeout(clearIfPress);
+  $scope.$watch('ResInput', () => {
     clearIfPress = setTimeout(() => {
-      if ($scope.ResInput == String($rootScope.define_result)) {
+      if (String($scope.ResInput) == String($rootScope.define_result)) {
         $scope.$apply(() => {
+          clearTimeout(clearIfPress)
           $scope.ResInput = '';
           $scope.isOk = true
         });
-        setTimeout(() => {
-          $scope.$apply(() => {
-            $scope.ResInput = '';
-            $scope.isOk = null
-          });
-        }, 800)
         var a1 = $rootScope.number[0];
         var a2 = $rootScope.number[1];
         playAudio('wav/enter_ok.flac', av_s);
@@ -298,7 +284,7 @@ $scope.$watch('ResInput',()=>{
         storage.setItem('time_left_total', time_left_total)
         $rootScope.time_left_total = time_left_total;
         clearTimeout(set_progress)
-        progress(time_total, time_total, $('.timebar'), $('.timebar_inside'), check_result);
+        progress(time_total, time_total, $('.timebar'), $('.timebar_inside'));
         $rootScope.$apply(() => {
           $rootScope.current_progress = $rootScope.current_progress + 1;
           changeNSR_compain();
@@ -308,7 +294,6 @@ $scope.$watch('ResInput',()=>{
             changeNSR_compain();
           }
           $scope.calc_result_compain = null;
-          check_result.val('');
         })
         if ($rootScope.current_progress >= $rootScope.count_operations) {
           playAudio('wav/win.wav', av_s)
@@ -316,25 +301,26 @@ $scope.$watch('ResInput',()=>{
             $location.path("/result-compain/" + $rootScope.current_level);
           })
         }
-      } else if ($scope.calc_result_compain == '' || $scope.calc_result_compain == null || $scope.calc_result_compain == undefined) {
+      } else if ($scope.ResInput == '' || $scope.ResInput == null || $scope.ResInput == undefined) {
         $scope.$apply(() => {
           $scope.isOk = null;
-          $scope.calc_result_compain = null;
-          check_result.val('');
         });
       } else {
-        $scope.$apply(() => {
-          $scope.isOk = false
-        })
         setTimeout(() => {
           $scope.$apply(() => {
-            $scope.isOk = null
-          });
-        }, 800)
-        playAudio('wav/enter_no.flac', av_s);
-        console.log('WRONG!')
-        $scope.calc_result_compain = null;
-        check_result.val('');
+            if ($rootScope.define_result.toString().length <= $scope.ResInput.length) {
+              $scope.isOk = false;
+              $scope.delete()
+              $scope.$apply(() => {
+                $scope.ResInput = '';
+                playAudio('wav/enter_no.flac', av_s);
+              });
+            }
+          })
+        }, 300)
+
+
+
       }
     }, 500)
   })
@@ -396,8 +382,7 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
     }
     console.log(lvl_kratne[0])
   }
-  setTimeout(() => {
-  }, 1000)
+  setTimeout(() => {}, 1000)
   lvl_kratne = $rootScope.levels[current_level - 1].options[6];
   lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
   var changeNSR_practice = () => {
@@ -460,7 +445,6 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
           changeNSR_practice();
         }
         $scope.calc_result_practice = null;
-        $("#result2").val('');
         if ($rootScope.current_progress >= $rootScope.count_operations) {
           $rootScope.$apply(() => {
             $location.path("/result-practice/" + $rootScope.current_level);
@@ -483,7 +467,6 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
             $scope.isOk = null
           });
         }, 800)
-        $("#result2").val('');
       }
     }, 500)
   })
@@ -555,14 +538,14 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
   var change_volume_audio = () => {
     $scope.$watch('all_volume_audio', () => {
       $rootScope.all_volume_audio = $scope.all_volume_audio;
-      $('.input_inside1').css('background','linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_audio + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_audio + '%,rgba(255,255,255,0) ')
+      $('.input_inside1').css('background', 'linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_audio + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_audio + '%,rgba(255,255,255,0) ')
     })
   }
   change_volume_audio();
   var change_volume_sounds = () => {
     $scope.$watch('all_volume_sounds', () => {
       $rootScope.all_volume_sounds = $scope.all_volume_sounds;
-      $('.input_inside2').css('background','linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_sounds + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_sounds + '%,rgba(255,255,255,0) ')
+      $('.input_inside2').css('background', 'linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_sounds + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_sounds + '%,rgba(255,255,255,0) ')
     })
   }
   change_volume_sounds();

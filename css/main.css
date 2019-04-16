@@ -104,7 +104,15 @@
    border-bottom: .1vmax solid #00d5db;
    border-top: .1vmax solid #00d5db;
  }
-
+.compain-wrapper{
+  display: flex;
+justify-content: center;
+align-items: center;
+height: 100vmax;
+}
+.compain-wrapper .menu{
+  margin-bottom: 0;
+}
  .info_points {
    color: #00d5db;
  }
@@ -120,6 +128,7 @@
    padding: 4vmax 0vmax;
    box-sizing: border-box;
    margin-bottom: 5vmax;
+   width: 100%;
  }
 
  .menu_items_wrapper {
@@ -689,7 +698,7 @@ font-weight: bold;
  border-bottom: .1vmax solid #00b8e7;
  border-top: .1vmax solid #00b8e7;
  border-radius: 1.5vmax;
- border-radius: 4vmax;
+ border-radius: 3vmax;
  font-size: 4vmax;
  }
 .Name_level{
@@ -779,7 +788,7 @@ font-weight: bold;
   border-left: .4vmax solid #00b8e7;
   border-right: .4vmax solid #00b8e7;
   cursor: pointer;
-  border-radius: 4vmax;
+  border-radius:3vmax;
   font-size: 5vmax;
   display: flex;
   justify-content: center;
@@ -789,7 +798,7 @@ font-weight: bold;
   flex: none;
   height: 8vmax;
 }
-.keys .key:hover{
+.keys .key:active{
   background: rgba(0, 184, 231, 0.25882352941176473);
 }
  .buttons {

@@ -116,4 +116,5 @@ app.run(function($rootScope) {
     },
   ]
     $rootScope.fix.reverse()
+    
 })

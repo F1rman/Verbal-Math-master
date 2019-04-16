@@ -18,7 +18,7 @@
 
 <body>
 
-  <div class="header" ng-hide="location ==  '' || header_show === 'hide'">
+  <div class="header" ng-hide="location ==  '' || header_show === 'hide' || location == 'compain-lvl/'">
     <a onclick="goBack()">
       <img class="prev" src="img/next.svg" />
     </a>
@@ -26,7 +26,7 @@
       {{location}}
     </h1>
   </div>
-  <div class="header" ng-hide="header_show === 'show' || location == '' ">
+  <div class="header" ng-hide="header_show === 'show' || location == '' || location == 'compain-lvl/' ">
     <a onclick="goBack()">
       <img class="prev" src="img/next.svg" />
     </a>
