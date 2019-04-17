@@ -93,11 +93,12 @@
    box-sizing: border-box;
    width: 20vmax;
    border-radius: 4vmax;
-   margin: 3vmax .5vmax 4vmax;
+   margin: 1vmax .5vmax;
    justify-content: center;
    padding: 1vmax;
    flex: none;
    align-items: center;
+    height: 5vmax;
    display: flex;
    flex-flow: column;
    border: .4vmax solid #00d5db;
@@ -106,15 +107,20 @@
  }
 .compain-wrapper{
   display: flex;
-justify-content: center;
-align-items: center;
-height: 100vmax;
+  justify-content: center;
+  align-items: center;
+  height: 100vmax;
+  padding: 2vmax 0;
+  box-sizing: border-box;
 }
 .compain-wrapper .menu{
   margin-bottom: 0;
 }
  .info_points {
+   white-space: nowrap;
    color: #00d5db;
+   display: flex;
+   align-items: center;
  }
 
  .info_points>span {
@@ -127,7 +133,7 @@ height: 100vmax;
    border-radius: 4vmax;
    padding: 4vmax 0vmax;
    box-sizing: border-box;
-   margin-bottom: 5vmax;
+   margin-bottom: 3vmax;
    width: 100%;
  }
 
@@ -184,6 +190,8 @@ height: 100vmax;
    display: flex;
    margin-bottom: 3vmax;
    justify-content: center;
+
+   flex-flow: row wrap;
  }
 
  .appname {
@@ -193,7 +201,7 @@ height: 100vmax;
  .sub_appname {
    font-size: 2vmax;
    margin-top: -4vmax;
-   margin-bottom: 3vmax;
+   margin-bottom: 1vmax;
    padding: .3vmax 3vmax;
    height: 7vmax;
    align-items: flex-end;
@@ -431,6 +439,7 @@ height: 100vmax;
    display: flex;
    justify-content: center;
    align-items: center;
+   text-align: center;
  }
 
  .status {
@@ -687,30 +696,39 @@ font-weight: bold;
 }
  .result {
    text-align: center;
- width: 41vmax;
- flex: none;
- height: 8vmax;
- box-sizing: border-box;
- background: rgba(0, 184, 231, 0.25882352941176473);
- color: white;
- padding: 10px 25px;
- border: .5vmax solid #00b8e7;
- border-bottom: .1vmax solid #00b8e7;
- border-top: .1vmax solid #00b8e7;
- border-radius: 1.5vmax;
- border-radius: 3vmax;
- font-size: 4vmax;
+   width: 41vmax;
+   flex: none;
+   height: 8vmax;
+   box-sizing: border-box;
+   background: rgba(0, 184, 231, 0.25882352941176473);
+   color: white;
+   padding: 10px 25px;
+   border: .5vmax solid #00b8e7;
+   border-bottom: .1vmax solid #00b8e7;
+   border-top: .1vmax solid #00b8e7;
+   border-radius: 1.5vmax;
+   border-radius: 3vmax;
+   font-size: 4vmax;
+   white-space: nowrap;
  }
 .Name_level{
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  font-size: 5vmax;
+  font-size: 3vmax;
   text-align: center;
+  padding: 0 2vmax;
+  box-sizing: border-box;
 }
-.Name_level>span{
-  font-size: 2.5vmax;
+span.progress_status{
+  font-size: 3vmax;
+  position: fixed;
+  top: 1.5vmax;
+  right: 1.5vmax;
+  font-family: monospace;
+  line-height: 3vmax;
+  color: #fff;
 }
  .resultat {
    display: flex;
@@ -726,7 +744,7 @@ font-weight: bold;
 
  .num {
    text-align: center;
- margin: 5vmax auto 5vmax;
+ margin: 3vmax auto 5vmax;
  font-size: 5vmax;
  color: #ffffff;
  }
@@ -825,6 +843,8 @@ display: flex;
 .btn_img>img{
   width: 100%;
   height: 100%;
+  padding: 2vmax;
+box-sizing: border-box;
 }
  .btn {
    display: flex;
@@ -858,7 +878,9 @@ display: flex;
    padding: 40px 0px;
    z-index: -1;
  }
-
+.btn_img .update_arrow{
+  padding: 2.5vmax;
+}
  .btn.home {
    width: 100px;
    position: relative;
@@ -1224,20 +1246,35 @@ flex-flow: column-reverse;
 
  .more {
    /* display: inherit; */
-   padding: 0 10px;
+   padding: 0 1vmax;
    text-decoration: underline;
    font-weight: bold;
  }
+.keys .notpoints:active{
+  border-color: #e70000;
+box-shadow: inset 0px 0px 11px #e70000;
+animation: notpoints .4s linear;
+}
 
+@keyframes notpoints {
+
+  60% {
+    box-shadow: inset 0px 0px 11px #e70000;
+      border-color: #e70000;
+    opacity: 1;
+  }
+
+}
  .time_left {
    display: flex;
-   justify-content: center;
-   align-items: center;
-   position: absolute;
-   left: 10px;
-   top: -25px;
-   color: #00aeea;
-   font-weight: bold;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: -3.5vmax;
+font-size: 2vmax;
+color: #00aeea;
+font-weight: bold;
+width: 100%;
  }
 .info_verblike{
   font-size: 4vmax;
@@ -1285,6 +1322,7 @@ flex-flow: column-reverse;
  }
  .result_header{
    font-size: 3vmax;
+   text-align: center;
  }
  #hint_comp{
 
@@ -1294,29 +1332,13 @@ flex-flow: column-reverse;
     width: 100%;
     height: 70%;
   }
- .compain_stat{
-     padding: .5vmax .5vmax 1vmax .5vmax;
-     margin-top: 1vmax;
-     box-sizing: border-box;
-     border: .4vmax solid #00b8e7;
-     border-bottom: .1vmax solid #00b8e7;
-     border-top: .1vmax solid #00b8e7;
-     border-radius: 2.5vmax;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     color: #fff;
- }
-  .compain_stat>img{
-    width: 100%;
-    height: 100%;
-  }
+
+
 .compain_info{
-  display: none;;
+  display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 5vmax;
 }
  .compain-wrapper #hint {
    position: absolute;
@@ -1375,12 +1397,9 @@ flex-flow: column-reverse;
  }
 
  .points_svg {
-   width: 30px;
-   height: 30px;
- }
-
- .vh3_6 {
-   font-size: 3vh;
+   width: 3vmax;
+height: 3vmax;
+margin: 0 .5vmax;
  }
 
  .update_settings {
@@ -1394,3 +1413,82 @@ flex-flow: column-reverse;
    box-sizing: border-box;
    font-weight: bold;
  }
+
+ .keys .compain_stat{
+   font-size: 2vmax;
+text-align: center;
+
+ }
+  .keys .compain_stat.column{
+    flex-flow: column;
+padding: 0;
+box-sizing: content-box;
+  }
+  .keys .compain_stat.column .row{
+    flex-flow: row;
+        white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ .keys .compain_stat img{
+   width: 2.2vmax;
+   height: 2.2vmax;
+ }
+.modal_buy{
+  background: #000;
+  position: fixed;
+  top: 0;
+  z-index: 22212;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 2vmax;
+  flex-flow: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.modal_buy .points_svg {
+    width: 5vmax;
+    height: 5vmax;
+    margin-left: 1vmax;
+}
+.btn_buy {
+  border: 0.1vmax solid #00b8e7;
+border-left: .8vmax solid #00b8e7;
+border-right: .8vmax solid #00b8e7;
+cursor: pointer;
+border-radius: 3vmax;
+font-size: 5vmax;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-family: monospace;
+width: 100%;
+font-size: 2vmax;
+margin: 1vmax 0;
+position: relative;
+box-sizing: border-box;
+height: 8vmax;
+overflow: hidden;
+padding: 0 2vmax;
+}
+.getPoints{
+  font-size: 5vmax;
+  display: flex;
+  align-items: center;
+}
+
+
+.close_img{
+  width: 3vmax;
+  height: 3vmax;
+  position: fixed;
+  z-index: 12;
+  background: url(../img/close.svg) no-repeat;
+  background-size: cover;
+  padding: .2vmax;
+  top: 1vmax;
+  right: 2vmax;
+}

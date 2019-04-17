@@ -1,22 +1,15 @@
 <div class="compain-wrapper" ng-controller="compain_lvl_ctrl">
   <div class="menu">
-    <div class="compain_info">
-    <div class="compain_stat">
-      {{langs[language].Allpoints}}:{{all_points}}
-    </div>
-    <div class="compain_stat">
-      <span class=" cl_w">hint = {{3 + current_level}} {{langs[language].points}}</span>
-    </div>
-    </div>
 
-      <h2 class="Name_level">
-        {{levels[current_level-1].name[language]}}
+    <span class="progress_status">
+      {{current_progress}}/{{count_operations}}
+    </span>
+    <h2 class="Name_level">
+      {{levels[current_level-1].name[language]}}
 
-        <span>
-          {{current_progress}}/{{count_operations}}
-        <span>
 
-      </h2>
+
+    </h2>
     <div id="num_equalPractice">
       <div class="num" id="number_calc">
         {{number[0]}} {{simvol}} {{number[1]}}
@@ -24,41 +17,54 @@
       <div id="equalPractice">
       </div>
     </div>
-        <div class="input_hint">
-          <div class="result">{{ResInput}}</div>
+    <div class="input_hint">
+      <div class="result">{{ResInput}}</div>
 
-        </div>
-        <!-- Timer bar -->
+    </div>
+    <!-- Timer bar -->
     <div class="keys">
-<div class="flex">
-  <a ng-click="delete()" class="key delete_key"> DEL </a>
+      <div class="flex">
+        <a ng-click="delete()" class="key delete_key"> DEL </a>
 
-      <a ng-click="show_hint()" id="hint_comp" class="key">
-        <img alt="help" class="" src="img/idea.svg">
-      </a>
+        <a ng-click="show_hint()" id="hint_comp" class="key" ng-class="{'notpoints':notpoints==true}">
+          <img alt="help" class="" src="img/idea.svg">
+        </a>
 
-  <a onclick="" ng-click="remove()" class="key">
-    <img class="prev" src="img/next.svg" />
-   </a>
+        <a onclick="" ng-click="remove()" class="key">
+          <img class="prev" src="img/next.svg" />
+        </a>
       </div>
-    <a  class="key" ng-click="key($index+1)" ng-repeat="x in [1,2,3,4,5,6,7,8,9]">{{$index+1}}</a>
-      <div class="flex"><a ng-click="key(0)" class="key"> 0 </a></div>
+      <a class="key" ng-click="key($index+1)" ng-repeat="x in [1,2,3,4,5,6,7,8,9]">{{$index+1}}</a>
+      <div class="flex">
+        <div class="compain_info">
+          <a class="key compain_stat column" >
+            <span class="row" > {{langs[language].YouHave}} </span>
+            <span class="row"> {{all_points}}
+              <img alt="" class="points_svg revers" src="img/points.svg">
+            </span>
+          </a>
+          <a ng-click="key(0)" class="key"> 0 </a>
+          <a class="key compain_stat">
+            1<img alt="help" class="" src="img/idea.svg"> = {{3 + current_level}} <img alt="" class="points_svg revers" src="img/points.svg">
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="timebar">
+    <div class="timebar_inside">
     </div>
-    <div class="timebar">
-      <div class="timebar_inside">
-      </div>
+  </div>
+  <!-- IF OK -->
+  <div class="check_anim">
+    <div class="iftrue" ng-show="isOk == true">
+      OK
     </div>
-    <!-- IF OK -->
-    <div class="check_anim">
-      <div class="iftrue" ng-show="isOk == true">
-        OK
-      </div>
-      <div class="iffalse" ng-show="isOk == false">
-        NO
-      </div>
-      <div class="" ng-show="isOk == null">
-      </div>
+    <div class="iffalse" ng-show="isOk == false">
+      NO
+    </div>
+    <div class="" ng-show="isOk == null">
+    </div>
   </div>
   <div class="vidlik_wrapper">
     <h2 class=" vidlik_h2">

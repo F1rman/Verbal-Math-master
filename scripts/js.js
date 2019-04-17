@@ -243,11 +243,11 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
       $scope.hint_cost = 3 + $rootScope.current_level;
       if ($rootScope.all_points >= $scope.hint_cost) {
         $rootScope.all_points = $rootScope.all_points - $scope.hint_cost;
-        $scope.hint_result = $rootScope.define_result;
+        $scope.ResInput = $rootScope.define_result;
         storage.setItem('points', $rootScope.all_points)
       } else {
         $scope.delete()
-        $scope.ResInput = $rootScope.langs[$rootScope.language].NotEnoughPoints;
+        $scope.notpoints = true;
       }
     }
   }
@@ -269,13 +269,15 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
   };
 
   $scope.$watch('ResInput', () => {
+    console.log(String($scope.ResInput));
+      clearTimeout(clearIfPress)
     clearIfPress = setTimeout(() => {
       if (String($scope.ResInput) == String($rootScope.define_result)) {
         $scope.$apply(() => {
           clearTimeout(clearIfPress)
           $scope.ResInput = '';
           $scope.isOk = true
-        });
+
         var a1 = $rootScope.number[0];
         var a2 = $rootScope.number[1];
         playAudio('wav/enter_ok.flac', av_s);
@@ -285,7 +287,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
         $rootScope.time_left_total = time_left_total;
         clearTimeout(set_progress)
         progress(time_total, time_total, $('.timebar'), $('.timebar_inside'));
-        $rootScope.$apply(() => {
           $rootScope.current_progress = $rootScope.current_progress + 1;
           changeNSR_compain();
           var a3 = $rootScope.number[0];
@@ -293,7 +294,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
           if (a1 == a3 && a2 == a4) {
             changeNSR_compain();
           }
-          $scope.calc_result_compain = null;
         })
         if ($rootScope.current_progress >= $rootScope.count_operations) {
           playAudio('wav/win.wav', av_s)
@@ -301,24 +301,22 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
             $location.path("/result-compain/" + $rootScope.current_level);
           })
         }
-      } else if ($scope.ResInput == '' || $scope.ResInput == null || $scope.ResInput == undefined) {
+      }
+      else if ($scope.ResInput == '' || $scope.ResInput == null || $scope.ResInput == undefined) {
         $scope.$apply(() => {
           $scope.isOk = null;
         });
       } else {
-        setTimeout(() => {
-          $scope.$apply(() => {
-            if ($rootScope.define_result.toString().length <= $scope.ResInput.length) {
-              $scope.isOk = false;
+  if ($rootScope.define_result.toString().length <= $scope.ResInput.length) {
+          $scope.isOk = false;
               $scope.delete()
               $scope.$apply(() => {
                 $scope.ResInput = '';
                 playAudio('wav/enter_no.flac', av_s);
               });
             }
-          })
-        }, 300)
 
+  $scope.isOk = null;
 
 
       }
@@ -480,7 +478,7 @@ app.controller("practice_lvl_result_ctrl", ($scope, $rootScope) => {
   }
   $rootScope.all_points = $rootScope.points + $rootScope.total_points;
   getLevel(points, $rootScope.all_points);
-  $rootScope.for_next_lvl = for_next_lvl;
+  // $rootScope.for_next_lvl = for_next_lvl;
   if ($rootScope.current_progress < $rootScope.count_operations) {
     $rootScope.points = 0;
   } else {
@@ -497,12 +495,8 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
 
 
   $('#audio_button').click(() => {
-    $scope.audio = !$scope.audio
     if (av_a == 0) {
-      $scope.audio = !$scope.audio;
       if (fon_audio.paused) {
-        av_a = 50;
-        $('#a_range').val(av_a);
         fon_audio.play();
         storage.setItem('volume_audio', av_a)
       }
@@ -510,29 +504,23 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
     } else {
       $scope.audio = $scope.audio
     }
-    $('#a_range').val(av_a * 100);
     if (fon_audio.paused) {
       fon_audio.play();
       storage.setItem('volume_audio', av_a)
     } else {
-      $('#a_range').val(0);
       fon_audio.pause();
       storage.setItem('volume_audio', 0)
     }
   })
   $('#sounds_button').click(() => {
-    $scope.sounds = !$scope.sounds
     if (av_s == 0) {
-      $scope.sounds = !$scope.sounds
       av_s == 50;
     } else {
       $scope.sounds = $scope.sounds
     }
     if (Number($('#s_range').val()) / 100 == Number(av_s)) {
 
-      $('#s_range').val(0);
     } else {
-      $('#s_range').val(av_s * 100);
     }
   })
   var change_volume_audio = () => {
@@ -558,6 +546,8 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
     storage.setItem('language_stor', $rootScope.language);
   });
 });
+
+
 app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
   if ($rootScope.current_progress < $rootScope.count_operations) {
     console.log('LOSE');
@@ -572,6 +562,7 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
       $rootScope.all_points = $rootScope.points + Number(storage.getItem('points'));
       getLevel(points, $rootScope.all_points);
       $rootScope.for_next_lvl = for_next_lvl;
+      console.log(  $rootScope.for_next_lvl);
     }
   } else {
     console.log('WIN');
@@ -585,6 +576,7 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
     $rootScope.all_points = $rootScope.points + Number(storage.getItem('points'));
     getLevel(points, $rootScope.all_points);
     $rootScope.for_next_lvl = for_next_lvl;
+    console.log(  $rootScope.for_next_lvl);
     var all_p = Number(storage.getItem('points'))
     console.log($rootScope.earn_points, 'points ', points)
     // Фікс при перезагрузці сторінки рузультат по Очках
@@ -702,6 +694,7 @@ var getLevel = (points, all_points) => {
       if (for_next_lvl < 0) {
         i = i + 1;
         for_next_lvl = levels[i] - all_points;
+        console.log(for_next_lvl);
       }
       return i;
     }
