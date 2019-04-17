@@ -1,16 +1,17 @@
-<div class="lessons_wrapper menu">
+<div class="lessons_wrapper menu"  ng-controller="lesson">
   <div class="levels btn_hover" >
     <div class="leftblue ">
       {{1}}
     </div>
-    <a href="#!lessons-level/{{$index+1}}" class="lvlcont">
+
+    <a ng-click="buy_lessons()" class="lvlcont">
       <div class="h2_wrap_scrool">
-      <h2>Bay next less</h2>
+      <h2>Bay next lessons {{lessons_cost}}<img alt="" class="points_svg revers" src="img/points.svg"></h2>
       </div>
         <img src="img/next.svg" class="finish revers"  alt="">
     </a>
   </div>
-  <div class="levels btn_hover" ng-repeat="x in lesson">
+  <div class="levels btn_hover" ng-repeat="x in lesson | limitTo : lessons">
     <div class="leftblue ">
       {{$index+2}}
     </div>
@@ -20,7 +21,13 @@
       </div>
         <img src="img/next.svg" class="finish revers"  alt="">
     </a>
-  </div>
 
+  </div>
+  <div class="modal_buy" ng-hide="!buy">
+    <div class="close_img" ng-click="buy=!buy"></div>
+  <a class="btn_buy btn_hover" ng-repeat="x in [1,2,3]"> <span class="getPoints">{{($index * 5) * ($index * 2) + 20}} <img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index +  '.99$'}}</span>  </a>
+  <a class="btn_buy btn_hover" ng-repeat="x in [4,5,6]"> <span class="getPoints">{{($index * 15) * ($index * 2) + 100}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 3 + '.99$'}}</span>  </a>
+  <a class="btn_buy btn_hover" ng-repeat="x in [7,8,9]"> <span class="getPoints">{{($index * 25) * ($index * 2) + 300}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 6 + '.99$'}}</span>  </a>
+  </div>
 
 </div>

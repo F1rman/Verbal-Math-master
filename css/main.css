@@ -457,7 +457,7 @@ justify-content: space-between;
   box-sizing: border-box;
 }
 .array_of_levels h2{
-  margin-bottom: 2vmax;
+      margin: 2vmax 0;
 }
 .array_of_levels .prev{
   position: absolute;
@@ -509,6 +509,7 @@ left: 0;
 }
   .lessons_wrapper .levels h2{
       white-space: nowrap;
+      display: flex;
       position: absolute;
       left: 1vmax;
   }
@@ -1225,10 +1226,7 @@ width: 15vmax;
    width: 80%;
    margin: 0 auto;
  }
-.lessons_wrapper{
-  display: flex;
-flex-flow: column-reverse;
-}
+
  .title_lessons {
    text-align: center;
    margin: 3vmax 0;
@@ -1436,7 +1434,7 @@ box-sizing: content-box;
    height: 2.2vmax;
  }
 .modal_buy{
-  background: #000;
+      background: linear-gradient(to bottom, #141e30, #243b55) no-repeat;
   position: fixed;
   top: 0;
   z-index: 22212;
@@ -1491,4 +1489,47 @@ padding: 0 2vmax;
   padding: .2vmax;
   top: 1vmax;
   right: 2vmax;
+}
+.upgrade_btn{
+  display: flex;
+  padding: 0 2vmax;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  border: .1vmax solid #00b8e7;
+  border-bottom: .4vmax solid #00b8e7;
+  border-top: .4vmax solid #00b8e7;
+  border-radius: 4vmax;
+  margin: 0 auto;
+  height: 5vmax;
+  overflow: hidden;
+  position: relative;
+  width: 20vmax;
+
+}
+.upgrade_btn img{
+  height: 70%;
+  margin: 0 1vmax;
+
+}
+.Congratulations{
+  text-align: center;
+}
+.flex_upgrade{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.brain_upgrade{
+  display: flex;
+justify-content: center;
+align-items: center;
+height: 50vmax;
+}
+.upgrade_btn.notpoints:active{
+  border-color: red;
+  box-shadow:inset 0 0 1vmax red;
+}
+.brain_upgrade>img{
+  max-width: 256px;
 }

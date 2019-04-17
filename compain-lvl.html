@@ -6,9 +6,6 @@
     </span>
     <h2 class="Name_level">
       {{levels[current_level-1].name[language]}}
-
-
-
     </h2>
     <div id="num_equalPractice">
       <div class="num" id="number_calc">
@@ -37,8 +34,8 @@
       <a class="key" ng-click="key($index+1)" ng-repeat="x in [1,2,3,4,5,6,7,8,9]">{{$index+1}}</a>
       <div class="flex">
         <div class="compain_info">
-          <a class="key compain_stat column" >
-            <span class="row" > {{langs[language].YouHave}} </span>
+          <a class="key compain_stat column">
+            <span class="row"> {{langs[language].YouHave}} </span>
             <span class="row"> {{all_points}}
               <img alt="" class="points_svg revers" src="img/points.svg">
             </span>
