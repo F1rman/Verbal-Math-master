@@ -177,7 +177,7 @@ app.run(function($rootScope) {
         "Nextlevel": "Следующий уровень",
         "Yourlevelis": "Твой уровень",
         "Level": "Уровень",
-        "Levelprogress": "Прогрес Уровеня",
+        "Levelprogress": "Прогрес Уровня",
         "Newlevelsappearslater": "Новые уровни появляются позже",
         "Timeisover": "Время вышло",
         "Youlose": "Иди учись",
