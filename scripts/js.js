@@ -75,14 +75,25 @@ app.config(($routeProvider) => {
 
 var firsload = true;
 app.run(($rootScope) => {
-  $rootScope.skill = storage.getItem('skill');
+    console.log($rootScope.buyed);
+  $rootScope.buy = ()=>{
+      $rootScope.buyed = !$rootScope.buyed
+      console.log($rootScope.buyed);
+  }
+
+  if ($rootScope.skill == undefined) {
+$rootScope.skill = 1;
+  }
+  else {
+    $rootScope.skill = storage.getItem('skill');
+  }
   console.log(points);
   if ($rootScope.all_points == undefined) {
     $rootScope.all_points = points;
   }
-  if (volume_stor_audio == undefined || volume_stor_sounds == undefined) {
-    $rootScope.all_volume_audio = 50;
-    $rootScope.all_volume_sounds = 50;
+  if (storage.getItem('volume_audio') == undefined || storage.getItem('volume_sounds') == undefined) {
+  volume_stor_audio = 50;
+    volume_stor_sounds = 50;
   } else {
     $rootScope.all_volume_audio = volume_stor_audio;
     $rootScope.all_volume_sounds = volume_stor_sounds;

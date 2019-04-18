@@ -2,7 +2,7 @@ app.run(function($rootScope) {
     $rootScope.ua = 0;
     $rootScope.en = 1;
     $rootScope.ru = 2;
-    $rootScope.vers = '1.5.0';
+    $rootScope.vers = '1.6.1';
     console.log('%c VERBAL MATCH VERSION - ' + $rootScope.vers, 'background: #000; color: #00d2dc; font-size:20px;');
     console.log(storage);
 
@@ -36,7 +36,9 @@ app.run(function($rootScope) {
       'ico':'server',
       'href': '#!upgrade'
     }
+
     $rootScope.menu = [$rootScope.Campaign_m, $rootScope.Practice_m,  $rootScope.Lessons_m, $rootScope.Info_m, $rootScope.upgradebrain_m, $rootScope.Settings_m]
+
     $rootScope.langs = [{
         "APPNAME": "Тренер усного підрахунку",
         "APPNAME2":"Прокачка мозга",
@@ -79,6 +81,16 @@ app.run(function($rootScope) {
         "YouHave": "Ти маєш",
         "All": "Всі",
         "Upgrade": "Прокачати",
+        "Buymore": "Купити",
+        "Baynextlessons": "Купити більше рівнів",
+        "Congratulations": "Вітання",
+        "LevelUP": "З новим рівнем ",
+        "Upgraded": "Прокачано",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
         "": "",
         "": "",
         "": "",
@@ -124,7 +136,20 @@ app.run(function($rootScope) {
         "YouHave": "You Have",
         "All": "All",
         "Upgrade": "Upgrade",
+        "Buymore": "Buy more",
+        "Baynextlessons":"Bay next lessons",
+        "Congratulations": "Congratulations",
+        "LevelUP": "Level UP",
+        "Upgraded": "Upgraded",
         "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+
+
     }, {
         "APPNAME": "Тренер устного подсчета",
         "APPNAME2":"Прокачка мозга",
@@ -167,6 +192,13 @@ app.run(function($rootScope) {
         "YouHave": "У тебя",
         "All": "Все",
         "Upgrade": "Прокачать",
+        "Buymore": "Купить ",
+        "Baynextlessons ": "Купить больше уровней",
+        "Congratulations": "Поздравление",
+        "LevelUP": "С новим уровнем",
+        "Upgraded": "Прокачано",
+        "": "",
+        "": "",
         "": "",
         "": "",
         "": "",

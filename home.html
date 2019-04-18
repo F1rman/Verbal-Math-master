@@ -11,13 +11,13 @@
     <h2 class="info_points">{{langs[language].Yourlevelis}}: <span>{{lvl}}</span> </h2>
   </div>
   <div class="home_points_info">
-    <h2 class="info_points">World rank {{world_wrank}}</h2>
+    <h2 class="info_points"><img class="w_rank" src="img/w_rank.png" alt=""> {{world_wrank}}</h2>
   </div>
   <div class="home_points_info" >
     <h2  class="info_points">{{langs[language].All }} <img alt="" class="points_svg revers" src="img/points.svg"> <span> : {{all_points}}</span> </h2>
   </div>
-  <div ng-click="buy=!buy" class="home_points_info">
-    <h2 class="info_points">Buy more <img alt="" class="points_svg revers" src="img/points.svg"></h2>
+  <div ng-click="buy()" class="home_points_info">
+    <h2 class="info_points">{{langs[language].Buymore}}<img alt="" class="points_svg revers" src="img/points.svg"></h2>
   </div>
 
 </div>
@@ -25,9 +25,9 @@
 <div class="menu" >
 
   <div class="menu_items_wrapper">
-    <a ng-repeat="x in menu " class="menu_items" href="{{menu[$index].href}}">
+    <a ng-repeat="x in menu" class="menu_items" href="{{menu[$index].href}}">
       <div class="img_wrapper">
-        <img alt="" class="index_svg" src="img/{{menu[$index].ico}}.svg">
+        <div class="index_svg" style="background-image:url('img/{{ menu[$index].ico}}.svg')" ></div>
       </div>
       <h3 class="menu_link">
         {{menu[$index].name[language]}}
@@ -44,10 +44,4 @@
     <p class="f2">
       "{{tips[language][day]}}"
     </p>
-  </div>
-  <div class="modal_buy" ng-hide="!buy">
-    <div class="close_img" ng-click="buy=!buy"></div>
-    <a class="btn_buy btn_hover" ng-repeat="x in [1,2,3]"> <span class="getPoints">{{($index * 5) * ($index * 2) + 20}} <img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index +  '.99$'}}</span>  </a>
-  <a class="btn_buy btn_hover" ng-repeat="x in [4,5,6]"> <span class="getPoints">{{($index * 15) * ($index * 2) + 100}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 3 + '.99$'}}</span>  </a>
-  <a class="btn_buy btn_hover" ng-repeat="x in [7,8,9]"> <span class="getPoints">{{($index * 25) * ($index * 2) + 300}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 6 + '.99$'}}</span>  </a>
   </div>

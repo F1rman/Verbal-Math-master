@@ -1,40 +1,57 @@
 <div class="practice-wrapper" ng-controller="practice_lvl_ctrl">
 <div class="menu">
-            <h2 class="column header_lesson">
-                {{levels[current_level-1].name[language]}}
-                <br>
-               <div class="vh2_4"> {{current_progress}}/{{count_operations}}</div>
-            </h2>
+  <span class="progress_status">
+    {{current_progress}}/{{count_operations}}
+  </span>
+  <h2 class="Name_level">
+    {{levels[current_level-1].name[language]}}
+  </h2>
+  <div id="num_equalPractice">
+    <div class="num" id="number_calc">
+      {{number[0]}} {{simvol}} {{number[1]}}
+    </div>
+  </div>
+  <div class="input_hint">
+    <div class="result">{{ResInput}}</div>
 
-        <div id="num_equalPractice">
-            <div class="num" id="number_calc">
-                {{number[0]}} {{simvol}} {{number[1]}}
-            </div>
-            <div id="equalPractice">
-            </div>
-        </div>
-        <div class="layout-positioner">
-            <div class="layout-positioner">
-                <div class="flex">
-                    <input class="result" id="result2" ng-init="calc_result_practice" ng-model="calc_result_practice" type="number">
-                        <!-- <div ng-click="calc_result_practice = null"><img class="prev" src="img/next.png"/></div> -->
-                </div>
-            </div>
-            <a class="need_help" href="#!lessons-level/{{lvl_less}}" id="hint" ng-hide="false_practice < 2">
-                <img alt="help" class="svg_help" src="img/idea.svg">
-            </a>
-            <!-- Timer bar -->
-            <!-- IF OK -->
-            <div class="check_anim">
-                <div class="iftrue" ng-hide="calc_result_practice != define_result">
-                    OK
-                </div>
-                <div class="iffalse" ng-show="isOk == false">
-                    NO
-                </div>
-                <div class="" ng-show="isOk == null">
-                </div>
-            </div>
-        </div>
+  </div>
+  <div class="keys">
+    <div class="flex">
+      <a ng-click="delete()" class="key delete_key"> DEL </a>
+
+      <a href="#!lessons-level/{{lvl_less}}" id="hint_comp" class="key" >
+        <img alt="help" class="" src="img/idea.svg">
+      </a>
+
+      <a onclick="" ng-click="remove()" class="key">
+        <img class="prev" src="img/next.svg" />
+      </a>
+    </div>
+    <a class="key" ng-click="key($index+1)" ng-repeat="x in [1,2,3,4,5,6,7,8,9]">{{$index+1}}</a>
+    <div class="flex">
+      <div class="compain_info">
+        <!-- <a class="key compain_stat column">
+          <span class="row"> {{langs[language].YouHave}} </span>
+          <span class="row"> {{all_points}}
+            <img alt="" class="points_svg revers" src="img/points.svg">
+          </span>
+        </a> -->
+        <a ng-click="key(0)" class="key"> 0 </a>
+        <!-- <a class="key compain_stat">
+          1<img alt="help" class="" src="img/idea.svg"> = {{3 + current_level}} <img alt="" class="points_svg revers" src="img/points.svg">
+        </a> -->
+      </div>
+    </div>
+  </div>
+  <div class="check_anim">
+    <div class="iftrue" ng-show="isOk == true">
+      OK
+    </div>
+    <div class="iffalse" ng-show="isOk == false">
+      NO
+    </div>
+    <div class="" ng-show="isOk == null">
+    </div>
+  </div>
     </div>
 </div>

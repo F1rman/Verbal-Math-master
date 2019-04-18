@@ -58,7 +58,6 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
       n1_n2_kratne()
     }
     $rootScope.define_result = define_result($rootScope.number[0], $rootScope.number[1], $rootScope.simvol);
-    console.log($rootScope.define_result, " RESULT");
 
 
     $scope.hint_result = "";
@@ -93,8 +92,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
   };
 
   $scope.$watch('ResInput', () => {
-    console.log(String($scope.ResInput));
-      clearTimeout(clearIfPress)
+    clearTimeout(clearIfPress)
     clearIfPress = setTimeout(() => {
       if (String($scope.ResInput) == String($rootScope.define_result)) {
         $scope.$apply(() => {
@@ -102,15 +100,17 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
           $scope.ResInput = '';
           $scope.isOk = true
 
-        var a1 = $rootScope.number[0];
-        var a2 = $rootScope.number[1];
-        playAudio('wav/enter_ok.flac', av_s);
-        time_left_total += time_left;
-        t = time_left_total;
-        storage.setItem('time_left_total', time_left_total)
-        $rootScope.time_left_total = time_left_total;
-        clearTimeout(set_progress)
-        progress(time_total, time_total, $('.timebar'), $('.timebar_inside'));
+          var a1 = $rootScope.number[0];
+          var a2 = $rootScope.number[1];
+
+          playAudio('wav/enter_ok.flac', av_s);
+
+          time_left_total += time_left;
+          t = time_left_total;
+          storage.setItem('time_left_total', time_left_total)
+          $rootScope.time_left_total = time_left_total;
+          clearTimeout(set_progress)
+          progress(time_total, time_total, $('.timebar'), $('.timebar_inside'));
           $rootScope.current_progress = $rootScope.current_progress + 1;
           changeNSR_compain();
           var a3 = $rootScope.number[0];
@@ -125,22 +125,21 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
             $location.path("/result-compain/" + $rootScope.current_level);
           })
         }
-      }
-      else if ($scope.ResInput == '' || $scope.ResInput == null || $scope.ResInput == undefined) {
+      } else if ($scope.ResInput == '' || $scope.ResInput == null || $scope.ResInput == undefined) {
         $scope.$apply(() => {
           $scope.isOk = null;
         });
       } else {
-  if ($rootScope.define_result.toString().length <= $scope.ResInput.length) {
+        if ($rootScope.define_result.toString().length <= $scope.ResInput.length) {
           $scope.isOk = false;
-              $scope.delete()
-              $scope.$apply(() => {
-                $scope.ResInput = '';
-                playAudio('wav/enter_no.flac', av_s);
-              });
-            }
+          $scope.delete()
+          $scope.$apply(() => {
+            $scope.ResInput = '';
+            playAudio('wav/enter_no.flac', av_s);
+          });
+        }
 
-  $scope.isOk = null;
+        $scope.isOk = null;
 
 
       }

@@ -12,7 +12,7 @@
         -
       </h2>
     </div>
-    <div ng-click="buy=!buy" class="current-level">
+    <div ng-click="buyed=!buyed" class="current-level">
       <h2 class="wrank">
         <img class="l_rank" src="img/l_rank.png" alt="">
         {{langs[language].Localrank}}
@@ -25,7 +25,7 @@
   </div>
 
   <a href="#!upgrade" class="historys_wrapper btn_hover">
-      <span> {{skill}}/{{14}} Upgraded</span>
+      <span> {{skill}}/{{14}} {{langs[language].Upgraded}}</span>
     <div class="history" style="width: {{100/14*skill}}%"></div>
     <img class="revers prev" src="img/next.svg" />
   </a>
@@ -58,10 +58,4 @@
       <h2>{{langs[language].Newlevelsappearslater}}</h2>
     </div>
   </div>
-</div>
-<div class="modal_buy" ng-hide="!buy">
-  <div class="close_img" ng-click="buy=!buy"></div>
-  <a class="btn_buy btn_hover" ng-repeat="x in [1,2,3]"> <span class="getPoints">{{($index * 5) * ($index * 2) + 20}} <img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index +  '.99$'}}</span>  </a>
-<a class="btn_buy btn_hover" ng-repeat="x in [4,5,6]"> <span class="getPoints">{{($index * 15) * ($index * 2) + 100}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 3 + '.99$'}}</span>  </a>
-<a class="btn_buy btn_hover" ng-repeat="x in [7,8,9]"> <span class="getPoints">{{($index * 25) * ($index * 2) + 300}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 6 + '.99$'}}</span>  </a>
 </div>

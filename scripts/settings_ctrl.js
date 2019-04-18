@@ -1,4 +1,3 @@
-
 app.controller("settings_ctrl", ($scope, $rootScope) => {
   // Налаштування звуку
   // Коли нажимаєш клавішу аудіо вкл
@@ -30,9 +29,9 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
     }
     if (Number($('#s_range').val()) / 100 == Number(av_s)) {
 
-    } else {
-    }
+    } else {}
   })
+
   var change_volume_audio = () => {
     $scope.$watch('all_volume_audio', () => {
       $rootScope.all_volume_audio = $scope.all_volume_audio;
@@ -40,8 +39,17 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
     })
   }
   change_volume_audio();
+  var notfirst = true;
+  var check_volume;
   var change_volume_sounds = () => {
-    $scope.$watch('all_volume_sounds', () => {
+    $scope.$watch('all_volume_sounds', function(newValue, oldValue){
+      if (newValue !== oldValue) {
+        clearTimeout(check_volume)
+        check_volume = setTimeout(() => {
+              playAudio('wav/click2.wav', av_s);
+        }, 100)
+  }
+
       $rootScope.all_volume_sounds = $scope.all_volume_sounds;
       $('.input_inside2').css('background', 'linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_sounds + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_sounds + '%,rgba(255,255,255,0) ')
     })

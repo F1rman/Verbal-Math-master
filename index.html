@@ -17,7 +17,7 @@
         <script src="scripts/compaign_ctrl.js" type="text/javascript"> </script>
       <script src="scripts/practice_ctrl.js" type="text/javascript"> </script>
   <link href="img/favico.png" rel="shortcut icon" type="image/x-icon">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <link href="css/main.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
   <title>
@@ -26,7 +26,9 @@
 </head>
 
 <body>
+  <div class="bonus_modal" ng-hide='bonus_day'>
 
+  </div>
   <div class="header" ng-hide="location ==  '' || header_show === 'hide' || location == 'compain-lvl/'">
     <a onclick="goBack()">
       <img class="prev" src="img/next.svg" />
@@ -44,8 +46,13 @@
     </h1>
   </div>
 
-
-  <div ng-view>
+  <div class="modal_buy" ng-hide="!buyed">
+    <div class="close_img" ng-click="buy()"></div>
+    <a class="btn_buy btn_hover" ng-repeat="x in [1,2,3]"> <span class="getPoints">{{($index * 5) * ($index * 2) + 20}} <img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index +  '.99$'}}</span>  </a>
+  <a class="btn_buy btn_hover" ng-repeat="x in [4,5,6]"> <span class="getPoints">{{($index * 15) * ($index * 2) + 100}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 3 + '.99$'}}</span>  </a>
+  <a class="btn_buy btn_hover" ng-repeat="x in [7,8,9]"> <span class="getPoints">{{($index * 25) * ($index * 2) + 300}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 6 + '.99$'}}</span>  </a>
+  </div>
+  <div id="ng_view" ng-view>
 
   </div>
 

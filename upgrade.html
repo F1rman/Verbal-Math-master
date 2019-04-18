@@ -3,22 +3,24 @@
 <div class="home_points_info" >
   <h2  class="info_points">{{langs[language].All }} <img alt="" class="points_svg revers" src="img/points.svg"> <span> : {{all_points}}</span> </h2>
 </div>
-<div ng-click="buy=!buy" class="home_points_info">
-  <h2 class="info_points">Buy more <img alt="" class="points_svg revers" src="img/points.svg"></h2>
+<div class="home_points_info">
+  <h2 class="info_points" ng-click="buy()">{{langs[language].Buymore}} <img alt="" class="points_svg revers" src="img/points.svg"></h2>
 
 </div>
-<div class="modal_buy" ng-hide="!buy">
-  <div class="close_img" ng-click="buy=!buy"></div>
-  <a class="btn_buy btn_hover" ng-repeat="x in [1,2,3]"> <span class="getPoints">{{($index * 5) * ($index * 2) + 20}} <img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index +  '.99$'}}</span>  </a>
-<a class="btn_buy btn_hover" ng-repeat="x in [4,5,6]"> <span class="getPoints">{{($index * 15) * ($index * 2) + 100}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 3 + '.99$'}}</span>  </a>
-<a class="btn_buy btn_hover" ng-repeat="x in [7,8,9]"> <span class="getPoints">{{($index * 25) * ($index * 2) + 300}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 6 + '.99$'}}</span>  </a>
-</div>
+
 </div>
 <h2 class="Congratulations">{{end}}</h2>
+<modal class="modal_upgrade" ng-hide="!upgrade_animation">
+  <h2 ng-hide="!upgrade_animation" class="Congratulations upgrade_h2" ng-class="{'upgrade_animation':upgrade_animation == true}">
+  {{langs[language].Congratulations}}! <br>
+    {{langs[language].LevelUP}}! 
+  </h2>
+</modal>
+
+
 <div class="brain_upgrade">
 
-
-<img src="img/upgrade/upgrade{{skill}}.png" alt="">
+<img src="img/upgrade/upgrade{{skill}}.png" ng-class="{'upgrade_animation':upgrade_animation == true}">
 
 
 </div>
