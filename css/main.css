@@ -445,6 +445,7 @@ padding: 0 2vmax;
    border-top: .1vmax solid #00b8e7;
    border-radius: 2.5vmax;
    display: flex;
+   height: 5vmax;
    justify-content: center;
    align-items: center;
    text-align: center;
