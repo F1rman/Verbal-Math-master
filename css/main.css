@@ -142,6 +142,7 @@ margin-bottom: 0vmax;
    box-sizing: border-box;
    margin-bottom: 3vmax;
    width: 100%;
+   min-height: 85vmax;
  }
 
  .menu_items_wrapper {
@@ -149,9 +150,9 @@ margin-bottom: 0vmax;
    flex-flow: row wrap;
    justify-content: center;
    align-items: center;
+   max-width: 43vmax;
+   margin: 0 auto;
  }
-
- .appname {}
 
  .menu_items {
    display: flex;
@@ -162,7 +163,7 @@ margin-bottom: 0vmax;
    border: .6vmax solid #00d5db;
    border-bottom: .1vmax solid #00d5db;
    border-top: .1vmax solid #00d5db;
-   border-radius: 20px;
+   border-radius: 2vmax;
    flex: none;
    margin: .5vmax .5vmax;
    height: 15vmax;
@@ -192,13 +193,27 @@ margin-bottom: 0vmax;
    font-weight: bold;
    font-size: 3vmax;
  }
-
+ .home_menu{
+   margin-bottom: 10vmax;
+   min-height: 0;
+ }
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 2vmax auto;
+  top: 85vmax;
+  display: flex;
+  height: 10vmax;
+  flex-flow: column;
+}
  .home_points_info_wrapper {
    display: flex;
-   margin-bottom: 3vmax;
-   justify-content: center;
-
-   flex-flow: row wrap;
+ margin-bottom: 3vmax;
+ justify-content: center;
+ flex-flow: row wrap;
+ width: 43vmax;
+ margin: 0 auto 3vmax auto;
  }
 
  .appname {
@@ -1451,18 +1466,24 @@ box-sizing: content-box;
    height: 2.2vmax;
  }
 .modal_buy{
-      background: linear-gradient(to bottom, #141e30, #243b55) no-repeat;
-  position: fixed;
-  top: 0;
-  z-index: 22212;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  background: linear-gradient(to bottom, #141e30, #243b55) no-repeat;
+position: fixed;
+top: 0;
+z-index: 22212;
+left: 0;
+width: 100%;
+height: 100vmax;
+
+}
+.modal_buy .scrool{
+  overflow-y: scroll;
   display: flex;
   padding: 2vmax;
   flex-flow: column;
   box-sizing: border-box;
+  width: 100%;
   justify-content: center;
+  height: 100vh;
 }
 .modal_buy .points_svg {
     width: 5vmax;
@@ -1470,6 +1491,7 @@ box-sizing: content-box;
     margin-left: 1vmax;
 }
 .btn_buy {
+  flex: none;
   border: 0.1vmax solid #00b8e7;
 border-left: .8vmax solid #00b8e7;
 border-right: .8vmax solid #00b8e7;
@@ -1508,6 +1530,7 @@ padding: 0 2vmax;
   right: 2vmax;
 }
 .upgrade_btn{
+  font-size: 2vmax;
   display: flex;
   padding: 0 2vmax;
   color: #fff;

@@ -22,7 +22,7 @@
 
 </div>
 
-<div class="menu" >
+<div class="menu home_menu" >
 
   <div class="menu_items_wrapper">
     <a ng-repeat="x in menu" class="menu_items" href="{{menu[$index].href}}">
@@ -36,8 +36,7 @@
   </div>
 </div>
 
-<div class="footer" id="footer">
-  <div class="tips" ng-controller="tips">
+<div class="footer tips" id="footer" ng-controller="tips">
     <p class="f1">
       {{langs[language].Tipsofaday}}
     </p>

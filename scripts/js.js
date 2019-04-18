@@ -42,8 +42,8 @@ var app = angular.module("Routing", ["ngRoute", 'ngAnimate']);
 app.config(($routeProvider) => {
   $routeProvider.when("/", {
     templateUrl: "home.html",
-  }).when("/compain", {
-    templateUrl: "compain.html",
+  }).when("/campaign", {
+    templateUrl: "campaign.html",
   }).when("/practice", {
     templateUrl: "practice.html",
   }).when("/lessons", {

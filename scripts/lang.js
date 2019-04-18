@@ -7,9 +7,9 @@ app.run(function($rootScope) {
     console.log(storage);
 
     $rootScope.Campaign_m = {
-    'name':['Компанія','Campaign','Компания'],
+    'name':['Компанія','Campaign','Кампания'],
     'ico':'brain',
-    'href': '#!compain'
+    'href': '#!campaign'
     }
     $rootScope.Practice_m = {
       'name':['Практика','Practice','Практика'],
@@ -155,7 +155,7 @@ app.run(function($rootScope) {
         "APPNAME2":"Прокачка мозга",
         "RU": "RUSSIAN",
         "Practice": "Практика",
-        "Campaign": "Компания",
+        "Campaign": "Кампания",
         "Lessons": "Уроки",
         "Lesson": "Урок",
         "Info": "Информация",
@@ -193,7 +193,7 @@ app.run(function($rootScope) {
         "All": "Все",
         "Upgrade": "Прокачать",
         "Buymore": "Купить ",
-        "Baynextlessons ": "Купить больше уровней",
+        "Baynextlessons": "Купить больше уровней",
         "Congratulations": "Поздравление",
         "LevelUP": "С новим уровнем",
         "Upgraded": "Прокачано",
