@@ -1,8 +1,10 @@
 app.controller("upgrade", ($scope, $rootScope) => {
   if (storage.getItem('skill') == undefined) {
     $scope.skill = 1;
+    $rootScope.skill = 1;
   $scope.hint_cost = ($scope.skill * 20);
   } else {
+    $rootScope.skill = storage.getItem('skill');
     $scope.skill = storage.getItem('skill');
     $scope.hint_cost = ($scope.skill * 20) ;
   }
@@ -27,7 +29,7 @@ app.controller("upgrade", ($scope, $rootScope) => {
       console.log($scope.upgrade_animation);
 
       $scope.skill++;
-
+        $rootScope.skill = $scope.skill;
       $rootScope.all_points = $rootScope.all_points - $scope.hint_cost;
       $scope.ResInput = $rootScope.define_result;
       storage.setItem('skill', $scope.skill);
