@@ -1,27 +1,27 @@
 <div class="lessons_wrapper menu"  ng-controller="lesson">
-  <div class="levels btn_hover buy_more_less" >
-    <div class="leftblue leftyellow">
-      </div>
 
-    <a ng-click="buy_lessons()" class="lvlcont">
-      <div class="h2_wrap_scrool">
-      <h2> {{langs[language].Baynextlessons}} </h2>
-      <span>{{lessons_cost}}<img alt="" class="points_svg revers" src="img/points.svg"></span>
-      </div>
-    </a>
-  </div>
-  <div class="levels btn_hover" ng-repeat="x in lesson | limitTo : lessons">
-    <div class="leftblue ">
+  <div class="levels btn_hover" ng-repeat="x in lesson" ng-class="{'buy_more_less':less_not_buyed[$index+1] == true}">
+    <div class="leftblue " ng-class="{'leftyellow':less_not_buyed[$index+1] == true}">
       {{$index+1}}
     </div>
-    <a href="#!lessons-level/{{$index+1}}" class="lvlcont">
-      <div class="h2_wrap_scrool">
-      <h2>{{lesson[$index+1].title[language]}}</h2>
+    <a  ng-click="buy_lessons($index+1)" class="lvlcont">
+      <div class="h2_wrap_scrool " >
+      <h2  data-duplicated='true' >{{lesson[$index+1].title[language]}}</h2>
       </div>
-        <img src="img/next.svg" class="finish revers"  alt="">
+        <img src="img/next.svg" ng-if="less_not_buyed[$index+1] != true" class="finish revers"  alt="">
+        <span ng-if="less_not_buyed[$index+1] == true">{{lessons_cost}}<img   class="points_svg revers" src="img/points.svg"></span>
     </a>
-
+    <div class="modal_agree" ng-hide="!agree_modal[$index+1]">
+      <h2>Do you want to buy this lesson?</h2>
+      <div class="flex">
+      <div class="btn" ng-click="agree_buy($index+1);agree_modal[$index+1]=!agree_modal[$index+1]">YES</div>
+      <div class="btn" ng-click="agree_modal[$index+1]=!agree_modal[$index+1]">NO</div>
+      </div>
+    </div>
   </div>
 
 
 </div>
+<script type="text/javascript">
+
+</script>

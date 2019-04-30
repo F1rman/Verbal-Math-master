@@ -25,7 +25,9 @@
 <div class="menu home_menu" >
 
   <div class="menu_items_wrapper">
+
     <a ng-repeat="x in menu" class="menu_items" href="{{menu[$index].href}}">
+          <div class="available" ng-if="menu[$index].available == 'false'">Coming soon</div>
       <div class="img_wrapper">
         <div class="index_svg" style="background-image:url('img/{{ menu[$index].ico}}.svg')" ></div>
       </div>

@@ -6,7 +6,7 @@
         {{langs[language].Worldrank}}
       </h2>
       <h2 ng-if="world_wrank < 9000" class="bottom-rank ">
-        {{world_wrank}}
+        №{{world_wrank}}
       </h2>
       <h2 ng-if="world_wrank > 9000" class="bottom-rank ">
         -
@@ -17,20 +17,22 @@
         <img class="l_rank" src="img/l_rank.png" alt="">
         {{langs[language].Localrank}}
       </h2>
-      <h2 class=" bottom-rank " >
-  {{langs[language].All }} <img alt="" class="points_svg revers" src="img/points.svg"> <span> : {{all_points}}</span>
+      <h2 class=" bottom-rank ">
+        {{langs[language].All }} <img alt="" class="points_svg revers" src="img/points.svg"> <span> : {{all_points}}</span>
 
       </h2>
     </div>
   </div>
-<div class="array_of_levels">
-<h2>{{langs[language].ALLlevels}}</h2>
-
-<a class="levels" href="#!practice-lvl/{{$index+1}}" ng-repeat="x in levels">
-	<div class="leftblue">{{$index+1}}</div>
-	<div class="lvlcont">{{x.name[language]}}</div>
-    <img class="revers prev" src="img/next.svg" />
-</a>
-
-</div>
+  <div class="array_of_levels">
+    <h2>{{langs[language].ALLlevels}}</h2>
+    <div class="levels btn_hover" ng-repeat="x in levels">
+      <div class="leftblue">{{$index+1}}</div>
+      <a class="lvlcont" href="#!practice-lvl/{{$index+1}}">
+        <div class="h2_wrap_scrool">
+          <h2 > {{x.name[language]}}</h2>
+        </div>
+        <img class="revers prev" src="img/next.svg" />
+      </a>
+    </div>
+  </div>
 </div>

@@ -6,7 +6,7 @@
         {{langs[language].Worldrank}}
       </h2>
       <h2 ng-if="world_wrank < 9000" class="bottom-rank ">
-        {{world_wrank}}
+      №{{world_wrank}}
       </h2>
       <h2 ng-if="world_wrank > 9000" class="bottom-rank ">
         -
@@ -23,29 +23,34 @@
       </h2>
     </div>
   </div>
-
+<!--
   <a href="#!upgrade" class="historys_wrapper btn_hover">
       <span> {{skill}}/{{14}} {{langs[language].Upgraded}}</span>
     <div class="history" style="width: {{100/14*skill}}%"></div>
     <img class="revers prev" src="img/next.svg" />
-  </a>
+  </a> -->
 
   <div class="array_of_levels" ng-init="passlvl">
     <h2 ng-if='passlvl != 0'>{{langs[language].PassedLevels}}</h2>
-    <a class="levels btn_hover" href="#!compain-lvl/{{$index+1}}" ng-repeat="x in levels | limitTo:passlvl">
-      <div class="leftgreen">
-        {{ $index+1}}
+
+      <div class="levels btn_hover levelsgreen" ng-repeat="x in levels | limitTo:passlvl">
+        <div class="leftgreen">
+          {{ $index+1}}
+        </div>
+    <a class="lvlcont" href="#!compain-lvl/{{$index+1}}" >
+
+      <div class="h2_wrap_scrool">
+        <h2>  {{langs[language].Level}} {{levels[$index].options[7]}}/{{levels[$index].options[7] }}</h2>
       </div>
-      <div class="lvlcont">
-        {{langs[language].Level}} {{levels[$index].options[7]}}/{{levels[$index].options[7] }}
-        <img src="img/tick.svg" class="finish" alt="">
-      </div>
+      <img src="img/tick.svg" class="finish" alt="">
 
     </a>
-    <div ng-if="passlvl < levels.length" class="current_level">
+    </div>
+
+    <div ng-if="passlvl < levels.length" class="current_level ">
       <h2> {{langs[language].CurrentLevel}}</h2>
       <a class="levels btn_hover" href="#!compain-lvl/{{$index+1+passlvl}}">
-        <div class="leftgreen ">
+        <div class="leftblue ">
           {{ $index+1+passlvl}}
         </div>
         <div class="lvlcont">
@@ -54,7 +59,7 @@
         </div>
       </a>
     </div>
-    <div ng-if="passlvl == levels.length" class="new_lvl">
+    <div ng-if="passlvl > levels.length" class="new_lvl">
       <h2>{{langs[language].Newlevelsappearslater}}</h2>
     </div>
   </div>

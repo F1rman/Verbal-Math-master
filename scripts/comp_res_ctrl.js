@@ -1,5 +1,6 @@
 
 app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
+  console.log($rootScope.lvl_less = $rootScope.levels[current_level - 1].options[8]);
   if ($rootScope.current_progress < $rootScope.count_operations) {
     console.log('LOSE');
     if ($rootScope.earn_points == undefined || $rootScope.earn_points != 0) {
@@ -20,7 +21,7 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
     if ($rootScope.time_left_stor == undefined) {
       $rootScope.time_left_stor = 0;
     }
-    $rootScope.points = Math.round(Number((($rootScope.current_level * 2) + $rootScope.time_left_stor / $rootScope.count_operations)) / 2);
+    $rootScope.points = 3;
     p = $rootScope.points;
     storage.setItem('earn_points', p);
     $rootScope.earn_points = storage.getItem('earn_points')

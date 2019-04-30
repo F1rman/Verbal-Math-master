@@ -39,10 +39,10 @@ app.run(function($rootScope) {
       "options": [20, 150, 1, 100, ["-"], time, [null], count_operation+2, 1]
     }, {
       "name": ['Нормальне множення кратне 5', " Normal multiplication multiple of 5", 'Нормальное умножение кратное 5'],
-      "options": [5, 5, 5, 20, ["*"], time, [5], count_operation, 3]
+      "options": [5, 5, 5, 40, ["*"], time, [5], count_operation, 2]
     }, {
       "name": ['Нормальне множення кратне 5 (2)', " Normal multiplication multiple of 5 (2)", 'Нормальное умножение кратное 5 (2)'],
-      "options": [5, 5, 10, 50, ["*"], time, [5], count_operation+1, 3]
+      "options": [5, 5, 10, 80, ["*"], time, [5], count_operation+1, 3]
     }, {
       "name": ['Нормальне множення кратне 5 (3)', " Normal multiplication multiple of 5 (3)", 'Нормальное умножение кратное 5 (3)'],
       "options": [5, 5, 15, 150, ["*"], time, [5], count_operation+2, 3]
@@ -103,7 +103,11 @@ app.run(function($rootScope) {
     }, {
       "name": ['Найтяжче додавання, віднімання, множення, ділення (3)', "Hardest adding, subtraction, multiplication, division (3)", 'Самое сложное добавление, вычитание, умножение, деление  (3)'],
       "options": [25, 250, 0, 25, ["+", "-", "*", "/"], time, [5, 10], 10, 2]
-    }, {
+    },{
+      "name": ['Ділення, множення на 4', "Division, multiplication of 4", 'Деление, умножение на 4'],
+      "options": [4, 4, 50, 100, [ "/", "*"], time, [4], count_operation, 3]
+    },
+     {
       "name": ['Найтяжче віднімання, ділення, множення', " Hardest subtraction, division, multiplication", 'Самое сложное вычитание, деление, умножение'],
       "options": [200, 500, 10, 200, ["-", "/", "*"], time, [5], count_operation, 2]
     },  {

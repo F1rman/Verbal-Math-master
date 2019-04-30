@@ -29,12 +29,13 @@ app.run(function($rootScope) {
     $rootScope.Settings_m = {
       'name':['Налаштування','Settings','Настройки'],
       'ico':'settings',
-      'href': '#!settings'
+      'href': '#!settings',
     }
     $rootScope.upgradebrain_m = {
-      'name':['Прокачати Мозг','Upgrade Brain ','Прокачать Мозг'],
+      'name':['IQscheduler','IQscheduler','IQscheduler'],
       'ico':'server',
-      'href': '#!upgrade'
+      'href': 'javascript:void(0)',
+      'available':'false'
     }
 
     $rootScope.menu = [$rootScope.Campaign_m, $rootScope.Practice_m,  $rootScope.Lessons_m, $rootScope.Info_m, $rootScope.upgradebrain_m, $rootScope.Settings_m]
@@ -86,7 +87,7 @@ app.run(function($rootScope) {
         "Congratulations": "Вітання",
         "LevelUP": "З новим рівнем ",
         "Upgraded": "Прокачано",
-        "": "",
+        "GOTOPRACTICE": "ПЕРЕЙТИ ДО ПРАКТИКИ",
         "": "",
         "": "",
         "": "",
@@ -141,7 +142,7 @@ app.run(function($rootScope) {
         "Congratulations": "Congratulations",
         "LevelUP": "Level UP",
         "Upgraded": "Upgraded",
-        "": "",
+        "GOTOPRACTICE": "GO TO PRACTICE",
         "": "",
         "": "",
         "": "",
@@ -197,7 +198,7 @@ app.run(function($rootScope) {
         "Congratulations": "Поздравление",
         "LevelUP": "С новим уровнем",
         "Upgraded": "Прокачано",
-        "": "",
+        "GOTOPRACTICE": "ПЕРЕЙТИ К ПРАКТИКЕ",
         "": "",
         "": "",
         "": "",

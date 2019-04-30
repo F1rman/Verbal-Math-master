@@ -2,15 +2,15 @@
 <div class="menu home_menu">
         <div class="resultat">
                 <h2 class="result_header" ng-if="current_progress<count_operations" style="color: #f6412d">
-                    {{langs[language].Timeisover}}
-                        {{langs[language].Youlose}}!
+                    {{langs[language].Timeisover}} <br>
+                    {{langs[language].Youlose}}! <br>
+                    <a  href="#!practice-lvl/{{current_level}}">{{langs[language].GOTOPRACTICE}} >> </a>
+
                 </h2>
                 <h2 class="green result_header" ng-if="current_progress == count_operations">
                     {{langs[language].AllIsFine}}!
                 </h2>
-                <h2 class="">
-                    {{progress_of_lvl}}/{{count_operations}}
-                </h2>
+
                 <div class="result_detail">
                     <h2 class="txt_left">
                         <span class="">
@@ -49,11 +49,18 @@
                         </span>
                     </h2>
                 </div>
+                <h2 class="">
+                    {{progress_of_lvl}}/{{count_operations}}
+                </h2>
                           </div>
         </div>
         <div class="btn_img_group">
-          <a class="btn_img" href="#!practice-lvl/{{current_level}}" ng-if="current_progress<count_operations">
-                  <img alt="" src="img/arrows.svg">
+          <a class="btn_img" href="#!lessons-level/{{lvl_less}}">
+                  <img alt="" class="brain" src="img/manual.svg">
+          </a>
+
+          <a class="btn_img"   href="#!practice-lvl/{{current_level}}" ng-if="current_progress<count_operations">
+                  <img alt="" class="brain" src="img/arrows.svg">
           </a>
           <a class="btn_img" href="#!">
                   <img alt="" src="img/home.png">

@@ -8,4 +8,10 @@
     <p ng-if="lesson.length <= current_level" class=" text_lessons">
      There is no lesson to this level yet!
     </p>
+
+    <div class="desc_img">
+      <img class="lesson_desc_img" src="img/lessons/{{current_level}}.jpg" alt="">
+
+    </div>
+    <a class="btn" href="#!practice-lvl/{{lesson[current_level].href}}">Try it yourself >> </a>
 </div>

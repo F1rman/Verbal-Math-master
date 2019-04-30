@@ -61,9 +61,10 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
 
 
     $scope.hint_result = "";
+      $scope.hint_cost = 2;
     $scope.show_hint = function() {
       $scope.delete();
-      $scope.hint_cost = 3 + $rootScope.current_level;
+      $scope.hint_cost = 2;
       if ($rootScope.all_points >= $scope.hint_cost) {
         $rootScope.all_points = $rootScope.all_points - $scope.hint_cost;
         $scope.ResInput = $rootScope.define_result;
@@ -150,7 +151,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
     var progressBarWidth = timeleft * $element.width() / timetotal;
     $element.find($element2).animate({
       width: progressBarWidth
-    }, 600).html('<p class="time_left">' + timeleft % 60 + '</p>');
+    }, 600).html('<p class="time_left">' + timeleft  + 's</p>');
     time_left = timeleft;
     if (timeleft > 0) {
       set_progress = setTimeout(() => {

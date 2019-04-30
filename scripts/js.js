@@ -2,7 +2,13 @@ var storage = window.localStorage;
 // storage.removeItem() // Pass a key name to remove that key from storage.
 // storage.setItem('key',val );
 // storage.setItem('passlvl',16);
-// storage.setItem('points',0 );
+if (storage.getItem('dateItHappens') == undefined) {
+    var dateItHappens = new Date(new Date().getTime()+(2*24*60*60*1000));
+    storage.setItem('dateItHappens',dateItHappens)
+}
+else {
+  var dateItHappens = Date.parse(storage.getItem('dateItHappens'));
+}
 var d = new Date();
 var day;
 var current_progress = Number(storage.getItem('current_progress'));
@@ -75,10 +81,16 @@ app.config(($routeProvider) => {
 
 var firsload = true;
 app.run(($rootScope) => {
-    console.log($rootScope.buyed);
+var dparse = Date.parse(d)
+  var millisTillOccurence = dateItHappens - dparse;
+  setTimeout(function(){
+     $rootScope.feedback = !$rootScope.feedback
+     $rootScope.$apply();
+   }, millisTillOccurence);
+
+
   $rootScope.buy = ()=>{
       $rootScope.buyed = !$rootScope.buyed
-      console.log($rootScope.buyed);
   }
 
   if ($rootScope.skill == undefined) {
@@ -87,7 +99,6 @@ $rootScope.skill = 1;
   else {
     $rootScope.skill = storage.getItem('skill');
   }
-  console.log(points);
   if ($rootScope.all_points == undefined) {
     $rootScope.all_points = points;
   }
@@ -99,10 +110,17 @@ $rootScope.skill = 1;
     $rootScope.all_volume_sounds = volume_stor_sounds;
   }
   // при зміні аудіо повзунком
-  $rootScope.$watch('all_volume_audio', () => {
+  $rootScope.$watch('all_volume_audio', (newValue, oldValue) => {
+    console.log(newValue, oldValue);
     av_a = $rootScope.all_volume_audio / 100;
+    console.log($rootScope.all_volume_audio);
     $rootScope.r_av_a = av_a * 100;
-    fon_audio.volume = $rootScope.r_av_a / 100;
+
+    if (newValue != oldValue) {
+  fon_audio.volume = $rootScope.r_av_a / 100;
+    }
+
+    console.log(fon_audio.volume);
     storage.setItem('volume_audio', $rootScope.r_av_a);
   })
   // при зміні звуку повзунком
@@ -127,6 +145,27 @@ $rootScope.skill = 1;
   $rootScope.volume_stor_sounds = volume_stor_sounds;
   $rootScope.volume_stor_audio = volume_stor_audio;
   $rootScope.$on('$routeChangeStart', function(event, current, next, previous, reject) {
+    $(document).ready(()=>{
+      setTimeout(()=>{
+        $rootScope.el_marquee = ()=>{
+          for (var i = 1; i < $rootScope.levels.length; i++) {
+            if ($('.levels:nth-child('+i+') .h2_wrap_scrool h2').outerWidth() > $('.levels:nth-child('+i+') .h2_wrap_scrool').outerWidth()) {
+              $('.levels:nth-child('+i+') .h2_wrap_scrool').addClass('marquee')
+            }
+          }
+        }
+
+        $rootScope.el_marquee()
+        $('.marquee').marquee({
+          duration: 3000,
+          gap: 100,
+          delayBeforeStart: 0,
+          direction: 'right',
+          duplicated: true
+        });
+      },20)
+
+    })
     $rootScope.location = current.$$route.originalPath;
 
     $rootScope.location = $rootScope.location.slice(1).split(':')[0];
@@ -137,7 +176,6 @@ $rootScope.skill = 1;
     } else {
       $rootScope.header_show = 'show';
     }
-
 
     // ЩОБ НЕ ВКЛЮЧАВСЯ ЗВУК КЛІКУ ПРИ СТАРТІ
     if (firsload != true) {
@@ -184,6 +222,9 @@ $rootScope.skill = 1;
     $rootScope.time_left_stor = w1;
     $rootScope.world_wrank = (((Number(storage.getItem('passlvl')) * loh_rand) / 0.57) - 9999) * -1;
     $rootScope.world_wrank = Number($rootScope.world_wrank.toFixed(0))
+    if ($rootScope.world_wrank < 0) {
+      $rootScope.world_wrank = 1;
+    }
     storage.setItem('world_wrank', $rootScope.world_wrank)
   })
 })
