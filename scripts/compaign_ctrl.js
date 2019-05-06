@@ -3,6 +3,23 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
   var time_total = $rootScope.levels[current_level - 1].options[5];
   lvl_kratne = $rootScope.levels[current_level - 1].options[6];
   lvl_kratne_arr = randominrange(lvl_kratne[0], lvl_kratne[1])
+  $scope.skip_cost = 20;
+$rootScope.skip = (lvl)=>{
+    $scope.skip_cost = 20;
+    if ($rootScope.all_points >= $scope.skip_cost) {
+      $rootScope.passlvl = $rootScope.passlvl + 1;
+
+      $rootScope.all_points = $rootScope.all_points - $scope.skip_cost;
+      storage.setItem('points', $rootScope.all_points)
+      storage.setItem('passlvl', $rootScope.passlvl);
+      storage.setItem('level['+lvl+']','skiped');
+      $location.path("/result-compain/" + $rootScope.current_level);
+    } else {
+      $scope.skip1 = !$scope.skip1;
+      $rootScope.buy();
+
+    }
+}
 
   function swap() {
     if ($rootScope.number[0] < $rootScope.number[1]) {
@@ -67,7 +84,7 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
       $scope.hint_cost = 2;
       if ($rootScope.all_points >= $scope.hint_cost) {
         $rootScope.all_points = $rootScope.all_points - $scope.hint_cost;
-        $scope.ResInput = $rootScope.define_result;
+        $rootScope.ResInput = $rootScope.define_result;
         storage.setItem('points', $rootScope.all_points)
       } else {
         $scope.delete()
@@ -79,26 +96,13 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
   changeNSR_compain();
   var a1 = $rootScope.number[0];
   var a2 = $rootScope.number[1];
-
-
-  $scope.ResInput = '';
-  $scope.key = (key, del, remove) => {
-    $scope.ResInput += key;
-  }
-  $scope.delete = () => {
-    $scope.ResInput = '';
-  };
-  $scope.remove = () => {
-    $scope.ResInput = $scope.ResInput.slice(0, -1)
-  };
-
   $scope.$watch('ResInput', () => {
     clearTimeout(clearIfPress)
     clearIfPress = setTimeout(() => {
-      if (String($scope.ResInput) == String($rootScope.define_result)) {
+      if (String($rootScope.ResInput) == String($rootScope.define_result)) {
         $scope.$apply(() => {
           clearTimeout(clearIfPress)
-          $scope.ResInput = '';
+          $rootScope.ResInput = '';
           $scope.isOk = true
 
           var a1 = $rootScope.number[0];
@@ -126,16 +130,16 @@ app.controller("compain_lvl_ctrl", function($scope, $rootScope, $location) {
             $location.path("/result-compain/" + $rootScope.current_level);
           })
         }
-      } else if ($scope.ResInput == '' || $scope.ResInput == null || $scope.ResInput == undefined) {
+      } else if ($rootScope.ResInput == '' || $rootScope.ResInput == null || $rootScope.ResInput == undefined) {
         $scope.$apply(() => {
           $scope.isOk = null;
         });
       } else {
-        if ($rootScope.define_result.toString().length <= $scope.ResInput.length) {
+        if ($rootScope.define_result.toString().length <= $rootScope.ResInput.length) {
           $scope.isOk = false;
           $scope.delete()
           $scope.$apply(() => {
-            $scope.ResInput = '';
+            $rootScope.ResInput = '';
             playAudio('wav/enter_no.flac', av_s);
           });
         }

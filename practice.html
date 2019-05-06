@@ -25,7 +25,7 @@
   </div>
   <div class="array_of_levels">
     <h2>{{langs[language].ALLlevels}}</h2>
-    <div class="levels btn_hover" ng-repeat="x in levels">
+    <div  class="levels btn_hover" ng-show="$index+1<pushmore1 && $index+1>pushmore1-11 " ng-repeat="x in levels | limitTo:pushmore1">
       <div class="leftblue">{{$index+1}}</div>
       <a class="lvlcont" href="#!practice-lvl/{{$index+1}}">
         <div class="h2_wrap_scrool">
@@ -34,5 +34,8 @@
         <img class="revers prev" src="img/next.svg" />
       </a>
     </div>
+      <div class="btn_hover btn" ng-hide=""  ng-click="pushless()">{{langs[language].PrevLvl}}</div>
+      <div class="btn_hover btn"  ng-click="pushmore()">{{langs[language].NextLvl}}</div>
   </div>
+
 </div>

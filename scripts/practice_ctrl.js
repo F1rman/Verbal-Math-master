@@ -61,25 +61,14 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
       var a5 = $rootScope.number[0];
       var a6 = $rootScope.number[1];
 
-      $scope.ResInput = '';
-      $scope.key = (key, del, remove) => {
-        $scope.ResInput += key;
-      }
-      $scope.delete = () => {
-        $scope.ResInput = '';
-      };
-      $scope.remove = () => {
-        $scope.ResInput = $scope.ResInput.slice(0, -1)
-      };
 
-      $scope.false_practice = false_practice;
       $scope.$watch('ResInput', () => {
         clearTimeout(clearIfPress2);
         clearIfPress2 = setTimeout(() => {
-          if (String($scope.ResInput) == String($rootScope.define_result)) {
+          if (String($rootScope.ResInput) == String($rootScope.define_result)) {
             $scope.$apply(() => {
                 clearTimeout(clearIfPress)
-                $scope.ResInput = '';
+                $rootScope.ResInput = '';
                 $scope.isOk = true
 
                 var a5 = $rootScope.number[0];
@@ -99,17 +88,16 @@ app.controller("practice_lvl_ctrl", ($scope, $rootScope, $location) => {
                     $location.path("/result-practice/" + $rootScope.current_level);
                   })
                 }
-            }   else if ($scope.ResInput == '' || $scope.ResInput == null || $scope.ResInput == undefined) {
+            }   else if ($rootScope.ResInput == '' || $rootScope.ResInput == null || $rootScope.ResInput == undefined) {
                 $scope.$apply(() => {
                   $scope.isOk = null
                 })
               } else {
-                if ($rootScope.define_result.toString().length <= $scope.ResInput.length) {
+                if ($rootScope.define_result.toString().length <= $rootScope.ResInput.length) {
                   $scope.isOk = false;
-                  $scope.false_practice = $scope.false_practice + 1;
                   $scope.delete()
                   $scope.$apply(() => {
-                    $scope.ResInput = '';
+                    $rootScope.ResInput = '';
                     playAudio('wav/enter_no.flac', av_s);
                   });
 }

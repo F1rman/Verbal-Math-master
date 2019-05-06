@@ -1,17 +1,15 @@
 <div class="res" ng-controller="practice_lvl_result_ctrl">
 <div class="menu home_menu">
-  <div class="status_result">
-    <h2 class="result_header " ng-if="current_progress<count_operations" style="color: yellow">
-      {{langs[language].Timeisover}}
+  <div class="resultat">
+    <h2 class="result_header yellow" ng-if="current_progress<count_operations" >
+      {{langs[language].Timeisover}} <br>
         {{langs[language].Youlose}}!
 
     </h2>
     <h2 class="result_header" ng-if="current_progress == count_operations">
       {{langs[language].AllIsFine}}!
     </h2>
-    <h2 class="">
-      {{current_progress }}/{{count_operations}}
-    </h2>
+
     <div class="result_detail">
         <h2 class="txt_left">
             <span class="">
@@ -31,23 +29,35 @@
                 <img alt="" class="points_svg revers" src="img/points.svg">
             </span>
         </h2>
+
     </div>
+    <h2 class="">
+      {{current_progress }}/{{count_operations}}
+    </h2>
         </div>
           </div>
     <div class="btn_img_group">
       <a class="btn_img" href="#!compain-lvl/{{current_level}}">
         <img alt="" src="img/brain.svg">
+        <span>Campaign</span>
       </a>
-      <a class="btn_img" href="#!practice-lvl/{{current_level}}">
+      <!-- <a class="btn_img" href="#!practice-lvl/{{current_level}}">
 
-        <img alt="" class="update_arrow" src="img/update-arrow.png">
-      </a>
+        <img alt="" class="update_arrow" src="img/refresh.svg">
+        <span>Restart</span>
+      </a> -->
       <a class="btn_img" ng-if="current_level < levels.length" href="#!practice-lvl/{{current_level+1}}">
 
         <img alt="" class="revers" src="img/next.svg">
+        <span>Next level</span>
       </a>
+      <a class="btn_img"  href="#!lessons-level/{{lvl_less}}">
+              <img alt="" class="brain" src="img/manual.svg">
+      <span>Lessons</span>
+        </a>
       <a class="btn_img" class="home" href="#!">
-        <img alt="" src="img/home.png">
+        <img alt="" src="img/home.svg">
+        <span>Home</span>
       </a>
     </div>
 

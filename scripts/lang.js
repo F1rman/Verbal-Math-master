@@ -7,7 +7,7 @@ app.run(function($rootScope) {
     console.log(storage);
 
     $rootScope.Campaign_m = {
-    'name':['Компанія','Campaign','Кампания'],
+    'name':['Кампанія','Campaign','Кампания'],
     'ico':'brain',
     'href': '#!campaign'
     }
@@ -32,7 +32,7 @@ app.run(function($rootScope) {
       'href': '#!settings',
     }
     $rootScope.upgradebrain_m = {
-      'name':['IQscheduler','IQscheduler','IQscheduler'],
+      'name':['IQplanner','IQplanner','IQplanner'],
       'ico':'server',
       'href': 'javascript:void(0)',
       'available':'false'
@@ -88,12 +88,12 @@ app.run(function($rootScope) {
         "LevelUP": "З новим рівнем ",
         "Upgraded": "Прокачано",
         "GOTOPRACTICE": "ПЕРЕЙТИ ДО ПРАКТИКИ",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
+        "Skip": "Пропустити",
+        "Skiped": "Пропущено",
+        "MoreLvl": "Більше рівнів",
+        "PrevLvl": "Попередні рівні",
+        "NextLvl": "Наступні рівні",
+        "Tryityourself": "Спробуйте самостійно",
         "": "",
     }, {
         "APPNAME": "Mental Math Trainer",
@@ -143,12 +143,12 @@ app.run(function($rootScope) {
         "LevelUP": "Level UP",
         "Upgraded": "Upgraded",
         "GOTOPRACTICE": "GO TO PRACTICE",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
+        "Skip": "Skip",
+        "Skiped": "Skiped",
+        "MoreLvl": "More levels",
+        "PrevLvl": "Previous levels",
+        "NextLvl": "Next levels",
+        "Tryityourself": "Try it your self",
 
 
     }, {
@@ -199,9 +199,19 @@ app.run(function($rootScope) {
         "LevelUP": "С новим уровнем",
         "Upgraded": "Прокачано",
         "GOTOPRACTICE": "ПЕРЕЙТИ К ПРАКТИКЕ",
+        "Skip": "Пропустить",
+        "Skiped": "Пропущено",
+        "MoreLvl": "Больше уровней",
+        "PrevLvl": "Предыдущие уровни",
+        "NextLvl":"Cледующие уровни",
+        "Tryityourself": "Попробуй сам",
+        "":"",
         "": "",
+        "":"",
         "": "",
+        "":"",
         "": "",
-        "": "",
+        "":"",
+
     }]
 })

@@ -17,7 +17,10 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
       console.log(  $rootScope.for_next_lvl);
     }
   } else {
-    console.log('WIN');
+      storage.removeItem('level['+$scope.current_level+']')
+        $rootScope.checklvl_skiped();
+
+    console.log($scope.current_level);
     if ($rootScope.time_left_stor == undefined) {
       $rootScope.time_left_stor = 0;
     }
@@ -32,6 +35,7 @@ app.controller("result_compain_lvl_ctrl", ($scope, $rootScope, $location) => {
     var all_p = Number(storage.getItem('points'))
     console.log($rootScope.earn_points, 'points ', points)
     // Фікс при перезагрузці сторінки рузультат по Очках
+
     $scope.$on('$routeChangeStart', () => {
       storage.setItem('points', $rootScope.all_points)
     })

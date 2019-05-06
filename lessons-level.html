@@ -1,17 +1,17 @@
 <div class="menu">
-    <div class=" title_lessons">
-        {{lesson[current_level].title[language]}}
-    </div>
-    <p ng-if="lesson.length > current_level" class=" text_lessons">
-        {{lesson[current_level].content[language]}}
-    </p>
-    <p ng-if="lesson.length <= current_level" class=" text_lessons">
-     There is no lesson to this level yet!
-    </p>
+  <div class=" title_lessons">
+    {{lesson[current_level].title[language]}}
+  </div>
+  <p ng-if="lesson.length > current_level" class=" text_lessons">
+    {{lesson[current_level].content[language]}}
+  </p>
+  <p ng-if="lesson.length <= current_level" class=" text_lessons">
+    There is no lesson to this level yet!
+  </p>
 
-    <div class="desc_img">
-      <img class="lesson_desc_img" src="img/lessons/{{current_level}}.jpg" alt="">
+  <div class="desc_img">
+    <img class="lesson_desc_img" src="img/lessons/{{lesson[current_level].img}}.jpg" alt="">
 
-    </div>
-    <a class="btn" href="#!practice-lvl/{{lesson[current_level].href}}">Try it yourself >> </a>
+  </div>
+  <a class="btn" href="#!practice-lvl/{{lesson[current_level].href}}"><span>{{langs[language].Tryityourself}} </span> <img src="img/fast-forward.svg" class="skip_img" alt=""></a>
 </div>

@@ -6,7 +6,7 @@
         {{langs[language].Worldrank}}
       </h2>
       <h2 ng-if="world_wrank < 9000" class="bottom-rank ">
-      №{{world_wrank}}
+      № {{world_wrank}}
       </h2>
       <h2 ng-if="world_wrank > 9000" class="bottom-rank ">
         -
@@ -33,16 +33,18 @@
   <div class="array_of_levels" ng-init="passlvl">
     <h2 ng-if='passlvl != 0'>{{langs[language].PassedLevels}}</h2>
 
-      <div class="levels btn_hover levelsgreen" ng-repeat="x in levels | limitTo:passlvl">
-        <div class="leftgreen">
+      <div class="levels btn_hover levelsgreen" ng-class="{'levelsyellow':lvl_skiped[$index+1] == false}" ng-repeat="x in levels | limitTo:passlvl">
+        <div class="leftgreen" ng-class="{'leftyellow':lvl_skiped[$index+1] == false}" ng-class="{'leftblue': }">
           {{ $index+1}}
         </div>
     <a class="lvlcont" href="#!compain-lvl/{{$index+1}}" >
 
       <div class="h2_wrap_scrool">
-        <h2>  {{langs[language].Level}} {{levels[$index].options[7]}}/{{levels[$index].options[7] }}</h2>
+        <h2 ng-if="lvl_skiped[$index+1] != false">  {{langs[language].Level}} {{levels[$index].options[7]}}/{{levels[$index].options[7] }}</h2>
+        <h2 ng-if="lvl_skiped[$index+1] == false">  {{langs[language].Level}} {{0}}/{{levels[$index].options[7] }}</h2>
       </div>
-      <img src="img/tick.svg" class="finish" alt="">
+      <img src="img/tick.svg" class="finish" alt="" ng-if="lvl_skiped[$index+1] != false">
+      <img class="revers prev" src="img/next.svg"  ng-if="lvl_skiped[$index+1] == false">
 
     </a>
     </div>

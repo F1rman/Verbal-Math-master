@@ -2,21 +2,15 @@ var storage = window.localStorage;
 // storage.removeItem() // Pass a key name to remove that key from storage.
 // storage.setItem('key',val );
 // storage.setItem('passlvl',16);
-if (storage.getItem('dateItHappens') == undefined) {
-    var dateItHappens = new Date(new Date().getTime()+(2*24*60*60*1000));
-    storage.setItem('dateItHappens',dateItHappens)
-}
-else {
-  var dateItHappens = Date.parse(storage.getItem('dateItHappens'));
-}
+
 var d = new Date();
+var dateItHappens = d.getDay() + 2;
+var weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 var day;
 var current_progress = Number(storage.getItem('current_progress'));
 var points = Number(storage.getItem('points'));
 var lvl = Number(storage.getItem('lvl'));
 var passlvl = Number(storage.getItem('passlvl'));
-var volume_stor_sounds = Number(storage.getItem('volume_sounds'));
-var volume_stor_audio = Number(storage.getItem('volume_audio'));
 var language_stor = Number(storage.getItem('language_stor'));
 var set_progress;
 var clearIfPress;
@@ -25,10 +19,6 @@ var value;
 var rand_simvol;
 var time_left;
 var time_left_total = 0;
-var audio_volume_val;
-var audio_volume;
-var av_a = 0.5;
-var av_s = 0.5;
 var t;
 var lvl_kratne;
 var lvl_kratne_arr;
@@ -42,6 +32,7 @@ if (storage.getItem('loh_rand') == undefined) {
 } else {
   loh_rand = storage.getItem('loh_rand');
 }
+
 // ANGULAR
 var app = angular.module("Routing", ["ngRoute", 'ngAnimate']);
 //Routing
@@ -80,14 +71,62 @@ app.config(($routeProvider) => {
 });
 
 var firsload = true;
+  var days_in_row = 0;
 app.run(($rootScope) => {
-var dparse = Date.parse(d)
-  var millisTillOccurence = dateItHappens - dparse;
-  setTimeout(function(){
-     $rootScope.feedback = !$rootScope.feedback
-     $rootScope.$apply();
-   }, millisTillOccurence);
 
+// console.log($rootScope.check_row_day());
+//
+// $rootScope.daily_bonus = ()=>{
+//   if (storage.getItem(weekday[d.getDay()]) == undefined) {
+//     $rootScope.bonus = !$rootScope.bonus;
+//
+//          $rootScope.check_row_day = ()=>{
+//            for (var i = 0; i < 7 ;i++) {
+//              if (storage.getItem(weekday[i]) == 'true') {
+//                return days_in_row = days_in_row + 1;
+//              }
+//            }
+//          }
+//     $rootScope.bonus_day = $rootScope.check_row_day();
+//
+//     $rootScope.all_points = $rootScope.all_points + $rootScope.bonus_day;
+//      storage.setItem('points', $rootScope.all_points)
+//      storage.setItem(weekday[d.getDay()], true)
+//
+//   }
+// }
+// $rootScope.daily_bonus()
+  $rootScope.ResInput = '';
+  $rootScope.key = (key, del, remove) => {
+    $rootScope.ResInput += key;
+  }
+  $rootScope.delete = () => {
+    $rootScope.ResInput = '';
+  };
+  $rootScope.remove = () => {
+    $rootScope.ResInput = $rootScope.ResInput.slice(0, -1)
+  };
+
+
+$rootScope.pushmore1 = 10;
+
+$rootScope.pushmore = ()=>{
+$rootScope.pushmore1 <= $rootScope.levels.length ? $rootScope.pushmore1 = $rootScope.pushmore1 + 10 : false;
+}
+$rootScope.pushless = ()=>{
+  $rootScope.pushmore1 > 10 ? $rootScope.pushmore1 = $rootScope.pushmore1 - 10 : false;
+}
+
+
+if (storage.getItem('dateItHappens') == undefined) {
+    notMore7();
+    storage.setItem('dateItHappens',weekday[dateItHappens])
+}
+if (storage.getItem('dateItHappens') == weekday[d.getDay()] ){
+  $rootScope.feedback = !$rootScope.feedback;
+    notMore7()
+    storage.setItem('dateItHappens',weekday[dateItHappens])
+}
 
   $rootScope.buy = ()=>{
       $rootScope.buyed = !$rootScope.buyed
@@ -102,38 +141,31 @@ $rootScope.skill = 1;
   if ($rootScope.all_points == undefined) {
     $rootScope.all_points = points;
   }
-  if (storage.getItem('volume_audio') == undefined || storage.getItem('volume_sounds') == undefined) {
-  volume_stor_audio = 50;
-    volume_stor_sounds = 50;
-  } else {
-    $rootScope.all_volume_audio = volume_stor_audio;
-    $rootScope.all_volume_sounds = volume_stor_sounds;
+  //
+
+  if (storage.getItem('s_vol') == undefined){
+    $rootScope.r_s_vol = 50;
+    av_s =  0.5;
   }
-  // при зміні аудіо повзунком
-  $rootScope.$watch('all_volume_audio', (newValue, oldValue) => {
-    console.log(newValue, oldValue);
-    av_a = $rootScope.all_volume_audio / 100;
-    console.log($rootScope.all_volume_audio);
-    $rootScope.r_av_a = av_a * 100;
+  else {
+    $rootScope.r_s_vol = storage.getItem('s_vol');
+    av_s =  storage.getItem('s_vol')/100;
+  }
 
-    if (newValue != oldValue) {
-  fon_audio.volume = $rootScope.r_av_a / 100;
-    }
+  if (storage.getItem('a_vol') == undefined){
+    $rootScope.r_a_vol = 50;
+    av_a =  0.5;
+  }
+  else {
+    $rootScope.r_a_vol = storage.getItem('a_vol');
+    av_a =  storage.getItem('a_vol')/100;
+  }
 
-    console.log(fon_audio.volume);
-    storage.setItem('volume_audio', $rootScope.r_av_a);
-  })
-  // при зміні звуку повзунком
-  $rootScope.$watch('all_volume_sounds', () => {
-    av_s = $rootScope.all_volume_sounds / 100;
-    $rootScope.r_av_s = av_s * 100;
-    storage.setItem('volume_sounds', $rootScope.r_av_s);
-  })
   fon_audio.play().catch(() => {
     console.log('you need access to musik')
   });
   fon_audio.loop = 'true';
-  fon_audio.volume = volume_stor_audio / 100;
+  fon_audio.volume = av_a;
   // Local Storage in to Scope
   $rootScope.null = '';
   $rootScope.total_points = points;
@@ -142,35 +174,14 @@ $rootScope.skill = 1;
   $rootScope.passlvl = passlvl;
   $rootScope.current_progress = current_progress;
   $rootScope.time_left = time_left;
-  $rootScope.volume_stor_sounds = volume_stor_sounds;
-  $rootScope.volume_stor_audio = volume_stor_audio;
+
   $rootScope.$on('$routeChangeStart', function(event, current, next, previous, reject) {
-    $(document).ready(()=>{
-      setTimeout(()=>{
-        $rootScope.el_marquee = ()=>{
-          for (var i = 1; i < $rootScope.levels.length; i++) {
-            if ($('.levels:nth-child('+i+') .h2_wrap_scrool h2').outerWidth() > $('.levels:nth-child('+i+') .h2_wrap_scrool').outerWidth()) {
-              $('.levels:nth-child('+i+') .h2_wrap_scrool').addClass('marquee')
-            }
-          }
-        }
+    $rootScope.checklvl_skiped();
 
-        $rootScope.el_marquee()
-        $('.marquee').marquee({
-          duration: 3000,
-          gap: 100,
-          delayBeforeStart: 0,
-          direction: 'right',
-          duplicated: true
-        });
-      },20)
-
-    })
     $rootScope.location = current.$$route.originalPath;
 
     $rootScope.location = $rootScope.location.slice(1).split(':')[0];
 
-    console.log($rootScope.location);
     if (/(lvl|denied|level|result)/ig.test($rootScope.location)) {
       $rootScope.header_show = 'hide';
     } else {
@@ -313,4 +324,11 @@ var Kratne = (x, y) => {
 
 function goBack() {
   window.history.back();
+}
+
+
+var notMore7 = ()=>{
+  dateItHappens == 7 ? dateItHappens = 0 : false;
+  dateItHappens == 8 ? dateItHappens = 1 : false;
+  return dateItHappens;
 }

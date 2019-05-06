@@ -33,25 +33,32 @@ app.controller("settings_ctrl", ($scope, $rootScope) => {
   // })
 
   var change_volume_audio = () => {
-    $scope.$watch('all_volume_audio', () => {
-      $rootScope.all_volume_audio = $scope.all_volume_audio;
-      $('.input_inside1').css('background', 'linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_audio + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_audio + '%,rgba(255,255,255,0) ')
+      Number(storage.getItem('a_vol') == undefined) ?  $scope.a_vol = 50 :   $scope.a_vol = Number(storage.getItem('a_vol'));
+    $scope.$watch('a_vol', () => {
+
+      av_a = $scope.a_vol/100;
+        fon_audio.volume = av_a;
+      $rootScope.r_a_vol = $scope.a_vol;
+        storage.setItem('a_vol', $scope.a_vol);
+      $('.input_inside1').css('background', 'linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.r_a_vol + '%,rgba(0,173,233,0) ' + $rootScope.r_a_vol + '%,rgba(255,255,255,0) ')
     })
   }
+
   change_volume_audio();
-  var notfirst = true;
   var check_volume;
   var change_volume_sounds = () => {
-    $scope.$watch('all_volume_sounds', function(newValue, oldValue){
+    Number(storage.getItem('s_vol') == undefined) ?  $scope.s_vol = 50 :   $scope.s_vol = Number(storage.getItem('s_vol'));
+    $scope.$watch('s_vol', function(newValue, oldValue){
       if (newValue !== oldValue) {
         clearTimeout(check_volume)
         check_volume = setTimeout(() => {
               playAudio('wav/click2.wav', av_s);
         }, 100)
   }
-
-      $rootScope.all_volume_sounds = $scope.all_volume_sounds;
-      $('.input_inside2').css('background', 'linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.all_volume_sounds + '%,rgba(0,173,233,0) ' + $rootScope.all_volume_sounds + '%,rgba(255,255,255,0) ')
+      av_s = $scope.s_vol/100;
+      $rootScope.r_s_vol = $scope.s_vol;
+      storage.setItem('s_vol', $scope.s_vol);
+      $('.input_inside2').css('background', 'linear-gradient(to right, rgba(0,173,233,1)  ' + $rootScope.r_s_vol + '%,rgba(0,173,233,0) ' + $rootScope.r_s_vol + '%,rgba(255,255,255,0) ')
     })
   }
   change_volume_sounds();

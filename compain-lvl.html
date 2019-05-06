@@ -1,6 +1,20 @@
 <div class="compain-wrapper" ng-controller="compain_lvl_ctrl">
-  <div class="menu">
 
+  <div class="menu">
+    <div class="compain_stat">
+    <a class=" after_menu_stat ">
+      <span class="row"> {{langs[language].YouHave }} </span>
+      <span class="row"> {{ all_points}}
+        <img alt="" class="points_svg revers" src="img/points.svg">
+      </span>
+    </a>
+    <a class="after_menu_stat" ng-if="passlvl+1 != current_level">
+      1<img alt="help" class="" src="img/idea.svg"> = {{hint_cost}} <img alt="" class="points_svg revers" src="img/points.svg">
+    </a>
+    <a class="after_menu_stat" ng-show="passlvl+1 == current_level" ng-click="skip1=!skip1">
+    <span>{{langs[language].Skip}} </span> <img src="img/fast-forward.svg" class="skip_img" alt="">
+    </a>
+    </div>
     <span class="progress_status">
       {{current_progress}}/{{count_operations}}
     </span>
@@ -31,19 +45,20 @@
       <a class="key" ng-click="key($index+1)" ng-repeat="x in [1,2,3,4,5,6,7,8,9]">{{$index+1}}</a>
       <div class="flex">
         <div class="compain_info">
-          <a class="key compain_stat column">
-            <span class="row"> {{langs[language].YouHave}} </span>
-            <span class="row"> {{all_points}}
-              <img alt="" class="points_svg revers" src="img/points.svg">
-            </span>
-          </a>
+
           <a ng-click="key(0)" class="key"> 0 </a>
-          <a class="key compain_stat">
-            1<img alt="help" class="" src="img/idea.svg"> = {{hint_cost}} <img alt="" class="points_svg revers" src="img/points.svg">
-          </a>
+
+          <div class="modal_agree" ng-hide="!skip1">
+          <h2>  Do you want to skip this level?<div class="flex"> {{skip_cost}}<img alt="" class="points_svg revers" src="img/points.svg"></div></h2>
+            <div class="flex">
+            <div class="btn" ng-click="skip(current_level)">YES</div>
+            <div class="btn" ng-click="skip1=!skip1">NO</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
   <div class="timebar">
     <div class="timebar_inside">

@@ -1,12 +1,13 @@
 <div class="res" ng-controller="result_compain_lvl_ctrl">
 <div class="menu home_menu">
         <div class="resultat">
-                <h2 class="result_header" ng-if="current_progress<count_operations" style="color: #f6412d">
+                <h2 class="result_header" ng-if="current_progress<count_operations && lvl_skiped[current_level] != false" style="color: #f6412d">
                     {{langs[language].Timeisover}} <br>
                     {{langs[language].Youlose}}! <br>
-                    <a  href="#!practice-lvl/{{current_level}}">{{langs[language].GOTOPRACTICE}} >> </a>
+                    <a class="flex" href="#!practice-lvl/{{current_level}}">{{langs[language].GOTOPRACTICE}} <img src="img/fast-forward.svg" class="skip_img" alt=""> </a>
 
                 </h2>
+                <h2 class="yellow result_header" ng-if="lvl_skiped[current_level] == false">{{langs[language].Skiped}} </h2>
                 <h2 class="green result_header" ng-if="current_progress == count_operations">
                     {{langs[language].AllIsFine}}!
                 </h2>
@@ -57,19 +58,25 @@
         <div class="btn_img_group">
           <a class="btn_img" href="#!lessons-level/{{lvl_less}}">
                   <img alt="" class="brain" src="img/manual.svg">
-          </a>
+          <span>{{langs[language].Lessons}}</span>
+            </a>
 
           <a class="btn_img"   href="#!practice-lvl/{{current_level}}" ng-if="current_progress<count_operations">
                   <img alt="" class="brain" src="img/arrows.svg">
+                    <span>  {{langs[language].Practice}}</span>
           </a>
-          <a class="btn_img" href="#!">
-                  <img alt="" src="img/home.png">
-          </a>
+
             <a class="btn_img" href="#!compain-lvl/{{current_level}}">
-                    <img alt="" class="update_arrow" src="img/update-arrow.png">
+                    <img alt="" class="update_arrow" src="img/refresh.svg">
+                      <span>{{langs[language].Restart}}</span>
             </a>
             <a class="btn_img" href="#!compain-lvl/{{current_level+1}}" ng-if="current_progress == count_operations && current_level < levels.length">
                     <img alt="" class="revers" src="img/next.svg">
+                      <span>{{langs[language].NextLvl}}</span>
+            </a>
+            <a class="btn_img" href="#!">
+                    <img alt="" src="img/home.svg">
+                      <span>{{langs[language].Home}}</span>
             </a>
         </div>
 

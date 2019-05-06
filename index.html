@@ -50,9 +50,13 @@
     <div class="scrool">
       <div class="wrapper">
     <div class="close_img" ng-click="buy()"></div>
-  <a class="btn_buy btn_hover" ng-repeat="x in [1,2,3]"> <span class="getPoints">{{($index * 5) * ($index * 2) + 20}} <img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index +  '.99$'}}</span>  </a>
-  <a class="btn_buy btn_hover" ng-repeat="x in [4,5,6]"> <span class="getPoints">{{($index * 15) * ($index * 2) + 100}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 3 + '.99$'}}</span>  </a>
-  <a class="btn_buy btn_hover" ng-repeat="x in [7,8,9]"> <span class="getPoints">{{($index * 25) * ($index * 2) + 300}} <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>{{$index + 6 + '.99$'}}</span>  </a>
+  <a class="btn_buy btn_hover" > <span class="getPoints">25 <img alt="" class="points_svg revers" src="img/points.svg"></span> <span>0.25$</span>  </a>
+  <a class="btn_buy btn_hover" > <span class="getPoints">75 <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span> <span>0.50$</span>  </a>
+  <a class="btn_buy btn_hover" > <span class="getPoints">225 <img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span><span>0.75$</span>  </a>
+  <a class="btn_buy btn_hover" > <span class="getPoints">675<img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"><img alt="" class="points_svg revers" src="img/points.svg"></span><span>1.00$</span> </a>
+  <div class="ads">
+    <h2>Тут може бути ваша реклама</h2>
+  </div>
 </div>
 </div>
   </div>
@@ -75,6 +79,26 @@
        </div>
      </div>
    </div>
+
+   <div class="modal_buy " ng-hide="!bonus">
+      <div class="feedback">
+        <div class="ring_wrapper">
+          <div class="ring"></div>
+        </div>
+        <div class="btns_wrap">
+        <h2>Daily bonus!</h2>
+        <p>Your today's bonus: {{bonus_day}} x <img alt="" class="points_svg revers" src="img/points.svg"></p>
+        <p>Visit the {{APPNAME}} for 7 days in a row to gain more bonuses every day</p>
+   </div>
+        <div class="rating">
+         <img alt="" class="points_svg revers" src="img/points.svg">
+        </div>
+        <div class="close_img" ng-click="bonus=!bonus"></div>
+        <div class="btns_wrap">
+        <div class="btn_buy btn_hover rate_us" ng-click="bonus=!bonus">Collect</div>
+        </div>
+      </div>
+    </div>
 
   <div id="ng_view" ng-view>
 
