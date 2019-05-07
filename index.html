@@ -21,7 +21,7 @@
   <link href="css/main.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
   <title>
-    {{langs[language].APPNAME}}
+    {{langs[language].APPNAME}} 
   </title>
 </head>
 
@@ -86,12 +86,12 @@
           <div class="ring"></div>
         </div>
         <div class="btns_wrap">
-        <h2>Daily bonus!</h2>
-        <p>Your today's bonus: {{bonus_day}} x <img alt="" class="points_svg revers" src="img/points.svg"></p>
+        <h2 >Daily bonus!</h2>
+        <p class="today_bonus">Your today's bonus: <span> {{bonus_day}}</span><img alt="" class="points_svg revers" src="img/points.svg"></p>
         <p>Visit the {{APPNAME}} for 7 days in a row to gain more bonuses every day</p>
    </div>
-        <div class="rating">
-         <img alt="" class="points_svg revers" src="img/points.svg">
+        <div class="points_bonus">
+         <img alt="" ng-repeat="x in [1,2,3,4,5,6,7]" class="points_svg revers" src="img/points.svg">
         </div>
         <div class="close_img" ng-click="bonus=!bonus"></div>
         <div class="btns_wrap">

@@ -10,7 +10,7 @@
           "When performing mental math it’s better to do it moving from left to right. Switching the order so that you start with the largest values makes it a bit more intuitive and easier to figure out. So when adding 58 to 26, start with the first column and calculate 50+20=70, then 8+6=14, which added together is 84. Easy, peasy.",
           "При выполнении умственной математики лучше делать это, двигаясь слева направо. Переключение порядка так, чтобы вы начали с самых больших значений, делает его немного более интуитивным и более простым для понимания. Поэтому при добавлении 58 к 26 начните с первого столбца и вычислите 50 + 20 = 70, затем 8 + 6 = 14, что в сумме составляет 84."
         ],
-        "href": "4",
+        "href": "2",
         "img": "1"
 
       },
@@ -25,19 +25,19 @@
           "It is very easy to subtract two-digit numbers in mind if you know the technique. The methods described below do not differ from the calculation by a bar, but it is much clearer. 80 - 67 = 80 - 60 - 7 = 20 - 7 = 13 (separation of discharge units when subtracting) Combinations of different methods 78 - 49 79 - 50 (addition to unit numbers) 70 - 50 + 9 = 20 + 9 = 29 (separation discharge units)",
           " Вычитать в уме двузначные числа очень просто, если знаем прием. Описанные ниже способы не отличаются от вычисления столбиком, зато гораздо понятнее. 80 - 67 = 80 - 60 - 7 = 20 - 7 = 13 (отделение разряда единиц при вычитании) Комбинации разных способов 78 - 49 79 - 50 (прибавление к числам единицы) 70 - 50 + 9 = 20 + 9 = 29 (отделение разряда единиц)",
         ],
-        "href": "6",
+        "href": "4",
         "img": "2"
       },
       {
         "title": ["Додавання трьохзначних чисел", "Addition three-digit numbers", "Добавление трьохзначних чисел", ],
         "content": ["Якщо зіткнулися з важким розрахунком, спробуйте знайти спосіб спрощення проблеми, тимчасово змінюючи значення. При розрахунку 593 + 680, наприклад, додайте 7 до 593, щоб отримати 600 (більш керованим). Розрахуйте 600 + 680, що становить 1280, а потім заберіть ще 7, щоб отримати правильну відповідь, 1273.", "When confronted with a difficult calculation, try to find a way of simplifying the problem by temporarily shifting the values around. When calculating 593+680, for example, add 7 to 593 to get 600 (more manageable). Calculate 600+680, which is 1280, and then take away that additional 7 to get the correct answer, 1273. ", "Столкнувшись со сложными вычислениями, попробуйте найти способ упростить проблему, временно сместив значения. Например, при расчете 593 + 680 добавьте 7 к 593, чтобы получить 600 (более управляемый). Вычислите 600 + 680, то есть 1280, а затем уберите дополнительные 7, чтобы получить правильный ответ, 1273.", ],
-        'href': "40",
+        'href': "8",
           "img": "3"
       },
       {
         "title": ["Віднімання трьохзначних чисел", "Subtract three-digit numbers", "Вычитание трьохзначних чисел", ],
         "content": ["Замість того щоб відняти 567, віднімемо 600. Це набагато простіше, особливо якщо рахувати зліва направо: 834 - 600 = 234. Але ж це не та відповідь, яка нам потрібна? Наскільки не та? Рівно на різницю між 567 і 600 - таку ж, як і між 67 і 100, тобто на 33. Значить, 834 - 567 = 234 + 33 = 267", "Instead of subtracting 567, subtract 600. This is much simpler, especially if you count from left to right: 834 - 600 = 234. But this is not the answer that we need? How wrong is that? Exactly the difference between 567 and 600 is the same as between 67 and 100, that is, by 33. So, 834 - 567 = 234 + 33 = 267", "Вместо того чтобы вычитать 567, вычтем 600. Это гораздо проще, особенно если считать слева направо: 834 – 600 = 234. Но ведь это не тот ответ, который нам нужен? Насколько не тот? Ровно на разность между 567 и 600 – такую же, как и между 67 и 100, то есть на 33. Значит, 834 – 567 = 234 + 33 = 267"],
-        'href': "40",
+        'href': "9",
           "img": "4"
       },
       {
@@ -49,13 +49,13 @@
           "Replace either with a repeated operation by 2. For example, 124/4 = 62/2 = 31. Also, 124×4 = 248×2 = 496.",
           "Сделайте повторную операцию 2 раза. Например, 124/4 = 62/2 = 31. Also, 124×4 = 248×2 = 496.",
         ],
-        'href': "35",
+        'href': "10",
           "img": "5"
       },
       {
         "title": ["Множення 3 в 1", "Multiplication 3 in 1", "Умножение 3 в 1", ],
         "content": ["Щоб допомогти вам у простому множенні, важливо запам'ятати деякі витончені трюки. Одне з найбільш очевидних правил полягає в тому, що будь-яке число, яке множиться на 10, просто має мати нуль, розміщений в кінці При множенні на 5, ваша відповідь завжди закінчується або 0 або 5. Також, при множенні числа на 12, це завжди 10 разів плюс двічі більше. Наприклад, при обчисленні 12х4, роблять 4х10 = 40, а 4х2 = 8, а потім 40 + 8 = 48. Одне з моїх улюблених множиться на 15: просто помножте свій номер на 10, а потім додайте половину відповіді (наприклад, 4x15 = 4x10 = 40, плюс половина відповіді, 20, що дає вам 60). Є також акуратний трюк для множення на 16. По-перше, помножте відповідне число на 10, а потім помножте половину числа на 10. Потім додайте ці два результати разом із самим номером, щоб отримати остаточну відповідь. Отже, щоб обчислити 16 x 24, спочатку обчислити 10 x 24 = 240, потім виділити половину 24, яка дорівнює 12, і помножити на 10, що дає вам 120. Проста математика закінчує його: 240 + 120 + 24 = 384.", "To help you do simple multiplication, it’s important to remember some nifty tricks. One of the most obvious rules is that any number that’s multiplied by 10 just needs to have a zero placed at the end When multiplying by 5, your answer will always end in either a 0 or 5. Also, when multiplying a number by 12, it’s always 10 times plus two times that number. For example, when calculating 12x4, do 4x10=40, and 4x2=8, and then 40+8=48. One of my favorites is multiplying by 15: just multiply your number by 10, and then add half to the answer (e.g. 4x15 = 4x10=40, plus half that answer, 20, giving you 60). There’s also a neat trick for multiplying by 16. First, multiply the number in question by 10, and then multiply half the number by 10. Then add those two results together with the number itself to get your final answer. So to calculate 16 x 24, first calculate 10 x 24 = 240, then figure out half of 24, which is 12, and multiply by 10, giving you 120. Simple math finishes it up: 240+120+24=384.", "Чтобы помочь вам сделать простое умножение, важно помнить некоторые изящные приемы. Одно из наиболее очевидных правил заключается в том, что любое число, умноженное на 10, просто должно иметь ноль в конце. При умножении на 5 ваш ответ всегда будет заканчиваться на 0 или 5. Кроме того, при умножении числа на 12, это всегда в 10 раз плюс два раза это число. Например, при расчете 12x4 выполните 4x10 = 40 и 4x2 = 8, а затем 40 + 8 = 48. Одно из моих любимых умножение на 15: просто умножьте свое число на 10, а затем добавьте половину к ответу (например, 4x15 = 4x10 = 40, плюс половину этого ответа, 20, что даст вам 60). Существует также хитрый способ умножения на 16. Сначала умножьте рассматриваемое число на 10, а затем умножьте половину числа на 10. Затем добавьте эти два результата вместе с самим числом, чтобы получить окончательный ответ. Итак, чтобы вычислить 16 x 24, сначала вычислите 10 x 24 = 240, затем вычислите половину от 24, что составляет 12, и умножьте на 10, получая 120. Простая математика заканчивает работу: 240 + 120 + 24 = 384.", ],
-        'href': "13",
+        'href': "11",
           "img": "6"
       },
       {
@@ -67,7 +67,7 @@
           "Replace either with a repeated operation by 2. For example, 124×8 = 248×4 = 496×2 = 992.",
           "Замените на повторную операцию с 2. Например, 124×8 = 248×4 = 496×2 = 992.",
         ],
-        'href': "13",
+        'href': "12",
           "img": "7"
       },
       //   {
@@ -100,7 +100,7 @@
           "Use operations with 8 instead. For example, 37×125 = 37000/8 = 18500/4 = 9250/2 = 4625.",
           "Вместо этого используйте операции с 8. Например, 37 × 125 = 37000/8 = 18500/4 = 9250/2 = 4625.",
         ],
-        'href': "13",
+        'href': "14",
           "img": "9"
       },
       //  {
@@ -199,7 +199,12 @@
     }, {
       'date': '12:00 18.03.2019',
       'fix': 'Added in home page your lvl and points, fixed settings'
-    }, ]
+    },
+    {
+     'date': '15:49 06.04.2019',
+     'fix': 'More Functional, Balansed!, and others changes!'
+   },
+ ]
     $rootScope.fix.reverse()
 
   })

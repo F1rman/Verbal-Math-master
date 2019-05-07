@@ -531,12 +531,28 @@ position: relative;
       width: calc(100% - 14vmax);
   }
 
-
+.today_bonus{
+  display: flex;
+  align-items: center;
+  margin: 2vmax;
+}
+.today_bonus>span{
+  font-size: 4vmax;
+margin: 0 0 0 1vmax;
+}
+.points_bonus{
+  display: flex;
+}
+.points_bonus > img.points_svg{
+animation: points 5s linear infinite;
+    margin-left: -1vmax;
+}
    .levels .h2_wrap_scrool h2{
      width: 100%;
    text-overflow: ellipsis;
    overflow: hidden;
    white-space: nowrap;
+   font-size: 1.6vmax;
   }
   .lessons_wrapper .lvlcont{
     display: flex;
@@ -1437,6 +1453,7 @@ width: 100%;
    width: 3vmax;
 height: 3vmax;
 margin: 0 .5vmax;
+animation: points 10s linear infinite;
  }
 
  .update_settings {
@@ -1830,7 +1847,16 @@ text-align: center;
     left: 0;
 
 }
+@keyframes points{
+  0% {
+      transform: rotateY(0);
+  }
 
+  100% {
+    transform:  rotateZ(360deg);
+  }
+
+}
 @keyframes ring {
   0% {
     transform: rotateZ(0deg);

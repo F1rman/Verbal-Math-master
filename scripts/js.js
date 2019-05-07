@@ -8,7 +8,8 @@ var dateItHappens = d.getDay() + 2;
 var weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 var day;
 var current_progress = Number(storage.getItem('current_progress'));
-var points = Number(storage.getItem('points'));
+var points;
+points == undefined? points = 0: Number(storage.getItem('points'));
 var lvl = Number(storage.getItem('lvl'));
 var passlvl = Number(storage.getItem('passlvl'));
 var language_stor = Number(storage.getItem('language_stor'));
@@ -27,11 +28,7 @@ var false_practice = 0;
 var t_stor;
 var fon_audio = new Audio('wav/fon.mp3');
 var loh_rand = randominrange(130, 190);
-if (storage.getItem('loh_rand') == undefined) {
-  storage.setItem('loh_rand', loh_rand)
-} else {
-  loh_rand = storage.getItem('loh_rand');
-}
+storage.getItem('loh_rand') == undefined?  storage.setItem('loh_rand', loh_rand):  loh_rand = storage.getItem('loh_rand');
 
 // ANGULAR
 var app = angular.module("Routing", ["ngRoute", 'ngAnimate']);
@@ -74,28 +71,28 @@ var firsload = true;
   var days_in_row = 0;
 app.run(($rootScope) => {
 
+  $rootScope.all_points = Number(storage.getItem('points'))
+
 // console.log($rootScope.check_row_day());
-//
-// $rootScope.daily_bonus = ()=>{
-//   if (storage.getItem(weekday[d.getDay()]) == undefined) {
-//     $rootScope.bonus = !$rootScope.bonus;
-//
-//          $rootScope.check_row_day = ()=>{
-//            for (var i = 0; i < 7 ;i++) {
-//              if (storage.getItem(weekday[i]) == 'true') {
-//                return days_in_row = days_in_row + 1;
-//              }
-//            }
-//          }
-//     $rootScope.bonus_day = $rootScope.check_row_day();
-//
-//     $rootScope.all_points = $rootScope.all_points + $rootScope.bonus_day;
-//      storage.setItem('points', $rootScope.all_points)
-//      storage.setItem(weekday[d.getDay()], true)
-//
-//   }
-// }
-// $rootScope.daily_bonus()
+$rootScope.check_row_day = ()=>{
+  for (var i = 0; i < 7 ;i++) {
+    if (storage.getItem(weekday[i]) == 'true') {
+      return days_in_row = days_in_row + 1;
+    }
+  }
+}
+$rootScope.bonus_day = $rootScope.check_row_day();
+$rootScope.daily_bonus = ()=>{
+  if (storage.getItem(weekday[d.getDay()]) == undefined) {
+    storage.setItem(weekday[d.getDay()], true)
+    $rootScope.bonus = !$rootScope.bonus;
+    $rootScope.bonus_day = $rootScope.check_row_day();
+    console.log($rootScope.bonus_day);
+    $rootScope.all_points = $rootScope.all_points + $rootScope.bonus_day;
+     storage.setItem('points', $rootScope.all_points)
+  }
+}
+$rootScope.daily_bonus()
   $rootScope.ResInput = '';
   $rootScope.key = (key, del, remove) => {
     $rootScope.ResInput += key;
@@ -138,9 +135,7 @@ $rootScope.skill = 1;
   else {
     $rootScope.skill = storage.getItem('skill');
   }
-  if ($rootScope.all_points == undefined) {
-    $rootScope.all_points = points;
-  }
+
   //
 
   if (storage.getItem('s_vol') == undefined){
@@ -170,7 +165,7 @@ $rootScope.skill = 1;
   $rootScope.null = '';
   $rootScope.total_points = points;
   $rootScope.language = language_stor;
-  $rootScope.lvl = getLevel($rootScope.total_points);
+  $rootScope.lvl = getLevel(points);
   $rootScope.passlvl = passlvl;
   $rootScope.current_progress = current_progress;
   $rootScope.time_left = time_left;
@@ -299,11 +294,6 @@ var getLevel = (points, all_points) => {
   for (i = 0; i < maxLevel; i++) {
     if (levels[i] > points) {
       for_next_lvl = levels[i] - all_points;
-      if (for_next_lvl < 0) {
-        i = i + 1;
-        for_next_lvl = levels[i] - all_points;
-        console.log(for_next_lvl);
-      }
       return i;
     }
   }
